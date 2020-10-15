@@ -7,6 +7,6 @@
 </head>
 <body>
 <h1>Hello,  ${name} + !</h1>
-<p>Get your greeting <a href="/index">here</a></p>
+<p>Get your greeting <a href="/index?name=Sergio">here</a></p>
 </body>
 </html>
