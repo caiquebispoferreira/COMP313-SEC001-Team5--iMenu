@@ -1,4 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
     <div class="row">
         <a href="/addProduct">Add</a>
@@ -20,17 +23,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">${p.id}</th>
-                    <td>${p.name}</td>
-                    <td>${p.description}</td>
-                    <td>${p.unitPrice}</td>
-                    <td>${p.enabled}</td>
-                    <td>${p.category}</td>
-                    <td>${p.pictureUrl}</td>
-                    <td><a href="/editProduct?id=${p.id}">Edit</a></td>
-                    <td><a href="/deleteProduct?id=${p.id}">Delete</a></td>
-                </tr>
+                    <c:forEach items="${object}" var="item">
+                        <tr>
+                            <th scope="row">${itema.id}</th>
+                            <td>${item.name}</td>
+                            <td>${item.description}</td>
+                            <td>${item.unitPrice}</td>
+                            <td>${item.enabled}</td>
+                            <td>${item.category}</td>
+                            <td>${item.pictureUrl}</td>
+                            <td><a href="/editProduct?id=${item.id}">Edit</a></td>
+                            <td><a href="/deleteProduct?id=${item.id}">Delete</a></td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>

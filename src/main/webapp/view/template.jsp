@@ -14,8 +14,10 @@
 <jsp:include page="header.jsp" >
     <jsp:param name="contextPath" value="${contextPath}" />
 </jsp:include>
+<h1>${title}</h1>
 <jsp:include page="${body}">
     <jsp:param name="contextPath" value="${contextPath}" />
+    <jsp:param name="object" value="${object}" />
 </jsp:include>
 <jsp:include page="footer.jsp" />
 </body>

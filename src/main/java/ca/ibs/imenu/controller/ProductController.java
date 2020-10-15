@@ -16,21 +16,53 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    public Product save(Product product){
-        return productService.save(product);
-    }
-    public void delete(Product product){
-        productService.delete(product);
-    }
-    public List<Product> findAll(){
-        return productService.findAll();
+    @RequestMapping(value = "/commitSaveProduct", method = RequestMethod.POST)
+    public String commitSaveProduct(Model model, Product product) {
+        productService.save(product);
+        return "redirect:listProduct";
     }
 
+    @RequestMapping(value = "/commitDeleteProduct", method = RequestMethod.POST)
+    public String commitDeleteProduct(Model model, Product product) {
+        productService.delete(productService.findById(product.getId()));
+        return "redirect:listProduct";
+    }
 
-
-    @RequestMapping(value = "/listProducts", method = RequestMethod.GET)
-    public String listProducts(Model model) {
+    @RequestMapping(value = "/listProduct", method = RequestMethod.GET)
+    public String listProduct(Model model) {
         model.addAttribute("body","products.jsp");
+        model.addAttribute("object",productService.findAll());
+        model.addAttribute("title", "List of Products");
+        return "template";
+    }
+
+    @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
+    public String addProduct(Model model) {
+        model.addAttribute("body","product.jsp");
+        model.addAttribute("object",new Product());
+        model.addAttribute("action","/commitSaveProduct");
+        model.addAttribute("title", "Add Product");
+        model.addAttribute("readonly", false);
+        return "template";
+    }
+
+    @RequestMapping(value = "/editProduct", method = RequestMethod.GET)
+    public String editProduct(Model model, @RequestParam(name = "id") Long id) {
+        model.addAttribute("body","product.jsp");
+        model.addAttribute("object",productService.findById(id));
+        model.addAttribute("action","/commitSaveProduct");
+        model.addAttribute("title", "Edit Product");
+        model.addAttribute("readonly", false);
+        return "template";
+    }
+
+    @RequestMapping(value = "/deleteProduct", method = RequestMethod.GET)
+    public String deleteProduct(Model model, @RequestParam(name = "id") Long id) {
+        model.addAttribute("body","product.jsp");
+        model.addAttribute("object",productService.findById(id));
+        model.addAttribute("action","/commitDeleteProduct");
+        model.addAttribute("title", "Delete Product");
+        model.addAttribute("readonly", true);
         return "template";
     }
 
