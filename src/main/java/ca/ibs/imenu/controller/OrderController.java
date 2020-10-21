@@ -34,9 +34,8 @@ public class OrderController {
         return "redirect:listAllOrders";
     }
 
-    @RequestMapping(value = "/listOrder", method = RequestMethod.GET)
-    public String listOrder(Model model){
-        model.addAttribute("body","orders.jsp");
+    @RequestMapping(value = "/listAllOrders", method = RequestMethod.GET)
+    public String listAllOrders(Model model){
         model.addAttribute("object",orderService.findAll());
         return "orders";
     }
