@@ -25,7 +25,7 @@
             <tbody>
                 <c:forEach items="${object}" var="item">
                     <tr>
-                        <th scope="row">${itema.id}</th>
+                        <th scope="row">${item.id}</th>
                         <td>${item.name}</td>
                         <td>${item.description}</td>
                         <td>${item.unitPrice}</td>

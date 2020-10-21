@@ -1,5 +1,6 @@
 package ca.ibs.imenu.controller;
 
+import ca.ibs.imenu.entity.Category;
 import ca.ibs.imenu.entity.Product;
 import ca.ibs.imenu.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 public class ProductController {
@@ -33,7 +32,15 @@ public class ProductController {
         model.addAttribute("body","products.jsp");
         model.addAttribute("object",productService.findAll());
         model.addAttribute("title", "List of Products");
-        return "template";
+        return "adminTemplate";
+    }
+
+    @RequestMapping(value = "/listProductByCategory", method = RequestMethod.GET)
+    public String listProductByCategory(Model model,@RequestParam(name = "category", defaultValue = "APPETIZERS") String category) {
+        model.addAttribute("body","productsByCategory.jsp");
+        model.addAttribute("object",productService.findByCategory(Category.valueOf(category)));
+        model.addAttribute("title", "List of "+category);
+        return "customerTemplate";
     }
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
@@ -43,7 +50,7 @@ public class ProductController {
         model.addAttribute("action","/commitSaveProduct");
         model.addAttribute("title", "Add Product");
         model.addAttribute("readonly", false);
-        return "template";
+        return "adminTemplate";
     }
 
     @RequestMapping(value = "/editProduct", method = RequestMethod.GET)
@@ -53,7 +60,7 @@ public class ProductController {
         model.addAttribute("action","/commitSaveProduct");
         model.addAttribute("title", "Edit Product");
         model.addAttribute("readonly", false);
-        return "template";
+        return "adminTemplate";
     }
 
     @RequestMapping(value = "/deleteProduct", method = RequestMethod.GET)
@@ -63,7 +70,7 @@ public class ProductController {
         model.addAttribute("action","/commitDeleteProduct");
         model.addAttribute("title", "Delete Product");
         model.addAttribute("readonly", true);
-        return "template";
+        return "adminTemplate";
     }
 
 }

@@ -1,6 +1,8 @@
 package ca.ibs.imenu.service;
 
 import ca.ibs.imenu.entity.Order;
+import ca.ibs.imenu.entity.OrderItem;
+import ca.ibs.imenu.entity.Status;
 import ca.ibs.imenu.repository.IOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,4 +31,17 @@ public class OrderService {
     public List<Order> findAll(){
         return repository.findAll();
     }
+
+    public Order addItemToOrder(Order order,OrderItem orderItem){
+        order.addItem(orderItem);
+        return order;
+    }
+
+
+    public Order findByStatusAndTableNumber(int tableNumber){
+        return repository.findByStatusAndTableNumber(Status.PAID,tableNumber);
+    }
+
+
+
 }

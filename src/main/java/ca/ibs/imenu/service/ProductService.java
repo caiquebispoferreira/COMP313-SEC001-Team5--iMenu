@@ -1,5 +1,6 @@
 package ca.ibs.imenu.service;
 
+import ca.ibs.imenu.entity.Category;
 import ca.ibs.imenu.entity.Product;
 import ca.ibs.imenu.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,9 @@ public class ProductService {
 
     public List<Product> findAll(){
         return repository.findAll();
+    }
+
+    public List<Product> findByCategory(Category category){
+        return repository.findByCategory(category);
     }
 }
