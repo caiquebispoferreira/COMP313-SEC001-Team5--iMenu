@@ -1,8 +1,6 @@
 package ca.ibs.imenu.service;
 
 import ca.ibs.imenu.repository.IUserRepository;
-import com.smartmeeting.auth.model.Funcionario;
-import com.smartmeeting.auth.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -23,11 +21,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findBy(username);
-
+		ca.ibs.imenu.entity.User user = userRepository.findByUsername(username);
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-
-		return new org.springframework.security.core.userdetails.User(funcionario.getUsername(),
-				funcionario.getPassword(), grantedAuthorities);
+		return new org.springframework.security.core.userdetails.User(user.getUsername(),
+				user.getPassword(), grantedAuthorities);
 	}
 }
