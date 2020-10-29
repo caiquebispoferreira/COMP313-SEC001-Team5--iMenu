@@ -12,6 +12,7 @@
 </head>
 <body>
 
+
 <form method="POST" action="${contextPath}/login"
       class="form-signin">
     <!--  					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
@@ -24,14 +25,15 @@
     </div>
     <div class="form-group row login-tools">
         <div class="col-xs-12 login-forgot-password">
-            <a href="#">Esqueceu sua senha?</a>
+            <a href="#">Did you forget your password?</a>
         </div>
     </div>
     <div class="form-group login-submit">
         <button data-dismiss="modal" type="submit"
-                class="btn btn-primary btn-xl">Entrar</button>
+                class="btn btn-primary btn-xl">Submit</button>
     </div>
 </form>
+
 
 </body>
 </html>
