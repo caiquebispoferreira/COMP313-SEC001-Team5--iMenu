@@ -19,6 +19,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String defaultIndex(Model model) {
+        checkUser();
         model.addAttribute("name","World");
         return "index";
     }
@@ -30,6 +31,7 @@ public class HomeController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(@ModelAttribute("userForm") User userForm, Model model, String error, String logout) {
+        checkUser();
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
@@ -58,6 +60,18 @@ public class HomeController {
         model.addAttribute("body","staffPanel.jsp");
         model.addAttribute("title", "Panel of Staff");
         return "adminTemplate";
+    }
+
+    private void checkUser(){
+        User user = userService.findByUsername("admin");
+        if (user==null){
+            user = new User();
+            user.setName("Administrator");
+            user.setRole(Role.Administrator);
+            user.setPassword("$2y$12$qwcGoBtiilc3oF3bzBc2xuI9IA4xGzjEb58gReh04Azd5NkuDPxDq");
+            user.setUsername("admin");
+            userService.save(user);
+        }
     }
 
 }
