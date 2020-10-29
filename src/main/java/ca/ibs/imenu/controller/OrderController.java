@@ -2,6 +2,7 @@ package ca.ibs.imenu.controller;
 
 import ca.ibs.imenu.entity.Order;
 import ca.ibs.imenu.entity.OrderItem;
+import ca.ibs.imenu.entity.User;
 import ca.ibs.imenu.service.OrderService;
 import ca.ibs.imenu.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,22 +24,53 @@ public class OrderController {
     private ProductService productService;
 
     @RequestMapping(value = "/commitSaveOrder", method = RequestMethod.POST)
-    public String commitSaveOrder(Model model, Order order){
+    public String commitSaveOrder(Model model, Order order) {
         orderService.save(order);
-        return "redirect:index";
-
+        return "redirect:listOrder";
     }
 
     @RequestMapping(value = "/commitDeleteOrder", method = RequestMethod.POST)
-    public String commitDeleteOrder(Model model, Order order){
+    public String commitDeleteOrder(Model model, Order order) {
         orderService.delete(orderService.findById(order.getId()));
-        return "redirect:listAllOrders";
+        return "redirect:listOrder";
     }
 
     @RequestMapping(value = "/listOrder", method = RequestMethod.GET)
-    public String listOrder(Model model){
+    public String listOrder(Model model) {
+        model.addAttribute("body","orders.jsp");
         model.addAttribute("object",orderService.findAll());
-        return "orders";
+        model.addAttribute("title", "List of Orders");
+        return "adminTemplate";
+    }
+
+    @RequestMapping(value = "/addOrder", method = RequestMethod.GET)
+    public String addOrder(Model model) {
+        model.addAttribute("body","order.jsp");
+        model.addAttribute("object",new Order());
+        model.addAttribute("action","/commitSaveOrder");
+        model.addAttribute("title", "Add Order");
+        model.addAttribute("readonly", false);
+        return "adminTemplate";
+    }
+
+    @RequestMapping(value = "/editOrder", method = RequestMethod.GET)
+    public String editOrder(Model model, @RequestParam(name = "id") Long id) {
+        model.addAttribute("body","order.jsp");
+        model.addAttribute("object",orderService.findById(id));
+        model.addAttribute("action","/commitSaveOrder");
+        model.addAttribute("title", "Edit Order");
+        model.addAttribute("readonly", false);
+        return "adminTemplate";
+    }
+
+    @RequestMapping(value = "/deleteOrder", method = RequestMethod.GET)
+    public String deleteOrder(Model model, @RequestParam(name = "id") Long id) {
+        model.addAttribute("body","order.jsp");
+        model.addAttribute("object",orderService.findById(id));
+        model.addAttribute("action","/commitDeleteOrder");
+        model.addAttribute("title", "Delete Order");
+        model.addAttribute("readonly", true);
+        return "adminTemplate";
     }
 
     @RequestMapping(value = "/myOrder", method = RequestMethod.GET)
