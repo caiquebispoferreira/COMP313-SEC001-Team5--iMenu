@@ -42,6 +42,18 @@ public class OrderService {
         return repository.findByStatusAndTableNumber(Status.PAID,tableNumber);
     }
 
+    public Order findByTableNumber(int tableNumber){
+        return repository.findByTableNumber(tableNumber);
+    }
 
+    public Order changeTableNumber(Order _order, int newTableNumber){
+        Order order = findByTableNumber(_order.getTableNumber());
+        if(order != null)
+        {
+            order.setTableNumber(newTableNumber);
+            return order;
+        }
+        return null;
+    }
 
 }
