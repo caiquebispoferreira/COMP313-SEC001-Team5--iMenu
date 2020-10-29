@@ -43,6 +43,22 @@ public class OrderController {
         return "adminTemplate";
     }
 
+    @RequestMapping(value = "/listOrderByTable", method = RequestMethod.GET)
+    public String listOrderByTable(Model model, int tableNumber) {
+        model.addAttribute("body","order.jsp");
+        model.addAttribute("object",orderService.findByTableNumber(tableNumber));
+        model.addAttribute("title", "List Order by Table");
+        return "adminTemplate";
+    }
+
+    @RequestMapping(value = "/changeTableNumber", method = RequestMethod.POST)
+    public String changeTableNumber(Model model, int newTableNumber, Order order) {
+        model.addAttribute("body","order.jsp");
+        model.addAttribute("object",orderService.changeTableNumber(order,newTableNumber));
+        model.addAttribute("title", "Change table number");
+        return "adminTemplate";
+    }
+
     @RequestMapping(value = "/addOrder", method = RequestMethod.GET)
     public String addOrder(Model model) {
         model.addAttribute("body","order.jsp");

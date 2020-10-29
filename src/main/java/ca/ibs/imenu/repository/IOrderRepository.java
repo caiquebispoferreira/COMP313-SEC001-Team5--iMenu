@@ -17,4 +17,9 @@ public interface IOrderRepository
             "WHERE o.status <> :status" +
             "   AND o.tableNumber = :tableNumber  ")
     Order findByStatusAndTableNumber(Status status, int tableNumber);
+
+    @Query(value = "Select o " +
+            "FROM Order o " +
+            "WHERE o.tableNumber = :tableNumber" )
+    Order findByTableNumber(int tableNumber);
 }
