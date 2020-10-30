@@ -8,11 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body>
 
-
+<div class="row">
+    <div class="col-md-9 order-md-2">
 <form method="POST" action="${contextPath}/login"
       class="form-signin">
     <!--  					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
@@ -30,10 +31,11 @@
     </div>
     <div class="form-group login-submit">
         <button data-dismiss="modal" type="submit"
-                class="btn btn-primary btn-xl">Submit</button>
+                class="btn btn-primary btn-lg btn-block">Submit</button>
     </div>
 </form>
-
+    </div>
+</div>
 
 </body>
 </html>
