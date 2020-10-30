@@ -11,8 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-
-
 <form method="POST" action="${contextPath}/login"
       class="form-signin">
     <!--  					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
