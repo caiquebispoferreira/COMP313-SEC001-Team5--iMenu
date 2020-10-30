@@ -17,6 +17,15 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+
+
+    @RequestMapping("/javaScriptChangeTableNumber")
+    public String javaScriptChangeTableNumber() {
+
+        return "javaScriptChangeTableNumber";
+    }
+
+
     @RequestMapping("/")
     public String defaultIndex(Model model) {
         checkUser();
