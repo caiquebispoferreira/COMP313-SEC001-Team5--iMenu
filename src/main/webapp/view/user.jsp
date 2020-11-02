@@ -44,7 +44,7 @@
                                 class="form-control">
                     </c:if>
                     <c:if test="${!readonly}">
-                        <input id="role" type="number" name="role" value="${object.role}"
+                        <input id="role" type="text" name="role" value="${object.role}"
                                placeholder="Please choose your role" class="form-control">
                     </c:if>
 
