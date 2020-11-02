@@ -19,7 +19,15 @@
             </tr>
             </thead>
             <tbody>
-
+   <c:forEach items="${object}" var="item">
+                    <tr>
+                        <th scope="row">${item.id}</th>
+                        <td>${item.name}</td>
+                        <td>${item.role}</td>
+                        <td><a href="/editUser?id=${item.id}">Edit</a></td>
+                        <td><a href="/deleteUser?id=${item.id}">Delete</a></td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>
