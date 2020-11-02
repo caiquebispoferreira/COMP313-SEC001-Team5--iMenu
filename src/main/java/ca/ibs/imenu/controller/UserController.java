@@ -52,8 +52,6 @@ public class UserController {
     public String editUser(Model model, @RequestParam(name = "id") Long id) {
         model.addAttribute("body","user.jsp");
         model.addAttribute("object",userService.findById(id));
-        User _user = userService.findById(id);
-        String test = String.valueOf(_user.getRole());
         model.addAttribute("action","/commitSaveUser");
         model.addAttribute("title", "Edit User");
         model.addAttribute("readonly", false);
