@@ -12,6 +12,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th scope="col">Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Role</th>
                 <th scope="col">#</th>
@@ -19,7 +20,7 @@
             </tr>
             </thead>
             <tbody>
-   <c:forEach items="${object}" var="item">
+                    <c:forEach items="${object}" var="item">
                     <tr>
                         <th scope="row">${item.id}</th>
                         <td>${item.name}</td>
@@ -27,7 +28,7 @@
                         <td><a href="/editUser?id=${item.id}">Edit</a></td>
                         <td><a href="/deleteUser?id=${item.id}">Delete</a></td>
                     </tr>
-                </c:forEach>
+                    </c:forEach>
             </tbody>
         </table>
     </div>

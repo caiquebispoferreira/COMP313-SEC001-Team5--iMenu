@@ -15,11 +15,22 @@
     <div class="col-md-9 order-md-2">
         <form action="${action}" method="post">
             <input type="hidden" name="id" value="${object.id}"/>
+            <div class="mb-3">
+                <label for="name">Name</label>
+                <c:if test="${readonly}">
+                    <input  id="name" type="text" name="name" value="${object.name}"
+                            class="form-control" readonly>
+                </c:if>
+                <c:if test="${!readonly}">
+                    <input  id="name" type="text" name="name" value="${object.name}"
+                            placeholder="Please enter your password" class="form-control">
+                </c:if>
+            </div>
                 <div class="mb-3">
                     <label for="username">Username</label>
                     <c:if test="${readonly}">
                         <input id="username" type="text" name="username"  value="${object.username}"
-                               placeholder="Please enter your username" class="form-control" readonly>
+                               class="form-control" readonly>
                     </c:if>
                     <c:if test="${!readonly}">
                         <input id="username" type="text" name="username"  value="${object.username}"
@@ -27,36 +38,25 @@
                     </c:if>
                 </div>
                 <div class="mb-3">
-                    <label for="password">Password</label>
-                    <c:if test="${readonly}">
-                        <input  id="password" type="text" name="password" value="${object.password}"
-                                 placeholder="Please enter your password" class="form-control" readonly>
-                    </c:if>
-                    <c:if test="${!readonly}">
-                        <input  id="password" type="text" name="password" value="${object.password}"
-                                 placeholder="Please enter your password" class="form-control">
-                    </c:if>
-                </div>
-                <div class="mb-3">
                     <label for="role">Role</label>
                     <c:if test="${readonly}">
-                        <input id="role" type="number" name="role" value="${object.role}" readonly
-                                placeholder="Please enter your role" class="form-control">
+                        <input id="role" type="text" name="role" value="${object.role}" readonly
+                                class="form-control">
                     </c:if>
                     <c:if test="${!readonly}">
                         <input id="role" type="number" name="role" value="${object.role}"
-                               placeholder="Please enter your role" class="form-control">
+                               placeholder="Please choose your role" class="form-control">
                     </c:if>
 
                 </div>
                 <div class="mb-3">
-                    <label for="name">Password</label>
+                    <label for="password">Password</label>
                     <c:if test="${readonly}">
-                        <input  id="name" type="text" name="name" value="${object.name}"
-                                 placeholder="Please enter your name" class="form-control" readonly>
+                        <input  id="password" type="text" name="password" value="${object.password}"
+                                class="form-control" readonly>
                     </c:if>
                     <c:if test="${!readonly}">
-                        <input  id="name" type="text" name="name" value="${object.password}"
+                        <input  id="password" type="text" name="password" value="${object.password}"
                                  placeholder="Please enter your name" class="form-control">
                     </c:if>
                 </div>
