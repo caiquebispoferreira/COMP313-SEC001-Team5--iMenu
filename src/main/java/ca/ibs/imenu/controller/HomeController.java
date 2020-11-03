@@ -88,13 +88,20 @@ public class HomeController {
         item.setQuantity(1);
         item.setProduct(productService.findAll().get(0));
 
+        OrderItem itema = new OrderItem();
+        itema.setTotalPrice(new BigDecimal(1000));
+        itema.setUnitPrice(new BigDecimal(1000));
+        itema.setQuantity(1);
+        itema.setProduct(productService.findAll().get(1));
+
         Order order = new Order();
         order.setStatus(Status.OPEN);
         order.setTableNumber(1);
-        order.setTotalPrice(new BigDecimal(1000));
+        order.setTotalPrice(new BigDecimal(2000));
         order.setNote("Special Notes added");
         order.setDate(LocalDate.now());
         order.addItem(item);
+        order.addItem(itema);
 
         orderService.save(order);
 
