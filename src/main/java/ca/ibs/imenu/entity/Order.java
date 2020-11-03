@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +22,9 @@ public class Order implements Serializable {
     private Long id;
     @Enumerated(EnumType.STRING)
     private Status status;
-    private java.util.Date date;
-    private BigDecimal totalValue;
-    private String Note;
+    private LocalDate date;
+    private BigDecimal totalPrice;
+    private String note;
     private int tableNumber;
 
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,orphanRemoval = true)

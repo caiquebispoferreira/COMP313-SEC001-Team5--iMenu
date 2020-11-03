@@ -26,16 +26,10 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/")
-    public String defaultIndex(Model model) {
-        checkUser();
-        model.addAttribute("name","World");
-        return "index";
-    }
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index(Model model, @RequestParam(name = "name",defaultValue = "Caique") String name) {
-        model.addAttribute("name",name);
-        return "index";
+    @RequestMapping(value = { "/index", "/"}, method = RequestMethod.GET)
+    public String index(Model model, Authentication authentication) {
+        boolean result = authentication != null && authentication.isAuthenticated();
+        return result?"redirect:welcome":"index";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -49,12 +43,12 @@ public class HomeController {
         return "login";
     }
 
-    @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/welcome" }, method = RequestMethod.GET)
     public String welcome(Model model, Authentication authentication) {
         org.springframework.security.core.userdetails.User p = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
         User user = userService.findByUsername(p.getUsername());
 
-        return user.getRole().equals(Role.Administrator)?"redirect:adminPanel":"redirect:staffPanel";
+        return user.getRole().equals(Role.ADMINISTRATOR)?"redirect:adminPanel":"redirect:staffPanel";
     }
 
     @RequestMapping(value = "/adminPanel", method = RequestMethod.GET)
@@ -76,7 +70,7 @@ public class HomeController {
         if (user==null){
             user = new User();
             user.setName("Administrator");
-            user.setRole(Role.Administrator);
+            user.setRole(Role.ADMINISTRATOR);
             user.setPassword("$2y$12$qwcGoBtiilc3oF3bzBc2xuI9IA4xGzjEb58gReh04Azd5NkuDPxDq");
             user.setUsername("admin");
             userService.save(user);

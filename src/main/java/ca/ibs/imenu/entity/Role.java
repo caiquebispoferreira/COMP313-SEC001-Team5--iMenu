@@ -1,7 +1,7 @@
 package ca.ibs.imenu.entity;
 
 public enum Role {
-    Administrator("Administrator"),Staff("Staff");
+    ADMINISTRATOR("Administrator"),STAFF("Staff");
 
     private String value;
 

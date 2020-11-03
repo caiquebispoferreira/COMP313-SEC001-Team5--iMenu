@@ -1,10 +1,12 @@
 package ca.ibs.imenu.controller;
 
 import ca.ibs.imenu.entity.Category;
+import ca.ibs.imenu.entity.Role;
 import ca.ibs.imenu.entity.User;
 import ca.ibs.imenu.entity.User;
 import ca.ibs.imenu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +33,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/listUser", method = RequestMethod.GET)
-    public String listUser(Model model) {
+    public String listUser(Model model, Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","users.jsp");
         model.addAttribute("object",userService.findAll());
         model.addAttribute("title", "List of Users");
@@ -39,7 +45,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
-    public String addUser(Model model) {
+    public String addUser(Model model,Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","user.jsp");
         model.addAttribute("object",new User());
         model.addAttribute("action","/commitSaveUser");
@@ -49,7 +59,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.GET)
-    public String editUser(Model model, @RequestParam(name = "id") Long id) {
+    public String editUser(Model model, @RequestParam(name = "id") Long id, Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","user.jsp");
         model.addAttribute("object",userService.findById(id));
         model.addAttribute("action","/commitSaveUser");
@@ -59,7 +73,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-    public String deleteUser(Model model, @RequestParam(name = "id") Long id) {
+    public String deleteUser(Model model, @RequestParam(name = "id") Long id, Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","user.jsp");
         model.addAttribute("object",userService.findById(id));
         model.addAttribute("action","/commitDeleteUser");
@@ -67,4 +85,5 @@ public class UserController {
         model.addAttribute("readonly", true);
         return "adminTemplate";
     }
+
 }

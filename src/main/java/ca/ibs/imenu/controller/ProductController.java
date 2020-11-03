@@ -3,7 +3,9 @@ package ca.ibs.imenu.controller;
 import ca.ibs.imenu.entity.Category;
 import ca.ibs.imenu.entity.Product;
 import ca.ibs.imenu.service.ProductService;
+import ca.ibs.imenu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/commitSaveProduct", method = RequestMethod.POST)
     public String commitSaveProduct(Model model, Product product) {
@@ -28,7 +33,12 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/listProduct", method = RequestMethod.GET)
-    public String listProduct(Model model) {
+    public String listProduct(Model model, Authentication authentication) {
+
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","products.jsp");
         model.addAttribute("object",productService.findAll());
         model.addAttribute("title", "List of Products");
@@ -36,7 +46,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/listProductByCategory", method = RequestMethod.GET)
-    public String listProductByCategory(Model model,@RequestParam(name = "category", defaultValue = "APPETIZERS") String category) {
+    public String listProductByCategory(Model model,@RequestParam(name = "category", defaultValue = "APPETIZER") String category) {
         model.addAttribute("body","productsByCategory.jsp");
         model.addAttribute("object",productService.findByCategory(Category.valueOf(category)));
         model.addAttribute("title", "List of "+category);
@@ -44,7 +54,11 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
-    public String addProduct(Model model) {
+    public String addProduct(Model model, Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","product.jsp");
         model.addAttribute("object",new Product());
         model.addAttribute("action","/commitSaveProduct");
@@ -54,7 +68,11 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/editProduct", method = RequestMethod.GET)
-    public String editProduct(Model model, @RequestParam(name = "id") Long id) {
+    public String editProduct(Model model, @RequestParam(name = "id") Long id, Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","product.jsp");
         model.addAttribute("object",productService.findById(id));
         model.addAttribute("action","/commitSaveProduct");
@@ -64,7 +82,11 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/deleteProduct", method = RequestMethod.GET)
-    public String deleteProduct(Model model, @RequestParam(name = "id") Long id) {
+    public String deleteProduct(Model model, @RequestParam(name = "id") Long id,Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","product.jsp");
         model.addAttribute("object",productService.findById(id));
         model.addAttribute("action","/commitDeleteProduct");

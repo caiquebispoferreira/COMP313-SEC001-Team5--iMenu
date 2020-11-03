@@ -1,8 +1,8 @@
 package ca.ibs.imenu.entity;
 
 public enum Category {
-    APPETIZERS("Appetizers"),
-    BEVERAGE("Beverages"),
+    APPETIZER("Appetizer"),
+    BEVERAGE("Beverage"),
     MAIN_COURSE("Main Course");
     private String value;
 
