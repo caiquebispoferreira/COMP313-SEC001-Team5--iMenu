@@ -121,12 +121,15 @@ public class OrderController {
 
     @RequestMapping(value = "/myOrder", method = RequestMethod.GET)
     public String myOrder(Model model, int tableNumber){
-        model.addAttribute("object",orderService.findByStatusAndTableNumber(tableNumber));
-        return "myOrder";
+        model.addAttribute("body","myOrder.jsp");
+        model.addAttribute("object",new OrderDTO(orderService.findByStatusAndTableNumber(tableNumber)));
+        model.addAttribute("title", "My Order - Table Number " +String.valueOf(tableNumber));
+        model.addAttribute("readonly", true);
+        return "customerTemplate";
     }
 
-    @RequestMapping(value= "/addItemToOrder", method = RequestMethod.GET)
-    public String addItemToOrder(Long productId, int quantity, int tableNumber){
+    @RequestMapping(value= "/addItemToMyOrder", method = RequestMethod.GET)
+    public String addItemToMyOrder(Long productId, int quantity, int tableNumber){
         OrderItem orderItem = new OrderItem();
         orderItem.setProduct(productService.findById(productId));
         orderItem.setQuantity(quantity);
@@ -143,6 +146,6 @@ public class OrderController {
         }
         order.addItem(orderItem);
         orderService.save(order);
-        return "redirect:ListCart?tableNumber=1";
+        return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
 }

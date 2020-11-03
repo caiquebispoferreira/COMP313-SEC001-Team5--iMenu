@@ -1,6 +1,7 @@
 package ca.ibs.imenu;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Qualifier("userDetailsServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -26,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();//new
         http.authorizeRequests()
-                .antMatchers("/resources/**","/index", "/myOrder","/listProductByCategory", "/").permitAll()
+                .antMatchers("/resources/**","/index", "/myOrder","/listProductByCategory", "/","/addItemToMyOrder").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
