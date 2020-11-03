@@ -1,7 +1,8 @@
 package ca.ibs.imenu.controller;
 
-import ca.ibs.imenu.entity.Role;
-import ca.ibs.imenu.entity.User;
+import ca.ibs.imenu.entity.*;
+import ca.ibs.imenu.service.OrderService;
+import ca.ibs.imenu.service.ProductService;
 import ca.ibs.imenu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,12 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Controller
 public class HomeController {
     @Autowired
     private UserService userService;
-
-
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping("/javaScriptChangeTableNumber")
     public String javaScriptChangeTableNumber() {
@@ -75,6 +81,23 @@ public class HomeController {
             user.setUsername("admin");
             userService.save(user);
         }
+
+        OrderItem item = new OrderItem();
+        item.setTotalPrice(new BigDecimal(1000));
+        item.setUnitPrice(new BigDecimal(1000));
+        item.setQuantity(1);
+        item.setProduct(productService.findAll().get(0));
+
+        Order order = new Order();
+        order.setStatus(Status.OPEN);
+        order.setTableNumber(1);
+        order.setTotalPrice(new BigDecimal(1000));
+        order.setNote("Special Notes added");
+        order.setDate(LocalDate.now());
+        order.addItem(item);
+
+        orderService.save(order);
+
     }
 
 }
