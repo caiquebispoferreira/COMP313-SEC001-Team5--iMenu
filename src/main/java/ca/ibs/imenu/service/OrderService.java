@@ -1,5 +1,6 @@
 package ca.ibs.imenu.service;
 
+import ca.ibs.imenu.dto.OrderDTO;
 import ca.ibs.imenu.entity.Order;
 import ca.ibs.imenu.entity.OrderItem;
 import ca.ibs.imenu.entity.Status;
@@ -7,6 +8,7 @@ import ca.ibs.imenu.repository.IOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +39,12 @@ public class OrderService {
         return order;
     }
 
+    public List<OrderDTO> convertOrdersToDTO(List<Order> orders){
+        List<OrderDTO> dTO = new ArrayList<>();
+        for (Order order: orders)
+            dTO.add(new OrderDTO(order));
+        return dTO;
+    }
 
     public Order findByStatusAndTableNumber(int tableNumber){
         return repository.findByStatusAndTableNumber(Status.PAID,tableNumber);
