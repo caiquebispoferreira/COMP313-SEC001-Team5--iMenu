@@ -35,7 +35,9 @@ public class HomeController {
     @RequestMapping(value = { "/index", "/"}, method = RequestMethod.GET)
     public String index(Model model, Authentication authentication) {
         boolean result = authentication != null && authentication.isAuthenticated();
-        return result?"redirect:welcome":"index";
+        model.addAttribute("body","index.jsp");
+        model.addAttribute("title", "Categories");
+        return result?"redirect:welcome":"customerTemplate";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -58,14 +60,22 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/adminPanel", method = RequestMethod.GET)
-    public String adminPanel(Model model) {
+    public String adminPanel(Model model, Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","adminPanel.jsp");
         model.addAttribute("title", "Panel of Administrator");
         return "adminTemplate";
     }
 
     @RequestMapping(value = "/staffPanel", method = RequestMethod.GET)
-    public String staffPanel(Model model) {
+    public String staffPanel(Model model, Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
         model.addAttribute("body","staffPanel.jsp");
         model.addAttribute("title", "Panel of Staff");
         return "adminTemplate";
@@ -82,7 +92,7 @@ public class HomeController {
             userService.save(user);
         }
 
-        OrderItem item = new OrderItem();
+/*        OrderItem item = new OrderItem();
         item.setTotalPrice(new BigDecimal(1000));
         item.setUnitPrice(new BigDecimal(1000));
         item.setQuantity(1);
@@ -104,7 +114,7 @@ public class HomeController {
         order.addItem(itema);
 
         orderService.save(order);
-
+*/
     }
 
 }

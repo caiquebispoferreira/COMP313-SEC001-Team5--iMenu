@@ -1,7 +1,7 @@
 package ca.ibs.imenu.entity;
 
 public enum Status {
-    OPEN("Open"),IN_PROGRESS("In progress"),DELIVERED("Delivered"),PAID("Paid");
+    OPEN("Open"),CONFIRMED("Confirmed"), IN_PROGRESS("In progress"),DELIVERED("Delivered"),PAID("Paid");
 
     private String value;
 

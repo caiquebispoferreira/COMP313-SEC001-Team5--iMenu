@@ -3,6 +3,7 @@ package ca.ibs.imenu.service;
 import ca.ibs.imenu.entity.User;
 import ca.ibs.imenu.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,11 @@ public class UserService {
     @Autowired
     private IUserRepository repository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public User save(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }
 
