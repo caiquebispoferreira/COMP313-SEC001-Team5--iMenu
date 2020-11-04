@@ -4,12 +4,37 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+<style>
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+.table-image {
+  td, th {
+    vertical-align: middle;
+  }
+}
+</style>
+
+
+
 <div class="row">
-    <a href="/addUser">Add</a>
+<a href="/addUser">
+<button type="button" class="btn btn-primary">ADD</button>
+    </a>
 </div>
-<div class="row">
+<div class="container">
+  <div class="row">
     <div class="col-12">
-        <table class="table">
+    <div class="p-3 mb-2 bg-light text-dark">
+     
+      <table class="table table-stripped">
+     
+      
             <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -25,11 +50,15 @@
                         <th scope="row">${item.id}</th>
                         <td>${item.name}</td>
                         <td>${item.role}</td>
-                        <td><a href="/editUser?id=${item.id}">Edit</a></td>
-                        <td><a href="/deleteUser?id=${item.id}">Delete</a></td>
+            <td><a href="/editUser?id=${item.id}"> <button type="button" class="btn btn-success"><i class="fas fa-edit"></i>EDIT</button></a></td>
+            <td><a href="/deleteUser?id=${item.id}"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i>DELETE</button></a></td>
+                       
                     </tr>
                     </c:forEach>
             </tbody>
+            
         </table>
     </div>
+</div>
+</div>
 </div>
