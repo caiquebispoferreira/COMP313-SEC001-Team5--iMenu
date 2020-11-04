@@ -9,31 +9,53 @@
 <html>
 <head>
     <title>Login</title>
+ <style>   
+.order{
+            width : 600px;
+            margin: 5px;
+            position: absolute;
+                left : 25%;
+                top : 10%;
+                border-radius: 1px solid black;
+            background-color: #DCDCDC;
+            float: left;
+            opacity: 0.9;
+            padding: 60px;}
+			form input{
+                padding: 9px;
+                border: none;
+                margin: 4px auto;
+                
+            }
+
+</style>
 </head>
 <body>
 
-<div class="row">
+<div class="order">
+<center><h1 style="color:orange;">Login</h1></center><br><br>
+
     <div class="col-md-9 order-md-2">
 
       <form method="POST" action="${contextPath}/login"
         class="form-signin">
         <!--  					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
         <div class="form-group ${error != null ? 'has-error' : ''}">
-            <input name="username" type="text" class="form-control"
+            Username:<input name="username" type="text" class="form-control"
                    placeholder="Username" autofocus="true" />
         </div>
         <div class="form-group ${error != null ? 'has-error' : ''}">
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
+            Password:<input name="password" type="password" class="form-control" placeholder="Password"/>
         </div>
         <div class="form-group row login-tools">
             <div class="col-xs-12 login-forgot-password">
-                <a href="#">Did you forget your password?</a>
+                <a href="#">Forgot password?</a>
             </div>
         </div>
-        <div class="form-group login-submit">
+       <center> <div class="form-group login-submit">
             <button data-dismiss="modal" type="submit"
                     class="btn btn-primary btn-lg btn-block">Submit</button>
-        </div>
+        </div></center>
       </form>
       </div>
 </div>
