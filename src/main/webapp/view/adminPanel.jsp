@@ -1,32 +1,4 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"   alt="Responsive Image" /> 
 
 
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/listProduct">Products<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/listOrder">Orders</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/listUser">Users</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="/listOrderByTableNumber">Table</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/changeTableNumber">Change Table</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-      Search
-    </span>
-  </div>
-</nav>

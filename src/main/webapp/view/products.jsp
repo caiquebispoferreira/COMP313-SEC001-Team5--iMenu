@@ -36,8 +36,8 @@
                         <td>${item.enabled}</td>
                         <td>${item.category}</td>
                         <td>${item.pictureUrl}</td>
-                        <td><a href="/editProduct?id=${item.id}"><button type="button" class="btn btn-success"><i class="fas fa-edit"></i>EDIT</button></a></td>
-                        <td><a href="/deleteProduct?id=${item.id}"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i>DELETE</button></a></td>
+                        <td><a href="/editProduct?id=${item.id}">Edit</a></td>
+                        <td><a href="/deleteProduct?id=${item.id}">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

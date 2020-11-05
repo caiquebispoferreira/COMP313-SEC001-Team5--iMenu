@@ -4,22 +4,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<style>
-.container {
-  padding: 2rem 0rem;
-}
-
-h4 {
-  margin: 2rem 0rem 1rem;
-}
-
-.table-image {
-  td, th {
-    vertical-align: middle;
-  }
-}
-</style>
-
 
 
 <div class="row">
@@ -50,8 +34,8 @@ h4 {
                         <th scope="row">${item.id}</th>
                         <td>${item.name}</td>
                         <td>${item.role}</td>
-            <td><a href="/editUser?id=${item.id}"> <button type="button" class="btn btn-success"><i class="fas fa-edit"></i>EDIT</button></a></td>
-            <td><a href="/deleteUser?id=${item.id}"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i>DELETE</button></a></td>
+            <td><a href="/editUser?id=${item.id}">Edit</a></td>
+            <td><a href="/deleteUser?id=${item.id}">Delete</a></td>
                        
                     </tr>
                     </c:forEach>
