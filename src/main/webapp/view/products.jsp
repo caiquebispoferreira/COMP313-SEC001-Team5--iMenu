@@ -4,15 +4,11 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <div class="row">
-<a href="/addProduct">
-<button type="button" class="btn btn-primary">ADD</button>
-</a>
+    <a href="/addProduct">Add</a>
 </div>
-<div class="container">
-  <div class="row">
+<div class="row">
     <div class="col-12">
-    <div class="p-3 mb-2 bg-light text-dark">
-      <table class="table table-stripped">
+        <table class="table">
             <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -36,14 +32,12 @@
                         <td>${item.enabled}</td>
                         <td>${item.category}</td>
                         <td>${item.pictureUrl}</td>
-                        <td><a href="/editProduct?id=${item.id}"><button type="button" class="btn btn-success"><i class="fas fa-edit"></i>EDIT</button></a></td>
-                        <td><a href="/deleteProduct?id=${item.id}"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i>DELETE</button></a></td>
+                        <td><a href="/editProduct?id=${item.id}">Edit</a></td>
+                        <td><a href="/deleteProduct?id=${item.id}">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
     </div>
-</div>
-</div>
 </div>
 

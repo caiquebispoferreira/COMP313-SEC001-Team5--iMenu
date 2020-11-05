@@ -1,32 +1,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<a href="/listProduct">List of Products</a>
+<a href="/listOrder">List of Orders</a>
+<a href="/listUser">List of Users</a>
+<a href="/listOrderByTableNumber">List Order By Table Number</a>
+<a href="/changeTableNumber">Change Table Number</a>
 
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/listProduct">Products<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/listOrder">Orders</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/listUser">Users</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="/listOrderByTableNumber">Table</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/changeTableNumber">Change Table</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-      Search
-    </span>
-  </div>
-</nav>
