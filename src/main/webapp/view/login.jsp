@@ -11,32 +11,49 @@
     <title>Login</title>
 </head>
 <body>
+<div class="container text-center">
+<center><h1 style="color:orange;">Login</h1></center><br><br>
 
-<div class="row">
-    <div class="col-md-9 order-md-2">
+   <center> <div class="container  bg-dark">
 
       <form method="POST" action="${contextPath}/login"
         class="form-signin">
         <!--  					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
+      
         <div class="form-group ${error != null ? 'has-error' : ''}">
-            <input name="username" type="text" class="form-control"
+            Username:<input name="username" type="text" class="form-control"
                    placeholder="Username" autofocus="true" />
-        </div>
+        </div><br>
+        
+       
         <div class="form-group ${error != null ? 'has-error' : ''}">
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
-        </div>
-        <div class="form-group row login-tools">
+            Password:<input name="password" type="password" class="form-control" placeholder="Password"/>
+      
+        </div><br>
+       <!--   <div class="form-group row login-tools">
             <div class="col-xs-12 login-forgot-password">
-                <a href="#">Did you forget your password?</a>
+                <a href="#">Forgot password?</a>
             </div>
-        </div>
-        <div class="form-group login-submit">
+        </div>-->
+        <div class="form-group login-submit text-center">
             <button data-dismiss="modal" type="submit"
-                    class="btn btn-primary btn-lg btn-block">Submit</button>
+                    class="btn btn-success">Submit</button>
+        </div> -
+ 
+       <!--   <div class="container my-3">
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary">Submit</button>
         </div>
+    </div>-->
       </form>
       </div>
+      </center>
 </div>
+
+
+
+
+
 
 </body>
 </html>

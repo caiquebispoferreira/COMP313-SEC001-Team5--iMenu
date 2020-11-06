@@ -13,7 +13,7 @@
 </head>
 <body class="bg-light">
     <div class="container">
-        <jsp:include page="header.jsp" >
+        <jsp:include page="headerCustomer.jsp" >
             <jsp:param name="contextPath" value="${contextPath}" />
         </jsp:include>
         <h1>${title}</h1>
