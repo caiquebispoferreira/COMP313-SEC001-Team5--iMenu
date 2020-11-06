@@ -23,7 +23,7 @@
                 </c:if>
                 <c:if test="${!readonly}">
                     <input  id="name" type="text" name="name" value="${object.name}"
-                            placeholder="Please enter your password" class="form-control">
+                            placeholder="Please enter your name" class="form-control">
                 </c:if>
             </div>
                 <div class="mb-3">
@@ -40,24 +40,35 @@
                 <div class="mb-3">
                     <label for="role">Role</label>
                     <c:if test="${readonly}">
-                        <input id="role" type="text" name="role" value="${object.role}" readonly
+                     <select name="role" id="role" value="${object.role}" readonly
                                 class="form-control">
+                            <option value="role">Please choose your role</option>    
+						    <option value="administrator">administrator</option>
+						    <option value="Staff">staff</option>
+						   
+						  </select>
+                       
                     </c:if>
                     <c:if test="${!readonly}">
-                        <input id="role" type="text" name="role" value="${object.role}"
-                               placeholder="Please choose your role" class="form-control">
+                    <select name="role" id="role" value="${object.role}"
+                              class="form-control">
+                               <option value="role">Please choose your role</option>
+						     <option value="administrator">administrator</option>
+						    <option value="Staff">staff</option>
+						  </select>
+                        
                     </c:if>
 
                 </div>
                 <div class="mb-3">
                     <label for="password">Password</label>
                     <c:if test="${readonly}">
-                        <input  id="password" type="text" name="password" value="${object.password}"
+                        <input  id="password" type="password" name="password" value="${object.password}"
                                 class="form-control" readonly>
                     </c:if>
                     <c:if test="${!readonly}">
-                        <input  id="password" type="text" name="password" value="${object.password}"
-                                 placeholder="Please enter your name" class="form-control">
+                        <input  id="password" type="password" name="password" value="${object.password}"
+                                 placeholder="Please enter your password" class="form-control">
                     </c:if>
                 </div>
                

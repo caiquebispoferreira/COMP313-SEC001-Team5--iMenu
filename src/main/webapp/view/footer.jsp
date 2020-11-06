@@ -1,2 +1,2 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-FOOTER HERE
+<a href="/adminPanel" class="btn btn-primary" role="button">Back</a>
