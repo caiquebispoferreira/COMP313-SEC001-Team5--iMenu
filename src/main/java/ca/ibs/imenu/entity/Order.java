@@ -23,7 +23,7 @@ public class Order implements Serializable {
     private Long id;
     @Enumerated(EnumType.STRING)
     private Status status;
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
     private BigDecimal totalPrice;
     private String note;
