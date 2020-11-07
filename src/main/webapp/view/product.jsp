@@ -44,10 +44,10 @@
                 </div>
                 <div class="mb-3">
                     <label name="category">Category</label>
-                    <select name="category" class="custom-select d-block w-100" required ${readonly ? 'disabled' : ''}>
+                    <select id="category" name="category" class="custom-select d-block w-100" required ${readonly ? 'disabled' : ''}>
                         <option value="">Select an option</option>
-                        <option value="APPETIZERS" ${object.category == 'APPETIZERS' ? 'selected' : ''}>Appetizers</option>
-                        <option value="BEVERAGE" ${object.category == 'BEVERAGE' ? 'selected' : ''}>Beverages</option>
+                        <option value="APPETIZER" ${object.category == 'APPETIZER' ? 'selected' : ''}>Appetizer</option>
+                        <option value="BEVERAGE" ${object.category == 'BEVERAGE' ? 'selected' : ''}>Beverage</option>
                         <option value="MAIN_COURSE" ${object.category == 'MAIN_COURSE' ? 'selected' : ''}>Main Course</option>
                     </select>
                 </div>

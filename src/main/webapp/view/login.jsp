@@ -25,13 +25,8 @@
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <input name="password" type="password" class="form-control" placeholder="Password"/>
         </div>
-        <div class="form-group row login-tools">
-            <div class="col-xs-12 login-forgot-password">
-                <a href="#">Did you forget your password?</a>
-            </div>
-        </div>
         <div class="form-group login-submit">
-            <button data-dismiss="modal" type="submit"
+            <button type="submit"
                     class="btn btn-primary btn-lg btn-block">Submit</button>
         </div>
       </form>

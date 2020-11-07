@@ -39,24 +39,20 @@
                 </div>
                 <div class="mb-3">
                     <label for="role">Role</label>
-                    <c:if test="${readonly}">
-                        <input id="role" type="text" name="role" value="${object.role}" readonly
-                                class="form-control">
-                    </c:if>
-                    <c:if test="${!readonly}">
-                        <input id="role" type="text" name="role" value="${object.role}"
-                               placeholder="Please choose your role" class="form-control">
-                    </c:if>
-
+                    <select id="role" name="role" class="custom-select d-block w-100" required ${readonly ? 'disabled' : ''}>
+                        <option value="">Select an option</option>
+                        <option value="ADMINISTRATOR" ${object.role == 'ADMINISTRATOR' ? 'selected' : ''}>Administrator</option>
+                        <option value="STAFF" ${object.role == 'STAFF' ? 'selected' : ''}>Staff</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="password">Password</label>
                     <c:if test="${readonly}">
-                        <input  id="password" type="text" name="password" value="${object.password}"
+                        <input  id="password" type="password" name="password" value="${object.password}"
                                 class="form-control" readonly>
                     </c:if>
                     <c:if test="${!readonly}">
-                        <input  id="password" type="text" name="password" value="${object.password}"
+                        <input  id="password" type="password" name="password" value="${object.password}"
                                  placeholder="Please enter your name" class="form-control">
                     </c:if>
                 </div>
