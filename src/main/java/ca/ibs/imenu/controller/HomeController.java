@@ -25,13 +25,6 @@ public class HomeController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping("/javaScriptChangeTableNumber")
-    public String javaScriptChangeTableNumber() {
-
-        return "javaScriptChangeTableNumber";
-    }
-
-
     @RequestMapping(value = { "/index", "/"}, method = RequestMethod.GET)
     public String index(Model model, Authentication authentication) {
         boolean result = authentication != null && authentication.isAuthenticated();

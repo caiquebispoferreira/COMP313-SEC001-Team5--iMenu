@@ -65,6 +65,17 @@ public class OrderController {
         return "adminTemplate";
     }
 
+    @RequestMapping("/changeTableNumber")
+    public String changeTableNumber(Authentication authentication, Model model) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
+        model.addAttribute("body","changeTableNumber.jsp");
+        model.addAttribute("title", "Change table number");
+        return "adminTemplate";
+    }
+
     @RequestMapping(value = "/changeTableNumber", method = RequestMethod.POST)
     public String changeTableNumber(Model model, int newTableNumber, Order order, Authentication authentication) {
         if (authentication!=null && authentication.isAuthenticated()){
@@ -121,8 +132,12 @@ public class OrderController {
 
     @RequestMapping(value = "/myOrder", method = RequestMethod.GET)
     public String myOrder(Model model, int tableNumber){
+        Order order = orderService.findByStatusAndTableNumber(tableNumber);
         model.addAttribute("body","myOrder.jsp");
-        model.addAttribute("object",new OrderDTO(orderService.findByStatusAndTableNumber(tableNumber)));
+        if (order!=null)
+            model.addAttribute("object",new OrderDTO(order));
+        else
+            model.addAttribute("object",new OrderDTO());
         model.addAttribute("title", "My Order - Table Number " +String.valueOf(tableNumber));
         model.addAttribute("readonly", true);
         return "customerTemplate";

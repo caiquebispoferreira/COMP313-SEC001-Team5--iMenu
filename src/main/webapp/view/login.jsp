@@ -14,17 +14,22 @@
 
         <div class="form-label-group">
             <div class="text-center mb-4">
+                <a href="/" >Home</a><br>
                 <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
             </div>
             <div class="form-label-group">
                 <label for="username">Username</label>
-                <input id="username" name="username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Email address" required>
+                <input id="username" name="username" type="text"
+                       class="form-control" aria-describedby="username"
+                       placeholder="Username" required>
             </div>
         </div>
 
         <div class="form-label-group">
             <label for="password">Password</label>
-            <input id="password" type="password" class="form-control" placeholder="Password" required>
+            <input id="password" name="password"  type="password"
+                   class="form-control"
+                   placeholder="Password" required>
         </div>
         <div class="row">
             <div class="col-md-6">
