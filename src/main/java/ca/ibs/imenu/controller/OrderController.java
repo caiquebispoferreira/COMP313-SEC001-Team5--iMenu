@@ -36,8 +36,8 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/commitDeleteOrder", method = RequestMethod.POST)
-    public String commitDeleteOrder(Model model, Order order) {
-        orderService.delete(orderService.findById(order.getId()));
+    public String commitDeleteOrder(Model model, long id) {
+        orderService.delete(orderService.findById(id));
         return "redirect:listOrder";
     }
 
