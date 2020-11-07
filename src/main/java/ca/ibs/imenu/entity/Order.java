@@ -1,5 +1,6 @@
 package ca.ibs.imenu.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Order implements Serializable {
     private Long id;
     @Enumerated(EnumType.STRING)
     private Status status;
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private LocalDate date;
     private BigDecimal totalPrice;
     private String note;

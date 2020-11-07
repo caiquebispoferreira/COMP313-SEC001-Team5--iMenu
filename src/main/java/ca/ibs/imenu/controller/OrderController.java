@@ -3,6 +3,7 @@ package ca.ibs.imenu.controller;
 import ca.ibs.imenu.dto.OrderDTO;
 import ca.ibs.imenu.entity.Order;
 import ca.ibs.imenu.entity.OrderItem;
+import ca.ibs.imenu.entity.Status;
 import ca.ibs.imenu.entity.User;
 import ca.ibs.imenu.service.OrderService;
 import ca.ibs.imenu.service.ProductService;
@@ -36,8 +37,8 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/commitDeleteOrder", method = RequestMethod.POST)
-    public String commitDeleteOrder(Model model, long id) {
-        orderService.delete(orderService.findById(id));
+    public String commitDeleteOrder(Model model, Order order) {
+        orderService.delete(orderService.findById(order.getId()));
         return "redirect:listOrder";
     }
 
@@ -157,7 +158,7 @@ public class OrderController {
             order.setDate(LocalDate.now());
             order.setTableNumber(tableNumber);
             order.setNote("");
-
+            order.setStatus(Status.OPEN);
         }
         order.addItem(orderItem);
         orderService.save(order);
