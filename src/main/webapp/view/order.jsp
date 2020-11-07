@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sergi
-  Date: 21/10/20
-  Time: 1:39 p.m.
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,67 +9,73 @@
         <form action="${action}" method="post">
             <input type="hidden" name="id" value="${object.id}"/>
                 <div class="mb-3">
-                    <label for="name">Product Name</label>
+                    <label for="tableNumber">Table Number</label>
                     <c:if test="${readonly}">
-                        <input id="name" type="text" name="name"  value="${object.name}"
-                               placeholder="Please enter the product name" class="form-control" readonly>
+                        <input id="tableNumber" type="text" name="tableNumber"  value="${object.tableNumber}"
+                                class="form-control" readonly>
                     </c:if>
                     <c:if test="${!readonly}">
-                        <input id="name" type="text" name="name"  value="${object.name}"
-                               placeholder="Please enter the product name" class="form-control">
+                        <input id="tableNumber" type="text" name="tableNumber"  value="${object.tableNumber}"
+                               placeholder="Please enter the table number" class="form-control">
                     </c:if>
                 </div>
+                
                 <div class="mb-3">
-                    <label for="description">Description</label>
+                    <label for="date">Date</label>
                     <c:if test="${readonly}">
-                        <input  id="description" type="text" name="description" value="${object.description}"
-                                 placeholder="Please describe" class="form-control" readonly>
+                        <input  id="date" type="date" name="date" value="${object.date}"
+                                 class="form-control" readonly>
                     </c:if>
                     <c:if test="${!readonly}">
-                        <input  id="description" type="text" name="description" value="${object.description}"
-                                 placeholder="Please describe" class="form-control">
+                        <input  id="date" type="date" name="date" value="${object.date}"
+                                 placeholder="Please enter the order date" class="form-control">
                     </c:if>
                 </div>
+                
                 <div class="mb-3">
-                    <label for="unitPrice">Unit Price</label>
+                    <label for="totalPrice">Total Price</label>
                     <c:if test="${readonly}">
-                        <input id="unitPrice" type="number" name="unitPrice" value="${object.unitPrice}" readonly
-                                placeholder="Please enter the unit price" class="form-control">
+                        <input id="totalPrice" type="number" name="totalPrice" value="${object.totalPrice}" readonly
+  						class="form-control">
                     </c:if>
                     <c:if test="${!readonly}">
-                        <input id="unitPrice" type="number" name="unitPrice" value="${object.unitPrice}"
-                               placeholder="Please enter the unit price" class="form-control">
+                        <input id="totalPrice" type="number" name="totalPrice" value="${object.totalPrice}"
+                               placeholder="Please enter the total price" class="form-control">
                     </c:if>
 
                 </div>
-                <div class="mb-3">
-                    <label name="category">Category</label>
-                    <select name="category" class="custom-select d-block w-100" required ${readonly ? 'disabled' : ''}>
-                        <option value="">Select an option</option>
-                        <option value="APPETIZER" ${object.category == 'APPETIZER' ? 'selected' : ''}>Appetizers</option>
-                        <option value="BEVERAGE" ${object.category == 'BEVERAGE' ? 'selected' : ''}>Beverages</option>
-                        <option value="MAIN_COURSE" ${object.category == 'MAIN_COURSE' ? 'selected' : ''}>Main Course</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label name="enabled">Enabled</label>
-                    <select name="enabled" class="custom-select d-block w-100" required ${readonly ? 'disabled' : ''}>
-                        <option value="true" ${object.enabled? 'selected' : ''}>True</option>
-                        <option value="false" ${!object.enabled ? 'selected' : ''}>False</option>
-                     </select>
-                </div>
-                <div class="mb-3">
-                    <label for="pictureUrl">Picture Url</label>
+
+	
+	  <div class="mb-3">
+                    <label for="note">Special Note</label>
                     <c:if test="${readonly}">
-                        <input id="pictureUrl" type="text" name="pictureUrl" readonly
-                               value="${object.pictureUrl}" class="form-control">
+                        <input id="note" type="text" name="note" value="${object.note}" readonly
+                             class="form-control">
                     </c:if>
                     <c:if test="${!readonly}">
-                        <input id="pictureUrl" type="text" name="pictureUrl"
-                               value="${object.pictureUrl}" class="form-control">
+                        <input id="note" type="text" name="note" value="${object.note}"
+                               placeholder="Please enter your special note" class="form-control">
                     </c:if>
 
                 </div>
+                
+                
+                
+                 <div class="mb-3">
+                    <label for="status">Order Status</label>
+                    <c:if test="${readonly}">
+                        <input id="status" type="text" name="status" value="${object.status}" readonly
+                             class="form-control">
+                    </c:if>
+                    <c:if test="${!readonly}">
+                        <input id="status" type="text" name="status" value="${object.status}"
+                               placeholder="Please enter the status" class="form-control">
+                    </c:if>
+
+                </div>
+                
+                
+  
                <hr class="mb-4">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
         </form>
