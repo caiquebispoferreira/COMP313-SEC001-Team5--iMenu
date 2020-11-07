@@ -8,15 +8,12 @@
 </form>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/">iMenu - Table Number : <input type="number" id="currentTableNumber" readonly /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
             <c:if test="${currentUser != null}">
                 <c:if test="${currentUser.role == 'ADMINISTRATOR'}">
                     <li class="nav-item">
@@ -44,6 +41,9 @@
             <c:if test="${currentUser == null}">
                 <li class="nav-item">
                     <button type="button" class="nav-link" onclick="myOrder()">My Order</button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
                 </li>
             </c:if>
 
