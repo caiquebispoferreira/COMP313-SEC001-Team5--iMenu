@@ -1,12 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sergi
-  Date: 21/10/20
-  Time: 1:41 p.m.
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <div class="row">
     <div class="col-12">
@@ -24,18 +19,18 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${object}" var="item">
-                <tr>
-                    <th scope="row">${item.id}</th>
-                    <td>${item.name}</td>
-                    <td>${item.description}</td>
-                    <td>${item.unitPrice}</td>
-                    <td>${item.enabled}</td>
-                    <td>${item.category}</td>
-                    <td>${item.pictureUrl}</td>
-                    <td><a href="/addItemToOrder?id=${item.id}">Add to MyOrder</a></td>
-                </tr>
-            </c:forEach>
+                <c:forEach items="${object}" var="item">
+                    <tr>
+                        <th scope="row">${item.id}</th>
+                        <td>${item.name}</td>
+                        <td>${item.description}</td>
+                        <td>${item.unitPrice}</td>
+                        <td>${item.enabled}</td>
+                        <td>${item.category}</td>
+                        <td>${item.pictureUrl}</td>
+                        <td><button onclick="addItemToMyOrder(${item.id},1)">Add to MyOrder</button></td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>

@@ -1,9 +1,9 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<a href="/listProduct">List of Products</a>
-<a href="/listOrder">List of Orders</a>
-<a href="/listUser">List of Users</a>
-<a href="/listOrderByTableNumber">List Order By Table Number</a>
-<a href="/changeTableNumber">Change Table Number</a>
+<p>Welcome ${currentUser.name} (${currentUser.role})</p>
+
+
 
