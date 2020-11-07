@@ -7,17 +7,17 @@
     <div class="col-12">
         <table class="table">
             <thead>
-            <tr>
-                <th scope="col">Order Number</th>
-                <th scope="col">Table Number</th>
-                <th scope="col">Date</th>
-                <th scope="col">Total Price</th>
-                <th scope="col">Special Note</th>
-                <th scope="col">Order Status</th>
-                <th scope="col">Items</th>
-                <th scope="col">#</th>
-                <th scope="col">#</th>
-            </tr>
+                <tr>
+                    <th scope="col">Order Number</th>
+                    <th scope="col">Table Number</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Special Note</th>
+                    <th scope="col">Order Status</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">#</th>
+                    <th scope="col">#</th>
+                </tr>
             </thead>
             <tbody>
                 <c:forEach items="${object}" var="item">
