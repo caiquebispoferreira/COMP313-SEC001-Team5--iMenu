@@ -65,7 +65,7 @@
             <td>${item.quantity}</td>
             <td>${item.unitPrice}</td>
             <td>${item.totalPrice}</td>
-            <td><a href="/deleteOrder?id=${item.id}">Delete</a></td>
+            <td><a href="/deleteItemFromMyOrder?tableNumber=${object.tableNumber}&orderId=${object.id}&itemId=${item.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>

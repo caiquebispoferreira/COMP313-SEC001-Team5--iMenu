@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,10 @@ public class OrderController {
 
     @RequestMapping(value = "/commitSaveOrder", method = RequestMethod.POST)
     public String commitSaveOrder(Model model, Order order) {
-        orderService.save(order);
+        Order orderDb = orderService.findById(order.getId());
+        orderDb.setStatus(order.getStatus());
+        orderDb.setNote(order.getNote());
+        orderService.save(orderDb);
         return "redirect:listOrder";
     }
 
@@ -165,4 +169,19 @@ public class OrderController {
         orderService.save(order);
         return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
+
+    @RequestMapping(value= "/deleteItemFromMyOrder", method = RequestMethod.GET)
+    public String deleteItemFromMyOrder(int tableNumber,Long orderId, Long itemId){
+        Order order = orderService.findById(orderId);
+        List<OrderItem> items = new ArrayList<>();
+        for (OrderItem o : order.getItems()){
+            if (o.getId().compareTo(itemId)!=0){
+                items.add(o);
+            }
+        }
+        order.setItems(items);
+        orderService.save(order);
+        return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
+    }
+
 }
