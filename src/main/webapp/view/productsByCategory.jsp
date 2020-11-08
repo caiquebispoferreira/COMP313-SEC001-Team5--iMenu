@@ -7,7 +7,12 @@
     <c:forEach items="${object}" var="item">
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
-                <img src="${contextPath}/resources/img/${item.id}.png" class="card-img-top" alt="...">
+                <c:if test="${item.hasImage}">
+                    <img src="${contextPath}/resources/img/${item.id}.png" class="card-img-top" alt="...">
+                </c:if>
+                <c:if test="${!item.hasImage}">
+                    <img src="${contextPath}/resources/img/noimage.png" class="card-img-top" alt="...">
+                </c:if>
                 <div class="card-body">
                     <h5 class="card-title">${item.name} - $${item.unitPrice}</h5>
                     <p class="card-text">${item.description}</p>

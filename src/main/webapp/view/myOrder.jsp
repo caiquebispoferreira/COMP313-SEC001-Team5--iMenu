@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-
+<a class="btn btn-light" href="/">Add more products</a>
 <div class="mb-3">
     <label for="id">Id</label>
     <input id="id" type="number" name="id"  value="${object.id}"
@@ -70,4 +70,4 @@
     </c:forEach>
     </tbody>
 </table>
-
+<a class="btn btn-light" href="/">Add more products</a>

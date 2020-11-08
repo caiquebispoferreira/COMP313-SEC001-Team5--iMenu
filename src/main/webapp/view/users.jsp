@@ -5,7 +5,10 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <div class="row">
-    <a href="/addUser">Add</a>
+    <div class="col-12">
+        <a class="btn btn-light" href="/addUser">Add</a>
+    </div>
+
 </div>
 <div class="row">
     <div class="col-12">
