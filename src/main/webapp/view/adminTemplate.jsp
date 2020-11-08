@@ -12,16 +12,18 @@
     <meta name="theme-color" content="#563d7c">
 </head>
 <body class="bg-light">
-    <div class="container">
         <jsp:include page="header.jsp" >
             <jsp:param name="contextPath" value="${contextPath}" />
         </jsp:include>
-        <h1>${title}</h1>
-        <jsp:include page="${body}">
-            <jsp:param name="contextPath" value="${contextPath}" />
-            <jsp:param name="object" value="${object}" />
-        </jsp:include>
+        <div class="container">
+            <h1>${title}</h1>
+            <jsp:include page="${body}">
+                <jsp:param name="contextPath" value="${contextPath}" />
+                <jsp:param name="object" value="${object}" />
+            </jsp:include>
+        </div>
         <jsp:include page="footer.jsp" />
+
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
