@@ -7,10 +7,10 @@
     <div class="col-md-9 order-md-2">
         <form enctype="multipart/form-data" action="/uploadImage" method="post">
             <div class="mb-3">
-                <input type="hidden" name="productId"  />
+                <input type="hidden" name="productId"  value="${object.id}"/>
                 <label for="image">Image</label>
                     <input id="image" type="file" accept=".png" name="image"
-                           value="${object.pictureUrl}" class="form-control">
+                            class="form-control">
             </div>
             <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
         </form>

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
@@ -117,16 +119,23 @@ public class ProductController {
         return "adminTemplate";
     }
 
+    private final String IMAGE = "Z:\\Google Drive\\Engenheira\\Centennial\\Semester 5\\Workspace\\iMenuBackend" +
+            "\\src\\main\\webapp\\resources\\img";
+
+
+    @Autowired
+    private HttpServletRequest request;
+
     @RequestMapping(value = "/uploadImage",method = RequestMethod.POST)
     public String uploadImage(@RequestParam("image") MultipartFile image,@RequestParam("productId") Long productId ) {
         try {
-            File file = new File("../webapp/resources/img/"+productId.toString()+".png");
+            File file = new File(IMAGE);
             image.transferTo(file);
             Product p = productService.findById(productId);
             p.setHasImage(true);
             productService.save(p);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return "redirect:listProduct";
     }
