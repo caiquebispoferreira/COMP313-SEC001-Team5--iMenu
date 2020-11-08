@@ -4,35 +4,18 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <div class="row">
-    <div class="col-12">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Unit Price</th>
-                <th scope="col">Enabled</th>
-                <th scope="col">Category</th>
-                <th scope="col">Picture URL</th>
-                <th scope="col">#</th>
-            </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${object}" var="item">
-                    <tr>
-                        <th scope="row">${item.id}</th>
-                        <td>${item.name}</td>
-                        <td>${item.description}</td>
-                        <td>${item.unitPrice}</td>
-                        <td>${item.enabled}</td>
-                        <td>${item.category}</td>
-                        <td>${item.pictureUrl}</td>
-                        <td><button onclick="addItemToMyOrder(${item.id},1)">Add to MyOrder</button></td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </div>
+    <c:forEach items="${object}" var="item">
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="${contextPath}/resources/img/${item.id}.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${item.name} - $${item.unitPrice}</h5>
+                    <p class="card-text">${item.description}</p>
+                    <button  onclick="addItemToMyOrder(${item.id},1)">Add to MyOrder</button>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
 </div>
+
 
