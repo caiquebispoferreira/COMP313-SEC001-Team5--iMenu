@@ -3,6 +3,8 @@ package ca.ibs.imenu.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,5 +25,5 @@ public class Product implements Serializable {
     private Boolean enabled;
     @Enumerated(EnumType.STRING)
     private Category category;
-    private String pictureUrl;
+    private Boolean hasImage;
 }

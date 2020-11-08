@@ -5,12 +5,19 @@ import ca.ibs.imenu.entity.Product;
 import ca.ibs.imenu.service.ProductService;
 import ca.ibs.imenu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.Calendar;
+import java.util.LinkedList;
 
 @Controller
 public class ProductController {
@@ -93,6 +100,35 @@ public class ProductController {
         model.addAttribute("title", "Delete Product");
         model.addAttribute("readonly", true);
         return "adminTemplate";
+    }
+
+    @RequestMapping(value = "/uploadImage", method = RequestMethod.GET)
+    public String uploadImage(Model model, @RequestParam(name = "id") Long id, Authentication authentication) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
+        Product product = productService.findById(id);
+        model.addAttribute("body","uploadImage.jsp");
+        model.addAttribute("object",product);
+        model.addAttribute("action","/uploadImage");
+        model.addAttribute("title", "Upload image to "+product.getName());
+
+        return "adminTemplate";
+    }
+
+    @RequestMapping(value = "/uploadImage",method = RequestMethod.POST)
+    public String uploadImage(@RequestParam("image") MultipartFile image,@RequestParam("productId") Long productId ) {
+        try {
+            File file = new File("../webapp/resources/img/"+productId.toString()+".png");
+            image.transferTo(file);
+            Product p = productService.findById(productId);
+            p.setHasImage(true);
+            productService.save(p);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return "redirect:listProduct";
     }
 
 }
