@@ -25,5 +25,5 @@ public class Product implements Serializable {
     private Boolean enabled;
     @Enumerated(EnumType.STRING)
     private Category category;
-    private Boolean hasImage;
+    private boolean hasImage;
 }

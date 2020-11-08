@@ -80,7 +80,7 @@ public class HomeController {
             user = new User();
             user.setName("Administrator");
             user.setRole(Role.ADMINISTRATOR);
-            user.setPassword("$2y$12$qwcGoBtiilc3oF3bzBc2xuI9IA4xGzjEb58gReh04Azd5NkuDPxDq");
+            user.setPassword("admin");
             user.setUsername("admin");
             userService.save(user);
         }

@@ -26,7 +26,7 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-      ddl-auto: none
+      ddl-auto: create-drop
     show-sql : false
   mvc:
     view:
