@@ -3,16 +3,19 @@ package ca.ibs.imenu.dto;
 import ca.ibs.imenu.entity.Order;
 import ca.ibs.imenu.entity.OrderItem;
 import ca.ibs.imenu.entity.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Data
@@ -22,6 +25,7 @@ public class OrderDTO implements Serializable {
     private Long id;
     @Enumerated(EnumType.STRING)
     private Status status;
+    @JsonFormat(pattern = "MM/dd/yyyy")
     private LocalDate date;
     private BigDecimal totalPrice;
     private String note;

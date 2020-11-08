@@ -16,19 +16,12 @@
         <form action="${action}" method="post">
             <div class="mb-3">
                     <label for="id">Id</label>
-                    <c:if test="${readonly}">
-                        <input id="id" type="number" name="id"  value="${object.id}"
+                    <input id="id" type="number" name="id"  value="${object.id}"
                                class="form-control" readonly>
-                    </c:if>
-                    <c:if test="${!readonly}">
-                        <input id="id" type="number" name="id"  value="${object.id}"
-                               class="form-control">
-                    </c:if>
                 </div>
             <div class="mb-3">
                     <label name="status">Status</label>
                     <select name="status" class="custom-select d-block w-100" required ${readonly ? 'disabled' : ''}>
-                        <option value="">Select an option</option>
                         <option value="OPEN" ${object.status == 'OPEN' ? 'selected' : ''}>Open</option>
                         <option value="IN_PROGRESS" ${object.status == 'IN_PROGRESS' ? 'selected' : ''}>In Progress</option>
                         <option value="DELIVERED" ${object.status == 'DELIVERED' ? 'selected' : ''}>Delivered</option>
@@ -37,26 +30,15 @@
                 </div>
             <div class="mb-3">
                     <label for="date">Date</label>
-                    <c:if test="${readonly}">
-                        <input id="date" type="date" name="date" value="${object.date}" readonly
+                    <input id="date" type="date" name="date" value="${object.date}" readonly
                                 class="form-control">
-                    </c:if>
-                    <c:if test="${!readonly}">
-                        <input id="date" type="date" name="date" value="${object.date}"
-                               class="form-control">
-                    </c:if>
 
                 </div>
             <div class="mb-3">
                     <label name="totalPrice">Total Price</label>
-                    <c:if test="${readonly}">
-                        <input id="totalPrice" type="number" name="totalPrice"  value="${object.totalPrice}"
+                    <input id="totalPrice" type="number" name="totalPrice"  value="${object.totalPrice}"
                                class="form-control" readonly>
-                    </c:if>
-                    <c:if test="${!readonly}">
-                        <input id="totalPrice" type="number" name="totalPrice"  value="${object.totalPrice}"
-                               class="form-control">
-                    </c:if>
+
                 </div>
             <div class="mb-3">
                     <label name="note">Note</label>
@@ -71,14 +53,8 @@
                 </div>
             <div class="mb-3">
                     <label for="tableNumber">Table Number</label>
-                    <c:if test="${readonly}">
-                        <input id="tableNumber" type="number" name="tableNumber" readonly
+                    <input id="tableNumber" type="number" name="tableNumber" readonly
                                value="${object.tableNumber}" class="form-control">
-                    </c:if>
-                    <c:if test="${!readonly}">
-                        <input id="tableNumber" type="number" name="tableNumber"
-                               value="${object.tableNumber}" class="form-control">
-                    </c:if>
 
                 </div>
             <table class="table">
@@ -100,7 +76,7 @@
                             <td>${item.quantity}</td>
                             <td>${item.unitPrice}</td>
                             <td>${item.totalPrice}</td>
-                            <td><a href="/deleteOrder?id=${item.id}">Delete</a></td>
+                            <td><a href="/deleteItemFromMyOrder?tableNumber=${object.tableNumber}&orderId=${object.id}&itemId=${item.id}">Delete</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>

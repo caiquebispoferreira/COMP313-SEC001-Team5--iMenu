@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sergi
-  Date: 21/10/20
-  Time: 1:31 p.m.
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -78,6 +71,51 @@
 
 
 </div>
+=======
 
+</head>
+<body class="container">
+    <br />
+    <form method="POST" action="${contextPath}/login">
+
+        <div class="form-label-group">
+            <div class="text-center mb-4">
+                <a href="/" >Home</a><br>
+                <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
+            </div>
+            <div class="form-label-group">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text"
+                       class="form-control" aria-describedby="username"
+                       placeholder="Username" required>
+            </div>
+        </div>
+
+        <div class="form-label-group">
+            <label for="password">Password</label>
+            <input id="password" name="password"  type="password"
+                   class="form-control"
+                   placeholder="Password" required>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+            </div>
+        </div>
+    </form>
+
+</div>
 </body>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+        asp-fallback-test="window.jQuery"
+        crossorigin="anonymous"
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+        crossorigin="anonymous"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+</script>
 </html>

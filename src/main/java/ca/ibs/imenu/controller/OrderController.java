@@ -3,6 +3,7 @@ package ca.ibs.imenu.controller;
 import ca.ibs.imenu.dto.OrderDTO;
 import ca.ibs.imenu.entity.Order;
 import ca.ibs.imenu.entity.OrderItem;
+import ca.ibs.imenu.entity.Status;
 import ca.ibs.imenu.entity.User;
 import ca.ibs.imenu.service.OrderService;
 import ca.ibs.imenu.service.ProductService;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,13 +34,16 @@ public class OrderController {
 
     @RequestMapping(value = "/commitSaveOrder", method = RequestMethod.POST)
     public String commitSaveOrder(Model model, Order order) {
-        orderService.save(order);
+        Order orderDb = orderService.findById(order.getId());
+        orderDb.setStatus(order.getStatus());
+        orderDb.setNote(order.getNote());
+        orderService.save(orderDb);
         return "redirect:listOrder";
     }
 
     @RequestMapping(value = "/commitDeleteOrder", method = RequestMethod.POST)
-    public String commitDeleteOrder(Model model, long id) {
-        orderService.delete(orderService.findById(id));
+    public String commitDeleteOrder(Model model, Order order) {
+        orderService.delete(orderService.findById(order.getId()));
         return "redirect:listOrder";
     }
 
@@ -62,6 +68,17 @@ public class OrderController {
         model.addAttribute("body","order.jsp");
         model.addAttribute("object",new OrderDTO(orderService.findByTableNumber(tableNumber)));
         model.addAttribute("title", "List Order by Table");
+        return "adminTemplate";
+    }
+
+    @RequestMapping("/changeTableNumber")
+    public String changeTableNumber(Authentication authentication, Model model) {
+        if (authentication!=null && authentication.isAuthenticated()){
+            model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
+                    authentication.getPrincipal()).getUsername()));
+        }
+        model.addAttribute("body","changeTableNumber.jsp");
+        model.addAttribute("title", "Change table number");
         return "adminTemplate";
     }
 
@@ -121,8 +138,12 @@ public class OrderController {
 
     @RequestMapping(value = "/myOrder", method = RequestMethod.GET)
     public String myOrder(Model model, int tableNumber){
+        Order order = orderService.findByStatusAndTableNumber(tableNumber);
         model.addAttribute("body","myOrder.jsp");
-        model.addAttribute("object",new OrderDTO(orderService.findByStatusAndTableNumber(tableNumber)));
+        if (order!=null)
+            model.addAttribute("object",new OrderDTO(order));
+        else
+            model.addAttribute("object",new OrderDTO());
         model.addAttribute("title", "My Order - Table Number " +String.valueOf(tableNumber));
         model.addAttribute("readonly", true);
         return "customerTemplate";
@@ -142,10 +163,25 @@ public class OrderController {
             order.setDate(LocalDate.now());
             order.setTableNumber(tableNumber);
             order.setNote("");
-
+            order.setStatus(Status.OPEN);
         }
         order.addItem(orderItem);
         orderService.save(order);
         return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
+
+    @RequestMapping(value= "/deleteItemFromMyOrder", method = RequestMethod.GET)
+    public String deleteItemFromMyOrder(int tableNumber,Long orderId, Long itemId){
+        Order order = orderService.findById(orderId);
+        List<OrderItem> items = new ArrayList<>();
+        for (OrderItem o : order.getItems()){
+            if (o.getId().compareTo(itemId)!=0){
+                items.add(o);
+            }
+        }
+        order.setItems(items);
+        orderService.save(order);
+        return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
+    }
+
 }

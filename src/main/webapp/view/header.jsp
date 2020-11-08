@@ -14,9 +14,6 @@
     </button>
     <div class="collapse navbar-collapse " id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
             <c:if test="${currentUser != null}">
                 <c:if test="${currentUser.role == 'ADMINISTRATOR'}">
                     <li class="nav-item">
@@ -47,6 +44,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="navbar-brand " href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
                 </li>
             </c:if>
 
