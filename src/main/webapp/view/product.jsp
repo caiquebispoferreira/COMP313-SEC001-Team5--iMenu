@@ -58,18 +58,7 @@
                         <option value="false" ${!object.enabled ? 'selected' : ''}>False</option>
                      </select>
                 </div>
-                <div class="mb-3">
-                    <label for="pictureUrl">Picture Url</label>
-                    <c:if test="${readonly}">
-                        <input id="pictureUrl" type="text" name="pictureUrl" readonly
-                               value="${object.pictureUrl}" class="form-control">
-                    </c:if>
-                    <c:if test="${!readonly}">
-                        <input id="pictureUrl" type="text" name="pictureUrl"
-                               value="${object.pictureUrl}" class="form-control">
-                    </c:if>
 
-                </div>
                <hr class="mb-4">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
         </form>

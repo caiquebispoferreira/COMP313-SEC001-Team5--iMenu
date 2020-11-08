@@ -4,7 +4,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <div class="row">
-    <a href="/addProduct">Add</a>
+    <a class="navbar-brand btn btn-link" href="/addProduct">Add</a>
 </div>
 <div class="row">
     <div class="col-12">
@@ -17,7 +17,7 @@
                 <th scope="col">Unit Price</th>
                 <th scope="col">Enabled</th>
                 <th scope="col">Category</th>
-                <th scope="col">Picture URL</th>
+                <th scope="col">Upload Image</th>
                 <th scope="col">#</th>
                 <th scope="col">#</th>
             </tr>
@@ -31,7 +31,7 @@
                         <td>${item.unitPrice}</td>
                         <td>${item.enabled}</td>
                         <td>${item.category}</td>
-                        <td>${item.pictureUrl}</td>
+                        <td><a href="/uploadImage?id=${item.id}">Upload</a></td>
                         <td><a href="/editProduct?id=${item.id}">Edit</a></td>
                         <td><a href="/deleteProduct?id=${item.id}">Delete</a></td>
                     </tr>

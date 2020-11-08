@@ -45,9 +45,6 @@
                 <li class="nav-item">
                     <a class="navbar-brand " href="/login">Login</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
             </c:if>
 
         </ul>
