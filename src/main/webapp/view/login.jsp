@@ -1,4 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title>Login</title>
@@ -9,9 +12,15 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/login.css" />
 </head>
 <body class="text-center">
+
     <form class="form-signin" method="POST" action="${contextPath}/login">
         <%--        Label     --%>
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <c:if test="${error !=null}">
+                <div class="alert alert-danger" role="alert">
+                    User/Password is invalid
+                </div>
+            </c:if>
         <%--        username     --%>
         <label for="username" class="sr-only">Username</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
