@@ -203,7 +203,7 @@ public class OrderController {
     }
 
     @RequestMapping(value= "/changeItemToDelivered", method = RequestMethod.GET)
-    public String changeItemToDelivered(int tableNumber,Long orderId, Long itemId){
+    public String changeItemToDelivered(Long orderId, Long itemId){
         Order order = orderService.findById(orderId);
         List<OrderItem> items = new ArrayList<>();
         for (OrderItem o : order.getItems()){

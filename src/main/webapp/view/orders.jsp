@@ -32,8 +32,16 @@
                         <td scope="row">
                             <c:forEach items="${item.items}" var="orderItem">
                                 ${orderItem.quantity} -
-                                ${orderItem.product.name}  -
-                                ${orderItem.delivered}<br>
+                                ${orderItem.product.name} -
+                                <c:if test="${orderItem.delivered}">
+                                    Delivered
+                                </c:if>
+                                <c:if test="${!orderItem.delivered}">
+                                    <a href="/changeItemToDelivered?orderId=${item.id}&itemId=${orderItem.id}">
+                                        Delivery now
+                                    </a>
+                                </c:if>
+                                <br>
                             </c:forEach>
                         </td>
                         <td><a href="/editOrder?id=${item.id}">Edit</a></td>
