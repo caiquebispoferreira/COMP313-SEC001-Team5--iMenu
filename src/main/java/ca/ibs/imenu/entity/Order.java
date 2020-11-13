@@ -38,6 +38,16 @@ public class Order implements Serializable {
     public void addItem(OrderItem item) {
         item.setOrder(this);
         items.add(item);
+        calcTotal();
+    }
+
+    public void calcTotal(){
+        BigDecimal total = new BigDecimal(0);
+        for (OrderItem item: items){
+            item.setTotalPrice(item.getUnitPrice().multiply(new BigDecimal(item.getQuantity())));
+            total.add(item.getTotalPrice());
+        }
+        totalPrice = total;
     }
 
 }

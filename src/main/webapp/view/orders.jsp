@@ -32,7 +32,8 @@
                         <td scope="row">
                             <c:forEach items="${item.items}" var="orderItem">
                                 ${orderItem.quantity} -
-                                ${orderItem.product.name}  <br>
+                                ${orderItem.product.name}  -
+                                ${orderItem.delivered}<br>
                             </c:forEach>
                         </td>
                         <td><a href="/editOrder?id=${item.id}">Edit</a></td>

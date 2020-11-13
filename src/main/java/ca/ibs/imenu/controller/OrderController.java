@@ -1,6 +1,7 @@
 package ca.ibs.imenu.controller;
 
 import ca.ibs.imenu.dto.OrderDTO;
+import ca.ibs.imenu.dto.OrderItemDTO;
 import ca.ibs.imenu.entity.Order;
 import ca.ibs.imenu.entity.OrderItem;
 import ca.ibs.imenu.entity.Status;
@@ -59,14 +60,29 @@ public class OrderController {
         return "adminTemplate";
     }
 
-    @RequestMapping(value = "/listOrderByTable", method = RequestMethod.GET)
-    public String listOrderByTable(Model model, int tableNumber, Authentication authentication) {
+    @RequestMapping(value = "/listOrderByTableNumber", method = RequestMethod.GET)
+    public String listOrderByTableNumber(Model model, Authentication authentication) {
         if (authentication!=null && authentication.isAuthenticated()){
             model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
                     authentication.getPrincipal()).getUsername()));
         }
-        model.addAttribute("body","order.jsp");
-        model.addAttribute("object",new OrderDTO(orderService.findByTableNumber(tableNumber)));
+        List<Order> orders = orderService.findAll();
+        List<OrderDTO> dtos = new ArrayList<>();
+        for (Order o : orders){
+            List<OrderItemDTO> items = new ArrayList<>();
+            for (OrderItem item: o.getItems() ){
+                if (!item.isDelivered())
+                    items.add(new OrderItemDTO(item));
+            }
+            if (items.size()>0){
+                OrderDTO dto = new OrderDTO(o);
+                dto.setItems(items);
+                dtos.add(dto);
+            }
+        }
+
+        model.addAttribute("body","orders.jsp");
+        model.addAttribute("object",dtos);
         model.addAttribute("title", "List Order by Table");
         return "adminTemplate";
     }
@@ -177,11 +193,29 @@ public class OrderController {
         for (OrderItem o : order.getItems()){
             if (o.getId().compareTo(itemId)!=0){
                 items.add(o);
+            } else {
+                o.setOrder(null);
             }
         }
         order.setItems(items);
         orderService.save(order);
         return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
+
+    @RequestMapping(value= "/changeItemToDelivered", method = RequestMethod.GET)
+    public String changeItemToDelivered(int tableNumber,Long orderId, Long itemId){
+        Order order = orderService.findById(orderId);
+        List<OrderItem> items = new ArrayList<>();
+        for (OrderItem o : order.getItems()){
+            if (o.getId().compareTo(itemId)==0) {
+                o.setDelivered(true);
+                break;
+            }
+        }
+        order.setItems(items);
+        orderService.save(order);
+        return "redirect:listOrderByTableNumber";
+    }
+
 
 }
