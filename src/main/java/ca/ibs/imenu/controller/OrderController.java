@@ -182,6 +182,7 @@ public class OrderController {
             order.setStatus(Status.OPEN);
         }
         order.addItem(orderItem);
+        order.calcTotal();
         orderService.save(order);
         return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
@@ -198,6 +199,7 @@ public class OrderController {
             }
         }
         order.setItems(items);
+        order.calcTotal();
         orderService.save(order);
         return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
@@ -213,6 +215,7 @@ public class OrderController {
             }
         }
         order.setItems(items);
+        order.calcTotal();
         orderService.save(order);
         return "redirect:listOrderByTableNumber";
     }
