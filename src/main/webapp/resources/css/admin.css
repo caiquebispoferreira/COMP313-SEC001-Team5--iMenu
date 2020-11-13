@@ -1,0 +1,34 @@
+h1{color:white;
+ text-align: center;
+ margin-top:50px;
+}
+p{color:white;
+ text-align: center;
+
+}
+body{
+background-image:url("/resources/img/adminBackground.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.navbar{
+	background-color:#888888;
+
+}
+
+.row{
+	
+	background-color:#DCDCDC;
+}
+
+.formBox{
+background-color:#DCDCDC;
+height:100px;
+margin: auto;
+width: 60%;
+border: 3px;
+padding: 10px;
+text-align: center;
+}
+
