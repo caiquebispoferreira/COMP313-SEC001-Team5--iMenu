@@ -1,0 +1,13 @@
+h1{
+	color: white;
+}
+body{
+	background-image:url("/resources/img/customerBackground.jpg");
+}
+.row {
+	background-color: #DCDCDC;
+}
+.box{
+	background-color: #DCDCDC;
+	margin-top:20px;
+}

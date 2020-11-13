@@ -22,7 +22,7 @@
     <div class="col-sm-4">
         <a href="/listProductByCategory?category=BEVERAGE">
             <h3>Beverages</h3>
-            <img src="${contextPath}/resources/img/beverage.png" width="340" height="440"/>
+            <img src="${contextPath}/resources/img/beverage.jpeg" width="340" height="440"/>
         </a>
     </div>
 </div>
