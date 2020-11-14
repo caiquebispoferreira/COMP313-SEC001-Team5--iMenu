@@ -37,7 +37,7 @@
     <label name="note">Note</label>
         <input id="note" type="text" name="note"  value="${object.note}"
                class="form-control">
-        <a href="javascript:getUrl();" >Update note</a>
+        <a href="javascript:getUrl(${object.tableNumber},${object.id});" >Update note</a>
 </div>
 <div class="mb-3">
     <label for="tableNumber">Table Number</label>
