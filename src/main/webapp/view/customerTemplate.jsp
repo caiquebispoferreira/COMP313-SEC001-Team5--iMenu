@@ -66,7 +66,7 @@
     }
 
     function getUrl(tableNumber,orderId){
-        return "updateNoteFromMyOrder?tableNumber="+tableNumber+"&orderId="+orderId+"&note="+getNote();
+        window.location.href = "updateNoteFromMyOrder?tableNumber="+tableNumber+"&orderId="+orderId+"&note="+getNote();
     }
 
 </script>
