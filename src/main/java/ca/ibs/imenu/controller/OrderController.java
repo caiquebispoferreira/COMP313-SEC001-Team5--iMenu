@@ -38,6 +38,7 @@ public class OrderController {
         Order orderDb = orderService.findById(order.getId());
         orderDb.setStatus(order.getStatus());
         orderDb.setNote(order.getNote());
+        orderDb.calcTotal();
         orderService.save(orderDb);
         return "redirect:listOrder";
     }
@@ -209,6 +210,7 @@ public class OrderController {
     public String updateNoteFromMyOrder(Long orderId,int tableNumber, String note){
         Order order = orderService.findById(orderId);
         order.setNote(note);
+        order.calcTotal();
         orderService.save(order);
         return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
@@ -234,6 +236,7 @@ public class OrderController {
     public String changeStatusToConfirmed(Long orderId,int tableNumber){
         Order order = orderService.findById(orderId);
         order.setStatus(Status.CONFIRMED);
+        order.calcTotal();
         orderService.save(order);
         return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
