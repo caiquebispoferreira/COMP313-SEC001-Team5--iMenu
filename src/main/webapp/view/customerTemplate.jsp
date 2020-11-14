@@ -61,7 +61,13 @@
         window.location.href = "/addItemToMyOrder?productId="+productId+"&quantity="+quantity+"&tableNumber="+tableNumber;
     }
 
+    function getNote(){
+        return document.getElementById('note').value
+    }
 
+    function getUrl(){
+        return "updateNoteFromMyOrder?tableNumber=${object.tableNumber}&orderId=${object.id}&note="+getNote();
+    }
 
 </script>
 </html>

@@ -36,7 +36,8 @@
 <div class="mb-3">
     <label name="note">Note</label>
         <input id="note" type="text" name="note"  value="${object.note}"
-               class="form-control" readonly>
+               class="form-control">
+        <a href="javascript:getUrl();" >Update note</a>
 </div>
 <div class="mb-3">
     <label for="tableNumber">Table Number</label>
@@ -54,6 +55,7 @@
         <th scope="col">Quantity</th>
         <th scope="col">Unit Price</th>
         <th scope="col">Total Price</th>
+        <th scope="col">Delivered?</th>
         <th scope="col">#</th>
     </tr>
     </thead>
@@ -65,7 +67,13 @@
             <td>${item.quantity}</td>
             <td>${item.unitPrice}</td>
             <td>${item.totalPrice}</td>
-            <td><a href="/deleteItemFromMyOrder?tableNumber=${object.tableNumber}&orderId=${object.id}&itemId=${item.id}">Delete</a></td>
+            <td>${item.delivered}</td>
+            <c:if test="${item.delivered}">
+                <td>Item cannot be deleted!</td>
+            </c:if>
+            <c:if test="${!item.delivered}">
+                <td><a href="/deleteItemFromMyOrder?tableNumber=${object.tableNumber}&orderId=${object.id}&itemId=${item.id}">Delete</a></td>
+            </c:if>
         </tr>
     </c:forEach>
     </tbody>

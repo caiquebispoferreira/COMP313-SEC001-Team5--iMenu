@@ -20,12 +20,14 @@ public class OrderItemDTO implements Serializable {
     private int quantity;
     private BigDecimal unitPrice;
     private BigDecimal totalPrice;
+    private boolean delivered;
     public OrderItemDTO(OrderItem item){
         this.id = item.getId();
         this.product = item.getProduct();
         this.quantity = item.getQuantity();
         this.unitPrice = item.getUnitPrice();
         this.totalPrice = item.getTotalPrice();
+        this.delivered = item.isDelivered();
     }
 }
 
