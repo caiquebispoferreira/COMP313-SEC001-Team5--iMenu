@@ -28,4 +28,5 @@ public class OrderItem implements Serializable {
     private int quantity;
     private BigDecimal unitPrice;
     private BigDecimal totalPrice;
+    private boolean delivered;
 }
