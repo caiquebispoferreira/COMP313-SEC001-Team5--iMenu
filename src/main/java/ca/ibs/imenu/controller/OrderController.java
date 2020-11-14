@@ -204,6 +204,15 @@ public class OrderController {
         return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
 
+
+    @RequestMapping(value= "/updateNoteFromMyOrder", method = RequestMethod.GET)
+    public String updateNoteFromMyOrder(Long orderId,int tableNumber, String note){
+        Order order = orderService.findById(orderId);
+        order.setNote(note);
+        orderService.save(order);
+        return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
+    }
+
     @RequestMapping(value= "/changeItemToDelivered", method = RequestMethod.GET)
     public String changeItemToDelivered(Long orderId, Long itemId){
         Order order = orderService.findById(orderId);

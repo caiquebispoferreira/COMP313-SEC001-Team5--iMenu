@@ -43,10 +43,9 @@ public class Order implements Serializable {
     public void calcTotal(){
         totalPrice = new BigDecimal(0);
         for (OrderItem item: items){
+
             item.setTotalPrice(item.getUnitPrice().multiply(new BigDecimal(item.getQuantity())));
-            System.out.println(item.getTotalPrice());
-            totalPrice.add(item.getTotalPrice());
-            System.out.println(totalPrice);
+            totalPrice = totalPrice.add(item.getTotalPrice());
         }
     }
 
