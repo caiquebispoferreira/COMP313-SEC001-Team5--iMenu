@@ -128,15 +128,11 @@ public class ProductController {
 
     @RequestMapping(value = "/uploadImage",method = RequestMethod.POST)
     public String uploadImage(@RequestParam("image") MultipartFile image,@RequestParam("productId") Long productId ) {
-        try {
-            File file = new File(IMAGE);
-            image.transferTo(file);
-            Product p = productService.findById(productId);
-            p.setHasImage(true);
-            productService.save(p);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //File file = new File(IMAGE);
+        //image.transferTo(file);
+        Product p = productService.findById(productId);
+        p.setHasImage(true);
+        productService.save(p);
         return "redirect:listProduct";
     }
 

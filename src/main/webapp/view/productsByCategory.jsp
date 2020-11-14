@@ -8,7 +8,7 @@
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
                 <c:if test="${item.hasImage}">
-                    <img src="${contextPath}/resources/img/${item.id}.png" class="card-img-top" alt="...">
+                    <img src="${contextPath}/resources/img/${item.name}.png" class="card-img-top" alt="...">
                 </c:if>
                 <c:if test="${!item.hasImage}">
                     <img src="${contextPath}/resources/img/noimage.png" class="card-img-top" alt="...">
