@@ -15,7 +15,7 @@
             <div class="mb-3">
                     <label name="status">Status</label>
                     <select name="status" class="custom-select d-block w-100" required ${readonly ? 'disabled' : ''}>
-                        <option value="OPEN" ${object.status == 'OPEN' ? 'selected' : ''}>Open</option>
+                        <option value="CONFIRMED" ${object.status == 'CONFIRMED' ? 'selected' : ''}>Confirmed</option>
                         <option value="IN_PROGRESS" ${object.status == 'IN_PROGRESS' ? 'selected' : ''}>In Progress</option>
                         <option value="DELIVERED" ${object.status == 'DELIVERED' ? 'selected' : ''}>Delivered</option>
                         <option value="PAID" ${object.status == 'PAID' ? 'selected' : ''}>Paid</option>

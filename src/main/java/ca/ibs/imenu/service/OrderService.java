@@ -31,7 +31,7 @@ public class OrderService {
     }
 
     public List<Order> findAll(){
-        return repository.findAll();
+        return repository.myFindAll(Status.OPEN);
     }
 
     public Order addItemToOrder(Order order,OrderItem orderItem){

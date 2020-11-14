@@ -4,6 +4,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+
+<c:if test="${object.id > 0 && object.status == 'OPEN' }">
+    <a href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}" >Confirm</a>
+</c:if>
 <a class="btn btn-light" href="/">Add more products</a>
 <div class="mb-3">
     <label for="id">Id</label>
@@ -15,6 +19,7 @@
     <select name="status" class="custom-select d-block w-100"  disabled>
         <option value="">Select an option</option>
         <option value="OPEN" ${object.status == 'OPEN' ? 'selected' : ''}>Open</option>
+        <option value="CONFIRMED" ${object.status == 'CONFIRMED' ? 'selected' : ''}>Confirmed</option>
         <option value="IN_PROGRESS" ${object.status == 'IN_PROGRESS' ? 'selected' : ''}>In Progress</option>
         <option value="DELIVERED" ${object.status == 'DELIVERED' ? 'selected' : ''}>Delivered</option>
         <option value="PAID" ${object.status == 'PAID' ? 'selected' : ''}>Paid</option>
@@ -37,7 +42,9 @@
     <label name="note">Note</label>
         <input id="note" type="text" name="note"  value="${object.note}"
                class="form-control">
-        <a href="javascript:getUrl(${object.tableNumber},${object.id});" >Update note</a>
+        <c:if test="${object.id > 0}">
+            <a href="javascript:getUrl(${object.tableNumber},${object.id});" >Update note</a>
+        </c:if>
 </div>
 <div class="mb-3">
     <label for="tableNumber">Table Number</label>
@@ -79,3 +86,6 @@
     </tbody>
 </table>
 <a class="btn btn-light" href="/">Add more products</a>
+<c:if test="${object.id > 0 && object.status == 'OPEN' }">
+    <a href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}" >Confirm</a>
+</c:if>

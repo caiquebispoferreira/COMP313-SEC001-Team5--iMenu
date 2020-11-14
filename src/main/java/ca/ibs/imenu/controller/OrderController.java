@@ -230,4 +230,13 @@ public class OrderController {
     }
 
 
+    @RequestMapping(value= "/changeStatusToConfirmed", method = RequestMethod.GET)
+    public String changeStatusToConfirmed(Long orderId,int tableNumber){
+        Order order = orderService.findById(orderId);
+        order.setStatus(Status.CONFIRMED);
+        orderService.save(order);
+        return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
+    }
+
+
 }

@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IOrderRepository
         extends JpaRepository<Order, Long>, PagingAndSortingRepository<Order, Long>, JpaSpecificationExecutor<IOrderRepository> {
@@ -17,6 +19,11 @@ public interface IOrderRepository
             "WHERE o.status <> :status" +
             "   AND o.tableNumber = :tableNumber  ")
     Order findByStatusAndTableNumber(Status status, int tableNumber);
+
+    @Query(value = "Select o " +
+            "FROM Order o " +
+            "WHERE o.status <> :status")
+    List<Order> myFindAll(Status status);
 
     @Query(value = "Select o " +
             "FROM Order o " +
