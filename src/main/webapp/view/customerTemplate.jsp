@@ -66,8 +66,8 @@
         return document.getElementById('note').value
     }
 
-    function getUrl(){
-        return "updateNoteFromMyOrder?tableNumber=${object.tableNumber}&orderId=${object.id}&note="+getNote();
+    function getUrl(tableNumber,orderId){
+        window.location.href = "updateNoteFromMyOrder?tableNumber="+tableNumber+"&orderId="+orderId+"&note="+getNote();
     }
 
 </script>
