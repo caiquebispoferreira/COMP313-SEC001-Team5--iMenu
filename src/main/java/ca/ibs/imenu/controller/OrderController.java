@@ -218,15 +218,12 @@ public class OrderController {
     @RequestMapping(value= "/changeItemToDelivered", method = RequestMethod.GET)
     public String changeItemToDelivered(Long orderId, Long itemId){
         Order order = orderService.findById(orderId);
-        List<OrderItem> items = new ArrayList<>();
         for (OrderItem o : order.getItems()){
             if (o.getId().compareTo(itemId)==0) {
                 o.setDelivered(true);
                 break;
             }
         }
-        order.setItems(items);
-        order.calcTotal();
         orderService.save(order);
         return "redirect:listOrderByTableNumber";
     }
