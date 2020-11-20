@@ -2,6 +2,8 @@ package ca.ibs.imenu;
 
 import ca.ibs.imenu.entity.Category;
 import ca.ibs.imenu.entity.Product;
+import ca.ibs.imenu.entity.Role;
+import ca.ibs.imenu.entity.User;
 import ca.ibs.imenu.service.ProductService;
 import org.junit.*;
 import org.junit.jupiter.api.MethodOrderer;
@@ -44,13 +46,30 @@ public class ProductTest {
 	public void tearDown() throws Exception {
 	}
 
-	
 	@Test
-	public void case001_addProduct() throws Exception {
+	public void case001_findAll() throws Exception {
+		//first product
 		Product product = new Product();
 		product.setName("Pastel");
 		product.setDescription("Appetizer from Brazil");
-		product.setUnitPrice(BigDecimal.valueOf(5.00));
+		product.setUnitPrice(BigDecimal.valueOf(5.99));
+		product.setEnabled(true);
+		product.setCategory(Category.APPETIZER);
+		product.setHasImage(true);
+		product = productService.save(product);
+		
+		List<Product> productsDB = productService.findAll();
+
+		//Expected - Actual
+		assertEquals(product,productsDB.get(0));
+	}
+
+	@Test
+	public void case002_addProduct() throws Exception {
+		Product product = new Product();
+		product.setName("Pastel");
+		product.setDescription("Appetizer from Brazil");
+		product.setUnitPrice(BigDecimal.valueOf(5.99));
 		product.setEnabled(true);
 		product.setCategory(Category.APPETIZER);
 		product.setHasImage(true);
@@ -64,11 +83,11 @@ public class ProductTest {
 	}
 
 	@Test
-	public void case002_findById() throws Exception {
+	public void case003_findById() throws Exception {
 		Product product = new Product();
 		product.setName("Pastel");
 		product.setDescription("Appetizer from Brazil");
-		product.setUnitPrice(BigDecimal.valueOf(5.00));
+		product.setUnitPrice(BigDecimal.valueOf(5.99));
 		product.setEnabled(true);
 		product.setCategory(Category.APPETIZER);
 		product.setHasImage(true);
@@ -82,7 +101,7 @@ public class ProductTest {
 	}
 
 	@Test
-	public void case003_findByCategory() throws Exception {
+	public void case004_findByCategory() throws Exception {
 		Product product = new Product();
 		product.setName("Pastel");
 		product.setDescription("Appetizer from Brazil");
@@ -96,36 +115,6 @@ public class ProductTest {
 		//Actual - Expected
 		assertEquals(product.getCategory(), productDB.getCategory());
 
-	}
-
-	@Test
-	public void case004_findAll() throws Exception {
-		//first product
-		Product product = new Product();
-		product.setName("Pastel");
-		product.setDescription("Appetizer from Brazil");
-		product.setUnitPrice(BigDecimal.valueOf(5.0));
-		product.setEnabled(true);
-		product.setCategory(Category.APPETIZER);
-		product.setHasImage(true);
-		product = productService.save(product);
-		//second product
-		Product product1 = new Product();
-		product1.setName("Pastel2");
-		product1.setDescription("Appetizer from Brazil");
-		product1.setUnitPrice(BigDecimal.valueOf(5.00));
-		product1.setEnabled(true);
-		product1.setCategory(Category.APPETIZER);
-		product1.setHasImage(true);
-		product1 = productService.save(product);
-
-		List<Product> products =new ArrayList();
-		products.add(product);
-		products.add(product1);
-		List<Product> productsDB = productService.findAll();
-
-		// Expected - Atual
-		assertArrayEquals(productsDB.toArray(), products.toArray());
 	}
 
 	@Test

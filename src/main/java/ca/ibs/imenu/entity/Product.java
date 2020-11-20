@@ -21,7 +21,6 @@ public class Product implements Serializable {
     private Long id;
     private String name;
     private String description;
-    @Column(precision = 2, scale = 5)
     private BigDecimal unitPrice;
     private Boolean enabled;
     @Enumerated(EnumType.STRING)
