@@ -7,6 +7,7 @@ import org.junit.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,7 +20,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ProductTest {
 	
 	@Autowired
@@ -58,7 +59,7 @@ public class ProductTest {
 		Product productDB = productService.findById(product.getId());
 
 		//Actual - Expected
-		Assert.hasText("Pastel", productDB.getName() );
+		//Assert.hasText("Pastel", productDB.getName() );
 		assertEquals(product, productDB);
 	}
 
@@ -103,7 +104,7 @@ public class ProductTest {
 		Product product = new Product();
 		product.setName("Pastel");
 		product.setDescription("Appetizer from Brazil");
-		product.setUnitPrice(BigDecimal.valueOf(5.00));
+		product.setUnitPrice(BigDecimal.valueOf(5.0));
 		product.setEnabled(true);
 		product.setCategory(Category.APPETIZER);
 		product.setHasImage(true);
