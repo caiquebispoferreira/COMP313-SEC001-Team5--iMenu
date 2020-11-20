@@ -57,7 +57,7 @@ public class ProductTest {
 		product.setCategory(Category.APPETIZER);
 		product.setHasImage(true);
 		product = productService.save(product);
-		
+
 		List<Product> productsDB = productService.findAll();
 
 		//Expected - Actual
