@@ -15,20 +15,20 @@ public class ProductService {
     private IProductRepository repository;
 
     public Product save(Product product){
-        return repository.save(product);
-    }
+            return repository.save(product);
+        }
 
-    public void delete(Product product){
-        repository.delete(product);
-    }
+        public void delete(Product product){
+            repository.delete(product);
+        }
 
-    public Product findById(Long id) {
-        Optional<Product> item = repository.findById(id);
-        return item.isPresent()?item.get():null;
-    }
+        public Product findById(Long id) {
+            Optional<Product> item = repository.findById(id);
+            return item.isPresent()?item.get():null;
+        }
 
-    public List<Product> findAll(){
-        return repository.findAll();
+        public List<Product> findAll(){
+            return repository.findAll();
     }
 
     public List<Product> findByCategory(Category category){
