@@ -25,7 +25,6 @@ import ca.ibs.imenu.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@TestPropertySource(value = "classpath:testApplication.yml")
 public class UserTest {
 	
 	@Autowired
@@ -54,10 +53,18 @@ public class UserTest {
 		assertEquals("admin",users.get(0).getUsername());
 		assertEquals(Role.ADMINISTRATOR,users.get(0).getRole());
 	}
+	
+	@Test
+	public void case002_getUser() throws Exception {
+		User userDB = userService.findByUsername("admin");
+		
+		//Expected - Actual
+		assertEquals("admin", userDB.getUsername());
+	}
 
 	
 	@Test
-	public void case002_addUser() throws Exception {
+	public void case003_addUser() throws Exception {
 		User user = new User(); 
 		user.setName("staff");
 		user.setRole(Role.STAFF);
@@ -71,6 +78,31 @@ public class UserTest {
 		assertEquals(user.getName(), userDB.getName());
 		assertEquals(user.getRole(), userDB.getRole());
 		assertEquals(user.getUsername(), userDB.getUsername());
+	}
+	
+	
+	@Test
+	public void case004_addUser() throws Exception {
+		User user = new User(); 
+		user.setName("staff");
+		user.setRole(Role.STAFF);
+		user.setPassword("1");
+		user.setUsername("staff");
+				
+		user = userService.save(user);
+		User userDB = userService.findByUsername(user.getUsername());
+		
+		//Expected - Actual
+		assertEquals(user.getName(), userDB.getName());
+		assertEquals(user.getRole(), userDB.getRole());
+		assertEquals(user.getUsername(), userDB.getUsername());
+	}
+	
+	@Test
+	public void case005_removeUser() throws Exception {
+		userService.delete( userService.findByUsername("staff"));
+		//Expected - Actual
+		assertEquals(null, userService.findByUsername("staff"));
 	}
 
 }
