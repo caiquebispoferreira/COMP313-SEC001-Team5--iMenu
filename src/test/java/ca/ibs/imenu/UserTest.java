@@ -13,6 +13,9 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -25,6 +28,7 @@ import ca.ibs.imenu.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
+@TestMethodOrder(OrderAnnotation.class)
 public class UserTest {
 	
 	@Autowired
@@ -47,6 +51,7 @@ public class UserTest {
 	}
 		
 	@Test
+	@Order(1)
 	public void case001_findAll() throws Exception {
 		List<User> users = userService.findAll();	
 		//Expected - Actual
@@ -55,6 +60,7 @@ public class UserTest {
 	}
 	
 	@Test
+	@Order(2)
 	public void case002_getUser() throws Exception {
 		User userDB = userService.findByUsername("admin");
 		
@@ -64,6 +70,7 @@ public class UserTest {
 
 	
 	@Test
+	@Order(3)
 	public void case003_addUser() throws Exception {
 		User user = new User(); 
 		user.setName("staff");
@@ -82,6 +89,7 @@ public class UserTest {
 	
 	
 	@Test
+	@Order(4)
 	public void case004_addUser() throws Exception {
 		User user = new User(); 
 		user.setName("staff");
@@ -99,6 +107,7 @@ public class UserTest {
 	}
 	
 	@Test
+	@Order(5)
 	public void case005_removeUser() throws Exception {
 		userService.delete( userService.findByUsername("staff"));
 		//Expected - Actual
