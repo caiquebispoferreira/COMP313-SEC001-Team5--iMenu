@@ -29,26 +29,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserTest {
-	
-	@Autowired
-	private UserService userService;
-	
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-	
-	@Before
-	public void setup() {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-		
 	@Test
 	public void case001_findAll() throws Exception {
 		if (userService.findAll().size()==0){
@@ -109,5 +90,25 @@ public class UserTest {
 		//Expected - Actual
 		assertEquals(null, userService.findByUsername("staff"));
 	}
+
+	@Autowired
+	private UserService userService;
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setup() {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
 
 }

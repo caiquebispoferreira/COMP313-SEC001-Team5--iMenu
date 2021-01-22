@@ -24,27 +24,6 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ProductTest {
-	
-	@Autowired
-	private ProductService productService;
-
-
-	
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-	
-	@Before
-	public void setup() {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	public void case001_findAll() throws Exception {
@@ -130,6 +109,29 @@ public class ProductTest {
 		productService.delete(product);
 
 		assertNull(productService.findById(product.getId()));
+	}
+
+
+
+	@Autowired
+	private ProductService productService;
+
+
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setup() {
+	}
+
+	@After
+	public void tearDown() throws Exception {
 	}
 
 }

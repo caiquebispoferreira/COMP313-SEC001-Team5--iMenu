@@ -24,27 +24,6 @@ import static org.junit.Assert.assertEquals;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OrderTest {
 
-	@Autowired
-	private ProductService productService;
-	@Autowired
-	private OrderService orderService;
-	
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-	
-	@Before
-	public void setup() {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-		
 	@Test
 	public void case001_findAll() throws Exception {
 		if (orderService.findAll().size()==0){
@@ -187,6 +166,28 @@ public class OrderTest {
 		orderService.delete( orderService.findByStatusAndTableNumber(5));
 		//Expected - Actual
 		assertEquals(null, orderService.findByStatusAndTableNumber(5));
+	}
+
+
+	@Autowired
+	private ProductService productService;
+	@Autowired
+	private OrderService orderService;
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setup() {
+	}
+
+	@After
+	public void tearDown() throws Exception {
 	}
 
 }
