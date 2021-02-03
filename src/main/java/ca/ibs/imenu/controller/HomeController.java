@@ -29,7 +29,6 @@ public class HomeController {
     public String index(Model model, Authentication authentication) {
         boolean result = authentication != null && authentication.isAuthenticated();
         model.addAttribute("body","index.jsp");
-        model.addAttribute("title", "Categories");
         return result?"redirect:welcome":"customerTemplate";
     }
 

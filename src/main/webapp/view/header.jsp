@@ -2,53 +2,63 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<link rel="stylesheet" href="${contextPath}/resources/css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
 <form id="logoutForm" method="post" action="/logout">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 </form>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">iMenu - Table Number : <input type="number" id="currentTableNumber" readonly /></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarNav">
-        <ul class="navbar-nav">
+<nav>
+<div class="logo">
+<a href="/">
+<img class="logo" src="${contextPath}/resources/img/imenu.png" width="300" height="100">
+</a>
+</div>    
+    
+        <ul class= "nav-links">
             <c:if test="${currentUser != null}">
                 <c:if test="${currentUser.role == 'ADMINISTRATOR'}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/listUser">List of Users</a>
+                    <li>
+                        <a href="/listUser">Users</a>
                     </li>
                 </c:if>
-                <li class="nav-item">
-                    <a class="nav-link" href="/listProduct">List of Products</a>
+                <li>
+                    <a href="/listProduct">Products</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/listOrder">List of Orders</a>
+                <li >
+                    <a href="/listOrder">Orders</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/listOrderByTableNumber">List Order By Table Number</a>
+                <li >
+                    <a href="/listOrderByTableNumber">Orders By Table</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/changeTableNumber">Change Table Number</a>
+                <li >
+                    <a  href="/changeTableNumber">Change Table</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" onclick="document.forms['logoutForm'].submit()">
+                <li >
+                    <a  onclick="document.forms['logoutForm'].submit()">
                         Logout
                     </a>
                 </li>
             </c:if>
             <c:if test="${currentUser == null}">
-                <li class="nav-item">
-                    <button type="button" class="navbar-brand btn btn-link" onclick="myOrder()">My Order</button>
+                <li>
+                    <button  type="button"  onclick="myOrder()">My Order</button>
                 </li>
-                <li class="nav-item">
-                    <a class="navbar-brand " href="/login">Login</a>
+                <li >
+                    <a  href="/">Reviews</a>
+                </li>
+                <li >
+                    <a  href="/">Contact</a>
+                </li>
+                <li >
+                    <a  href="/login">Login</a>
                 </li>
             </c:if>
 
         </ul>
-    </div>
+    
+ <a href="/">Table <input type="number" id="changeTableNumber" readonly /></a>  
 </nav>
 
 
