@@ -2,47 +2,91 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<html>
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="${contextPath}/resources/css/login.css" />
-</head>
-<body class="text-center">
 
-    <form class="form-signin" method="POST" action="${contextPath}/login">
-        <%--        Label     --%>
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <c:if test="${error !=null}">
-                <div class="alert alert-danger" role="alert">
-                    User/Password is invalid
-                </div>
-            </c:if>
-        <%--        username     --%>
-        <label for="username" class="sr-only">Username</label>
-        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
-        <%--            Password--%>
-        <label for="password" class="sr-only">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-        <%--            Button submit--%>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <a class="btn btn-lg btn-primary btn-block" href="/" >Back to home</a>
-    </form>
+<title>iMenu - Login</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/login.css" />
+<link rel="icon" href="${contextPath}/resources/img/faviconmenu.png" type="image/png" sizes="16x16 32x32">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="icon ion-social-facebook"></i></a>
+				<a href="#" class="social"><i class="icon ion-social-googleplus"></i></a>
+				<a href="#" class="social"><i class="icon ion-social-linkedin"></i></a>
+			</div>
+			<span>or use your email for registration</span> <input type="text"
+				placeholder="Username" /> <input type="password"
+				placeholder="Password" /> <input type="password"
+				placeholder="Confirm Password" />
+			<button>Sign Up</button>
+			<a class="back" href="/">Back</a>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form method="POST" action="${contextPath}/login">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="icon ion-social-facebook"></i></a>
+				<a href="#" class="social"><i class="icon ion-social-googleplus"></i></a>
+				<a href="#" class="social"><i class="icon ion-social-linkedin"></i></a>
+			</div>
+			<span>or use your account</span> <input type="text" id="username"
+				name="username" class="form-control" placeholder="Username" required
+				autofocus /> <input type="password" id="password" name="password"
+				class="form-control" placeholder="Password" required /> <a href="#">Forgot
+				your password?</a>
+			<button>Sign In</button>
+			<a class="back" href="/">Back</a>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<video class="videoSignIn" width="927" height="730"
+					playsinline="playsinline" autoplay="autoplay" muted="muted"
+					loop="loop">
+					<source src="${contextPath}/resources/video/loginvideo2.mp4"
+						type="video/mp4">
+				</video>
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with iMenu please login with your personal
+					info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+
+			<div class="overlay-panel overlay-right">
+				<video class="videoSignIn" width="927" height="730"
+					playsinline="playsinline" autoplay="autoplay" muted="muted"
+					loop="loop">
+					<source src="${contextPath}/resources/video/loginvideo.mp4"
+						type="video/mp4">
+				</video>
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with iMenu</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
 </div>
-</body>
-<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-        asp-fallback-test="window.jQuery"
-        crossorigin="anonymous"
-        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+
+<script>
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
 </script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-        crossorigin="anonymous"
-        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
-</script>
-</html>

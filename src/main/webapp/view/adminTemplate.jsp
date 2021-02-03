@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1", shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <meta name="theme-color" content="#563d7c">
+    <link rel="icon" href="${contextPath}/resources/img/faviconmenu.png" type="image/png" sizes="16x16 32x32">
 </head>
     <body class="bg-light">
         <jsp:include page="header.jsp" >
