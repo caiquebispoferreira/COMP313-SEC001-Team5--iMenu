@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -26,4 +27,7 @@ public class Product implements Serializable {
     @Enumerated(EnumType.STRING)
     private Category category;
     private boolean hasImage;
+
+    @OneToMany(mappedBy ="product",cascade = CascadeType.PERSIST)
+    private List<ProductReview> reviews;
 }
