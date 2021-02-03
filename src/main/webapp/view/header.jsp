@@ -4,6 +4,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <link rel="stylesheet" href="${contextPath}/resources/css/style.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
 
 <form id="logoutForm" method="post" action="/logout">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -20,24 +21,24 @@
             <c:if test="${currentUser != null}">
                 <c:if test="${currentUser.role == 'ADMINISTRATOR'}">
                     <li>
-                        <a href="/listUser">Users</a>
+                        <a href="/listUser"><i class="fas fa-users"></i> Users</a>
                     </li>
                 </c:if>
                 <li>
-                    <a href="/listProduct">Products</a>
+                    <a href="/listProduct"><i class="fas fa-chart-pie"></i> Products</a>
                 </li>
                 <li >
-                    <a href="/listOrder">Orders</a>
+                    <a href="/listOrder"><i class="far fa-edit"></i> Orders</a>
                 </li>
                 <li >
-                    <a href="/listOrderByTableNumber">Orders By Table</a>
+                    <a href="/listOrderByTableNumber"> <i class="far fa-copy"></i> Orders By Table</a>
                 </li>
                 <li >
-                    <a  href="/changeTableNumber">Change Table</a>
+                    <a  href="/changeTableNumber"> <i class="fas fa-exchange-alt"></i> Change Table</a>
                 </li>
-                <li >
+                <li id="logout">
                     <a  onclick="document.forms['logoutForm'].submit()">
-                        Logout
+                       <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </li>
             </c:if>
@@ -58,7 +59,7 @@
 
         </ul>
     
- <a href="/">Table <input type="number" id="changeTableNumber" readonly /></a>  
+ <a href="/"> <i class="fas fa-arrows-alt-v"></i>Table <input type="number" id="changeTableNumber" readonly /></a>  
 </nav>
 
 
