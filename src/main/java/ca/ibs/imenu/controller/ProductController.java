@@ -62,6 +62,15 @@ public class ProductController {
         return "customerTemplate";
     }
 
+
+    @RequestMapping(value = "/listReviewByProduct", method = RequestMethod.GET)
+    public String listReviewByProduct(Model model,@RequestParam(name = "id") Long id) {
+        model.addAttribute("body","reviewsByProduct.jsp");
+        model.addAttribute("object",productService.findById(id));
+        model.addAttribute("title", "List of reviews");
+        return "customerTemplate";
+    }
+
     @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
     public String addProduct(Model model, Authentication authentication) {
         if (authentication!=null && authentication.isAuthenticated()){
