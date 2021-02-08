@@ -71,7 +71,7 @@
       <div class="line3"></div>
     </div>
   
-   <a href="/"> <i class="fas fa-arrows-alt-v"></i>Table <input type="number" id="changeTableNumber" readonly /></a>  
+   <a href="/"> <i class="fas fa-arrows-alt-v"></i>Table <input type="number" id="currentTableNumber" readonly /></a>  
 </nav>
 
 <script>
