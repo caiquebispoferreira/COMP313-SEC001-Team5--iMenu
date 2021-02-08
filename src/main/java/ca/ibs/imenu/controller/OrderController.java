@@ -218,7 +218,7 @@ public class OrderController {
     }
 
 
-    @RequestMapping(value= "/reviewProduct", method = RequestMethod.GET)
+    @RequestMapping(value= "/reviewProduct", method = RequestMethod.POST)
     public String reviewProduct(Long orderItemId,int tableNumber, int rating, String username, String notes){
         OrderItem orderItem = orderItemService.findById(orderItemId);
 
