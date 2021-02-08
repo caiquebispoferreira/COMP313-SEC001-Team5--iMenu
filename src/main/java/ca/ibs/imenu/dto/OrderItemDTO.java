@@ -21,6 +21,7 @@ public class OrderItemDTO implements Serializable {
     private BigDecimal unitPrice;
     private BigDecimal totalPrice;
     private boolean delivered;
+    private boolean reviewed;
     public OrderItemDTO(OrderItem item){
         this.id = item.getId();
         this.product = item.getProduct();
@@ -28,6 +29,7 @@ public class OrderItemDTO implements Serializable {
         this.unitPrice = item.getUnitPrice();
         this.totalPrice = item.getTotalPrice();
         this.delivered = item.isDelivered();
+        this.reviewed = item.isReviewed();
     }
 }
 
