@@ -4,6 +4,17 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<input id="name" type="text" name="name"  value="${object.name}"
+                             class="form-control" readonly>
+
 <div class="row">
     <div class="col-12">
         <table class="table">
@@ -12,9 +23,7 @@
                 <th scope="col">Username</th>
                 <th scope="col">Rating</th>
                 <th scope="col">Notes</th>
-                <th scope="col">#</th>
-                <th scope="col">#</th>
-                <th scope="col">#</th>
+         
             </tr>
             </thead>
             <tbody>
