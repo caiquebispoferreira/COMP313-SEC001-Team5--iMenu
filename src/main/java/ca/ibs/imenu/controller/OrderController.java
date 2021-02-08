@@ -225,7 +225,6 @@ public class OrderController {
         if (orderItem !=null){
             if ( !orderItem.isReviewed()){
                 ProductReview review = new ProductReview();
-                review.setOrderItem(orderItem);
                 review.setRating(rating);
                 review.setNotes(notes);
                 review.setUserName(username);

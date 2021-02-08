@@ -17,10 +17,6 @@ public class ProductReview {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name ="ORDER_ITEM", referencedColumnName = "ID")
-    private OrderItem orderItem;
-
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "ORDER_ID", referencedColumnName = "ID")

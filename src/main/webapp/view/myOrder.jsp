@@ -64,6 +64,9 @@
         <th scope="col">Total Price</th>
         <th scope="col">Delivered?</th>
         <th scope="col">#</th>
+        <c:if test="${!item.reviewed && item.delivered}">
+        	<th scope="col">#</th>
+        </c:if>
     </tr>
     </thead>
     <tbody>
@@ -84,7 +87,7 @@
             <c:if test="${item.reviewed}">
                 <td>Item is reviewed already!</td>
             </c:if>
-            <c:if test="${!item.reviewed}">
+            <c:if test="${!item.reviewed && item.delivered}">
                 <td><a href="/reviewProductByOrderItem?tableNumber=${object.tableNumber}&orderItemId=${item.id}">Review</a></td>
             </c:if>
         </tr>
