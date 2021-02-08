@@ -210,7 +210,7 @@ public class OrderController {
     public String reviewProductByOrderItem(Model model, int tableNumber, Long orderItemId){
         OrderItem orderItem = orderItemService.findById(orderItemId);
         model.addAttribute("body","reviewProduct.jsp");
-        model.addAttribute("object",orderItem);
+        model.addAttribute("object",new OrderItemDTO(orderItem));
         model.addAttribute("tableNumber",tableNumber);
         model.addAttribute("title", "Review Product - " +orderItem.getProduct().getName());
 
