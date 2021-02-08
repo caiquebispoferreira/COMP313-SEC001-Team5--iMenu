@@ -2,10 +2,8 @@ package ca.ibs.imenu.controller;
 
 import ca.ibs.imenu.dto.OrderDTO;
 import ca.ibs.imenu.dto.OrderItemDTO;
-import ca.ibs.imenu.entity.Order;
-import ca.ibs.imenu.entity.OrderItem;
-import ca.ibs.imenu.entity.Status;
-import ca.ibs.imenu.entity.User;
+import ca.ibs.imenu.entity.*;
+import ca.ibs.imenu.service.OrderItemService;
 import ca.ibs.imenu.service.OrderService;
 import ca.ibs.imenu.service.ProductService;
 import ca.ibs.imenu.service.UserService;
@@ -28,6 +26,8 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private OrderItemService orderItemService;
     @Autowired
     private ProductService productService;
     @Autowired
@@ -202,6 +202,45 @@ public class OrderController {
         order.setItems(items);
         order.calcTotal();
         orderService.save(order);
+        return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
+    }
+
+
+    @RequestMapping(value = "/reviewProductByOrderItem", method = RequestMethod.GET)
+    public String reviewProductByOrderItem(Model model, int tableNumber, Long orderItemId){
+        OrderItem orderItem = orderItemService.findById(orderItemId);
+        model.addAttribute("body","reviewProduct.jsp");
+        model.addAttribute("object",orderItem);
+        model.addAttribute("tableNumber",tableNumber);
+        model.addAttribute("title", "Review Product - " +orderItem.getProduct().getName());
+
+        return "customerTemplate";
+    }
+
+
+    @RequestMapping(value= "/reviewProduct", method = RequestMethod.GET)
+    public String reviewProduct(Long orderItemId,int tableNumber, int rating, String username, String notes){
+        OrderItem orderItem = orderItemService.findById(orderItemId);
+
+        if (orderItem !=null){
+            if ( !orderItem.isReviewed()){
+                ProductReview review = new ProductReview();
+                review.setOrderItem(orderItem);
+                review.setRating(rating);
+                review.setNotes(notes);
+                review.setUserName(username);
+
+                orderItem.getProduct()
+                        .addReview(review);
+
+                orderItem.setProduct(productService.save(orderItem.getProduct()));
+
+                orderItem.setReviewed(true);
+
+                orderItem = orderItemService.save(orderItem);
+            }
+        }
+
         return "redirect:myOrder?tableNumber="+String.valueOf(tableNumber);
     }
 
