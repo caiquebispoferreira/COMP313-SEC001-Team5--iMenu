@@ -27,5 +27,5 @@ public class ProductReview {
     private String userName;
     private int rating;
     private String notes;
-    private LocalDate date;
+    private LocalDate date = LocalDate.now();
 }

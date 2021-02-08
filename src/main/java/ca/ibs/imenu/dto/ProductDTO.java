@@ -42,10 +42,12 @@ public class ProductDTO {
         this.category = product.getCategory();
         this.hasImage  = product.isHasImage();
         
-       
-        for(ProductReview review : product.getReviews()) {
-        	addItem(new ProductReviewDTO(review));
+        if (product.getReviews()!=null) {
+        	for(ProductReview review : product.getReviews()) {
+            	addItem(new ProductReviewDTO(review));
+            }	
         }
+    
         
     }
     
