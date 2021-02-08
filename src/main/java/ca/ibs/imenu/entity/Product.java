@@ -29,7 +29,7 @@ public class Product implements Serializable {
     private Category category;
     private boolean hasImage;
 
-    @OneToMany(mappedBy ="product",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy ="product",cascade = CascadeType.REFRESH)
     private List<ProductReview> reviews;
 
     public void addReview(ProductReview review){

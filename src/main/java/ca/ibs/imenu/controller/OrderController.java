@@ -5,6 +5,7 @@ import ca.ibs.imenu.dto.OrderItemDTO;
 import ca.ibs.imenu.entity.*;
 import ca.ibs.imenu.service.OrderItemService;
 import ca.ibs.imenu.service.OrderService;
+import ca.ibs.imenu.service.ProductReviewService;
 import ca.ibs.imenu.service.ProductService;
 import ca.ibs.imenu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class OrderController {
     private OrderItemService orderItemService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private ProductReviewService productReviewService;
     @Autowired
     private UserService userService;
 
@@ -228,12 +231,11 @@ public class OrderController {
                 review.setRating(rating);
                 review.setNotes(notes);
                 review.setUserName(username);
-
+                
                 orderItem.getProduct()
                         .addReview(review);
-
-                orderItem.setProduct(productService.save(orderItem.getProduct()));
-
+                
+                review = productReviewService.save(review);
                 orderItem.setReviewed(true);
 
                 orderItem = orderItemService.save(orderItem);
