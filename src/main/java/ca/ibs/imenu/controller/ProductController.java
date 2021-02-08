@@ -1,5 +1,6 @@
 package ca.ibs.imenu.controller;
 
+import ca.ibs.imenu.dto.ProductDTO;
 import ca.ibs.imenu.entity.Category;
 import ca.ibs.imenu.entity.Product;
 import ca.ibs.imenu.service.ProductService;
@@ -18,8 +19,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -48,17 +51,37 @@ public class ProductController {
             model.addAttribute("currentUser",userService.findByUsername(((org.springframework.security.core.userdetails.User)
                     authentication.getPrincipal()).getUsername()));
         }
+        
+        List<ProductDTO> products = new ArrayList();
+        for (Product product : productService.findAll()) {
+        	products.add(new ProductDTO(product));
+        }
+        
         model.addAttribute("body","products.jsp");
-        model.addAttribute("object",productService.findAll());
+        model.addAttribute("object",products);
         model.addAttribute("title", "List of Products");
         return "adminTemplate";
     }
 
     @RequestMapping(value = "/listProductByCategory", method = RequestMethod.GET)
     public String listProductByCategory(Model model,@RequestParam(name = "category", defaultValue = "APPETIZER") String category) {
-        model.addAttribute("body","productsByCategory.jsp");
-        model.addAttribute("object",productService.findByCategory(Category.valueOf(category)));
+        List<ProductDTO> products = new ArrayList();
+        for (Product product : productService.findByCategory(Category.valueOf(category))) {
+        	products.add(new ProductDTO(product));
+        }
+        
+    	model.addAttribute("body","productsByCategory.jsp");
+        model.addAttribute("object",products);
         model.addAttribute("title", "List of "+category);
+        return "customerTemplate";
+    }
+
+
+    @RequestMapping(value = "/listReviewByProduct", method = RequestMethod.GET)
+    public String listReviewByProduct(Model model,@RequestParam(name = "id") Long id) {
+        model.addAttribute("body","reviewsByProduct.jsp");
+        model.addAttribute("object",new ProductDTO(productService.findById(id)));
+        model.addAttribute("title", "List of reviews");
         return "customerTemplate";
     }
 
@@ -69,7 +92,7 @@ public class ProductController {
                     authentication.getPrincipal()).getUsername()));
         }
         model.addAttribute("body","product.jsp");
-        model.addAttribute("object",new Product());
+        model.addAttribute("object",new ProductDTO());
         model.addAttribute("action","/commitSaveProduct");
         model.addAttribute("title", "Add Product");
         model.addAttribute("readonly", false);
@@ -83,7 +106,7 @@ public class ProductController {
                     authentication.getPrincipal()).getUsername()));
         }
         model.addAttribute("body","product.jsp");
-        model.addAttribute("object",productService.findById(id));
+        model.addAttribute("object",new ProductDTO(productService.findById(id)));
         model.addAttribute("action","/commitSaveProduct");
         model.addAttribute("title", "Edit Product");
         model.addAttribute("readonly", false);
@@ -97,7 +120,7 @@ public class ProductController {
                     authentication.getPrincipal()).getUsername()));
         }
         model.addAttribute("body","product.jsp");
-        model.addAttribute("object",productService.findById(id));
+        model.addAttribute("object",new ProductDTO(productService.findById(id)));
         model.addAttribute("action","/commitDeleteProduct");
         model.addAttribute("title", "Delete Product");
         model.addAttribute("readonly", true);
@@ -112,7 +135,7 @@ public class ProductController {
         }
         Product product = productService.findById(id);
         model.addAttribute("body","uploadImage.jsp");
-        model.addAttribute("object",product);
+        model.addAttribute("object",new ProductDTO(product));
         model.addAttribute("action","/uploadImage");
         model.addAttribute("title", "Upload image to "+product.getName());
 

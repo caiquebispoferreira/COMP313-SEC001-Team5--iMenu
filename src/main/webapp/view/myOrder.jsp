@@ -64,6 +64,7 @@
         <th scope="col">Total Price</th>
         <th scope="col">Delivered?</th>
         <th scope="col">#</th>
+       	<th scope="col">#</th>
     </tr>
     </thead>
     <tbody>
@@ -80,6 +81,17 @@
             </c:if>
             <c:if test="${!item.delivered}">
                 <td><a href="/deleteItemFromMyOrder?tableNumber=${object.tableNumber}&orderId=${object.id}&itemId=${item.id}">Delete</a></td>
+            </c:if>
+            <c:if test="${item.reviewed}">
+                <td>Item is reviewed already!</td>
+            </c:if>
+            <c:if test="${!item.reviewed}">
+            	<c:if test="${item.delivered}">
+            		<td><a href="/reviewProductByOrderItem?tableNumber=${object.tableNumber}&orderItemId=${item.id}">Review</a></td>
+            	</c:if>
+            	<c:if test="${!item.delivered}">
+            		<td></td>
+            	</c:if>
             </c:if>
         </tr>
     </c:forEach>
