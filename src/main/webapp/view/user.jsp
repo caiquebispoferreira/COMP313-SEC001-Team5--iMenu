@@ -10,24 +10,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
+<style>
 
-<div class="row">
+
+.form-control{
+ color:white;
+
+}
+</style>
+<div class="row addUser">
     <div class="col-md-9 order-md-2">
         <form action="${action}" method="post">
             <input type="hidden" name="id" value="${object.id}"/>
             <div class="mb-3">
                 <label for="name">Name</label>
                 <c:if test="${readonly}">
-                    <input  id="name" type="text" name="name" value="${object.name}"
+                    <input style="color:color" id="name" type="text" name="name" value="${object.name}"
                             class="form-control" readonly>
                 </c:if>
                 <c:if test="${!readonly}">
                     <input  id="name" type="text" name="name" value="${object.name}"
-                            placeholder="Please enter your password" class="form-control">
+                            placeholder="Please enter your Name" class="form-control">
                 </c:if>
             </div>
                 <div class="mb-3">
-                    <label for="username">Username</label>
+                    <label for="username">User name</label>
                     <c:if test="${readonly}">
                         <input id="username" type="text" name="username"  value="${object.username}"
                                class="form-control" readonly>
@@ -58,7 +66,9 @@
                 </div>
                
                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                 <button class="btn btn-light addUserBtn" type="submit">Submit</button>
+              
+              
         </form>
     </div>
 </div>
