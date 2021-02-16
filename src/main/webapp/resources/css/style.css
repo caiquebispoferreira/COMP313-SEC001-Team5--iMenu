@@ -166,4 +166,28 @@ to{
 	cursor:pointer;
 }
 
+<<<<<<< Updated upstream
+=======
+.addUser{
+
+	margin-top:120px;
+	margin-left:180px;
+	margin-bottom:40px;
+	
+}
+.addUserBtn{
+
+  background: linear-gradient(to right, #ff8a00 0%, #da1b60 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-weight: bold;
+	font-size:13px;
+	text-align:center;
+	border-color: #ff8a0059;
+}
+
+>>>>>>> Stashed changes
 
