@@ -8,12 +8,17 @@
 <c:if test="${object.id > 0 && object.status == 'OPEN' }">
     <a href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}" >Confirm</a>
 </c:if>
-<a class="btn btn-light" href="/">Add more products</a>
+
+<!-- <a class="btn btn-light" href="/">Add more products</a>-->
+<div class="row addUser">
+<div class="col-md-9 order-md-2">
+<h3>Add New Order</h3>
 <div class="mb-3">
     <label for="id">Id</label>
     <input id="id" type="number" name="id"  value="${object.id}"
            class="form-control" readonly>
 </div>
+
 <div class="mb-3">
     <label name="status">Status</label>
     <select name="status" class="custom-select d-block w-100"  disabled>
@@ -98,6 +103,8 @@
     </tbody>
 </table>
 <a class="btn btn-light" href="/">Add more products</a>
+</div>
+</div>
 <c:if test="${object.id > 0 && object.status == 'OPEN' }">
     <a href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}" >Confirm</a>
 </c:if>
