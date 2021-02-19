@@ -34,8 +34,9 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public String homepage(Model model) {
-		return "homepage";
+	public String homepage(Model model, Authentication authentication) {
+		boolean result = authentication != null && authentication.isAuthenticated();
+		return result ? "redirect:welcome" : "homepage";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
