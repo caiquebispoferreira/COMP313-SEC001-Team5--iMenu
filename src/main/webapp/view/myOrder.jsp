@@ -8,12 +8,17 @@
 <c:if test="${object.id > 0 && object.status == 'OPEN' }">
     <a href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}" >Confirm</a>
 </c:if>
-<a class="btn btn-light" href="/">Add more products</a>
+
+<!-- <a class="btn btn-light" href="/">Add more products</a>-->
+<div class="row addUser">
+<div class="col-md-9 order-md-2">
+<h3>Add New Order</h3>
 <div class="mb-3">
     <label for="id">Id</label>
     <input id="id" type="number" name="id"  value="${object.id}"
            class="form-control" readonly>
 </div>
+
 <div class="mb-3">
     <label name="status">Status</label>
     <select name="status" class="custom-select d-block w-100"  disabled>
@@ -64,6 +69,7 @@
         <th scope="col">Total Price</th>
         <th scope="col">Delivered?</th>
         <th scope="col">#</th>
+       	<th scope="col">#</th>
     </tr>
     </thead>
     <tbody>
@@ -81,11 +87,24 @@
             <c:if test="${!item.delivered}">
                 <td><a href="/deleteItemFromMyOrder?tableNumber=${object.tableNumber}&orderId=${object.id}&itemId=${item.id}">Delete</a></td>
             </c:if>
+            <c:if test="${item.reviewed}">
+                <td>Item is reviewed already!</td>
+            </c:if>
+            <c:if test="${!item.reviewed}">
+            	<c:if test="${item.delivered}">
+            		<td><a href="/reviewProductByOrderItem?tableNumber=${object.tableNumber}&orderItemId=${item.id}">Review</a></td>
+            	</c:if>
+            	<c:if test="${!item.delivered}">
+            		<td></td>
+            	</c:if>
+            </c:if>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <a class="btn btn-light" href="/">Add more products</a>
+</div>
+</div>
 <c:if test="${object.id > 0 && object.status == 'OPEN' }">
     <a href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}" >Confirm</a>
 </c:if>

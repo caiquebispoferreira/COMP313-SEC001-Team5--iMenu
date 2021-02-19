@@ -17,6 +17,7 @@
                     <h5 class="card-title">${item.name} - $${item.unitPrice}</h5>
                     <p class="card-text">${item.description}</p>
                     <button  onclick="addItemToMyOrder(${item.id},1)">Add to MyOrder</button>
+                    <a href="/listReviewByProduct?id=${item.id}">Reviews</a>
                 </div>
             </div>
         </div>

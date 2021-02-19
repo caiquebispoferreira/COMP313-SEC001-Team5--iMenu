@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -28,6 +29,13 @@ public class Product implements Serializable {
     private Category category;
     private boolean hasImage;
 
-    @OneToMany(mappedBy ="product",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy ="product",cascade = CascadeType.REFRESH)
     private List<ProductReview> reviews;
+
+    public void addReview(ProductReview review){
+        this.reviews = this.reviews==null? new ArrayList():reviews;
+        review.setProduct(this);
+        this.reviews.add(review);
+    }
+
 }

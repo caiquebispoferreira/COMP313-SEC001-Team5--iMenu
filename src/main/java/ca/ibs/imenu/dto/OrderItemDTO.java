@@ -16,18 +16,20 @@ import java.math.BigDecimal;
 @Data
 public class OrderItemDTO implements Serializable {
     private Long id;
-    private Product product;
+    private ProductDTO product;
     private int quantity;
     private BigDecimal unitPrice;
     private BigDecimal totalPrice;
     private boolean delivered;
+    private boolean reviewed;
     public OrderItemDTO(OrderItem item){
         this.id = item.getId();
-        this.product = item.getProduct();
+        this.product = new ProductDTO(item.getProduct());
         this.quantity = item.getQuantity();
         this.unitPrice = item.getUnitPrice();
         this.totalPrice = item.getTotalPrice();
         this.delivered = item.isDelivered();
+        this.reviewed = item.isReviewed();
     }
 }
 
