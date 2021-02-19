@@ -1,129 +1,25 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap"
+	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="${contextPath}/resources/img/faviconmenu.png" type="image/png" sizes="16x16 32x32">
+<link rel="icon" href="${contextPath}/resources/img/faviconmenu.png"
+	type="image/png" sizes="16x16 32x32">
+<link rel="stylesheet" href="${contextPath}/resources/css/index.css" />
 
-<style>
-h1{
-    font-family: 'Poppins', sans-serif;
-    padding: 50px;
-    text-align: center;
-	text-transform: uppercase;
-	letter-spacing: 5px;
-}
-
-h6{
-    font-family: 'Poppins', sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 5px;
-	text-align: center;
-}
-
-content {
-position:relative;
-    z-index:2;
-}
-
-.article1{
-width:315px;
-height:315px;
-font-family: 'Poppins', sans-serif;
-display:flex;
-font-size:13px;
-}
-
-* {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides {display: none;}
-.mySlides1 {display: none;}
-.mySlides2 {display: none;}
-img {vertical-align: middle;}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-.slideshow-container1 {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-.slideshow-container2 {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: none;
-  transition: background-color 0.6s ease;
-}
-
-.dot1 {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: none;
-  transition: background-color 0.6s ease;
-}
-
-.dot2 {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: none;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 2.4s;
-  animation-name: fade;
-  animation-duration: 2.4s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-
-</style>
 <div align="center">
- <marquee behavior="alternate" bgcolor="#ff084a" direction="left" 
- loop="200" scrollamount="7" scrolldelay="2" width="100%" height="16px">
- <span style="font-size: 13px;color:#FFFFFF; font-family:'Poppins', sans-serif; text-align: center;" >
- Welcome to iMenu!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our service is open 24/7!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enjoy your meal!</span></marquee>
+	<marquee behavior="alternate" bgcolor="#ff084a" direction="left"
+		loop="200" scrollamount="7" scrolldelay="2" width="100%" height="16px">
+		<span
+			style="font-size: 13px; color: #FFFFFF; font-family: 'Poppins', sans-serif; text-align: center;">
+			Welcome to iMenu!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our service is
+			open 24/7!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enjoy your meal!</span>
+	</marquee>
 </div>
 
 <h1>Categories</h1>
@@ -196,7 +92,7 @@ img {vertical-align: middle;}
 						height="315" />
 					</a>
 				</div>
-				
+
 				<div style="text-align: center">
 					<span class="dot1"></span> <span class="dot1"></span> <span
 						class="dot1"></span>

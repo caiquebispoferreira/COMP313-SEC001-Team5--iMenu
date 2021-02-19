@@ -1,75 +1,49 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<style>
-@mixin coverer {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+<title>iMenu</title>
+<link rel="icon" href="${contextPath}/resources/img/faviconmenu.png"
+	type="image/png" sizes="16x16 32x32">
 
-.video-header {
-  position: absolute;
-  text-align: center;
-  width: 100vw;
-  height: 100vh;
-  &, video, .viewport-header {
-    @include coverer;
-  }
-  video {
-    background: brown;
-    object-fit: cover;
-  }
-  .viewport-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 
-html, body {
-  height: 100%;
-  overflow-x: hidden;
-}
-html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 150%;
-  line-height: 1.4;
-}
-body {
-  margin: 0;
-}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/resources/css/homepage.css" />
 
+<video src="${contextPath}/resources/video/homevideo1.mp4" autoplay loop
+	playsinline muted></video>
 
+<nav>
+	<ul class="nav-links">
+		<c:if test="${currentUser == null}">
+			<li style="float: left;"><a href="/"> <img class="logo"
+					src="${contextPath}/resources/img/homepageicon.png" width="125"
+					height="55">
+			</a></li>
+			<li style="padding-top: 20px;"><a href="/">Contact</a></li>
+			<li style="padding-top: 20px;"><a href="/">About Us</a></li>
+		</c:if>
+	</ul>
+</nav>
 
-h1 {
-  font-family: 'Syncopate', sans-serif;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 3vw;
-  line-height: 1.2;
-  font-size: 3vw;
-  text-align: center;
-  span {
-    display: block;
-    font-size: 10vw;
-    letter-spacing: -0.6rem;
-  }
-}
-
-</style>
-
-<header class="video-header">
-  <video src="${contextPath}/resources/video/homevideo.mp4" autoplay loop playsinline muted></video>
-  <div class="viewport-header">
-    <h1>
-      Explore
-      <span>iMenu</span>
-    </h1>
-  </div>
+<header class="viewport-header">
+	<h2>
+		Explore<br>
+	</h2>
+	<h1>iMenu</h1>
+	<div>
+		<a href="/index" class="ghost-button">Get Started</a>
+	</div>
 </header>

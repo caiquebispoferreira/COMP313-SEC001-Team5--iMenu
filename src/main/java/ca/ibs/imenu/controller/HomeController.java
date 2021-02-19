@@ -26,13 +26,17 @@ public class HomeController {
 	@Autowired
 	private OrderService orderService;
 
-	@RequestMapping(value = { "/index", "/" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/index" }, method = RequestMethod.GET)
 	public String index(Model model, Authentication authentication) {
 		boolean result = authentication != null && authentication.isAuthenticated();
 		model.addAttribute("body", "index.jsp");
 		return result ? "redirect:welcome" : "customerTemplate";
 	}
 
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	public String homepage(Model model) {
+		return "homepage";
+	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@ModelAttribute("userForm") User userForm, Model model, String error, String logout) {

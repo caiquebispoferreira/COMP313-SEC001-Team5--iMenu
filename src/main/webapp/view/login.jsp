@@ -27,7 +27,7 @@
 				placeholder="Password" /> <input type="password"
 				placeholder="Confirm Password" />
 			<button>Sign Up</button>
-			<a class="back" href="/">Back</a>
+			<a class="back" href="/index">Back</a>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -44,7 +44,7 @@
 				class="form-control" placeholder="Password" required /> <a href="#">Forgot
 				your password?</a>
 			<button>Sign In</button>
-			<a class="back" href="/">Back</a>
+			<a class="back" href="/index">Back</a>
 		</form>
 	</div>
 	<div class="overlay-container">
