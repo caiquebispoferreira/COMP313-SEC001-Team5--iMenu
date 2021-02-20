@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-13">
+    <div class="col-13" style="overflow-x:auto;">
         <table class="table table-bordered table-stripped">
             <thead class="thead-dark">
             <tr >

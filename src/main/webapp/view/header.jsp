@@ -21,7 +21,7 @@
 <nav>
 	<div class="logo">
 		<a href="/"> <img class="logo"
-			src="${contextPath}/resources/img/imenu.png" width="300" height="100">
+			src="${contextPath}/resources/img/imenu.png" width="100%" height="auto">
 		</a>
 	</div>
 
