@@ -11,22 +11,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
-<style>
 
-
-.form-control{
- color:white;
-
-}
-</style>
-<div class="row addUser">
-    <div class="col-md-9 order-md-2">
+<div class="center">
+    <div style="justify-content:center;" class="col-md-12 order-md-2">
         <form action="${action}" method="post">
             <input type="hidden" name="id" value="${object.id}"/>
             <div class="mb-3">
                 <label for="name">Name</label>
                 <c:if test="${readonly}">
-                    <input style="color:color" id="name" type="text" name="name" value="${object.name}"
+                    <input id="name" type="text" name="name" value="${object.name}"
                             class="form-control" readonly>
                 </c:if>
                 <c:if test="${!readonly}">
@@ -72,3 +65,14 @@
         </form>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
