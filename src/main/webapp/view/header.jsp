@@ -20,7 +20,7 @@
 
 <nav>
 	<div class="logo">
-		<a href="/"> <img class="logo"
+		<a href="/index"> <img class="logo"
 			src="${contextPath}/resources/img/imenu.png" width="100%" height="auto">
 		</a>
 	</div>

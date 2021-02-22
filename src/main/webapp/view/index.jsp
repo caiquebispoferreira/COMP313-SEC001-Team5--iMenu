@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<head>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap"
@@ -11,6 +12,7 @@
 <link rel="icon" href="${contextPath}/resources/img/faviconmenu.png"
 	type="image/png" sizes="16x16 32x32">
 <link rel="stylesheet" href="${contextPath}/resources/css/index.css" />
+</head>
 
 <div align="center">
 	<marquee behavior="alternate" bgcolor="#ff084a" direction="left"
@@ -21,9 +23,10 @@
 			open 24/7!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enjoy your meal!</span>
 	</marquee>
 </div>
-
+<br>
+<br>
 <h1>Categories</h1>
-
+<br>
 <div class="content">
 	<div class="row">
 		<div class="col-sm-4">
@@ -73,21 +76,21 @@
 			<div class="slideshow-container1">
 
 				<div class="mySlides1 fade">
-					<a href="/listProductByCategory?category=APPETIZER"> <img
+					<a href="/listProductByCategory?category=MAIN_COURSE"> <img
 						src="${contextPath}/resources/img/MainCourse.jpg" width="315"
 						height="315" />
 					</a>
 				</div>
 
 				<div class="mySlides1 fade">
-					<a href="/listProductByCategory?category=APPETIZER"> <img
+					<a href="/listProductByCategory?category=MAIN_COURSE"> <img
 						src="${contextPath}/resources/img/MainCourse1.JPG" width="315"
 						height="315" />
 					</a>
 				</div>
 
 				<div class="mySlides1 fade">
-					<a href="/listProductByCategory?category=APPETIZER"> <img
+					<a href="/listProductByCategory?category=MAIN_COURSE"> <img
 						src="${contextPath}/resources/img/MainCourse2.JPG" width="315"
 						height="315" />
 					</a>
@@ -114,21 +117,21 @@
 			<div class="slideshow-container2">
 
 				<div class="mySlides2 fade">
-					<a href="/listProductByCategory?category=APPETIZER"> <img
+					<a href="/listProductByCategory?category=BEVERAGE"> <img
 						src="${contextPath}/resources/img/beverage.jpg" width="315"
 						height="315" />
 					</a>
 				</div>
 
 				<div class="mySlides2 fade">
-					<a href="/listProductByCategory?category=APPETIZER"> <img
+					<a href="/listProductByCategory?category=BEVERAGE"> <img
 						src="${contextPath}/resources/img/beverage1.jpg" width="315"
 						height="315" />
 					</a>
 				</div>
 
 				<div class="mySlides2 fade">
-					<a href="/listProductByCategory?category=APPETIZER"> <img
+					<a href="/listProductByCategory?category=BEVERAGE"> <img
 						src="${contextPath}/resources/img/beverage2.jpg" width="315"
 						height="315" />
 					</a>

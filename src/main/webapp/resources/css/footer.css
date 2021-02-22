@@ -1,21 +1,14 @@
-.footer-dark111 {
-  padding:50px 0;
-  color:#f0f9ff;
-  background-color:#282d32;
-}
 
 .footer-dark {
-  padding: 50px 0;
     color: #f0f9ff;
     background-color:#282d32;
     bottom: 0;    
     text-align: center !important;
-    width: 100% !important;    
-    position: absolute;
+    width: 100% !important; 
 }
 
 .footer-dark h3 {
-  margin-top:0;
+  margin-top:20px;
   margin-bottom:12px;
   font-weight:bold;
   font-size:16px;
