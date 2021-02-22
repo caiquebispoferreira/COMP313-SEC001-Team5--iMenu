@@ -4,8 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<div class="row">
-    <div class="col-md-9 order-md-2">
+<div class="center">
+    <div class="col-md-12 order-md-2">
         <form action="${action}" method="post">
             <div class="mb-3">
                     <label for="id">Id</label>
@@ -76,7 +76,7 @@
             </table>
 
                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                <button class="btn btn-light addUserBtn" type="submit">Submit</button>
         </form>
     </div>
 </div>

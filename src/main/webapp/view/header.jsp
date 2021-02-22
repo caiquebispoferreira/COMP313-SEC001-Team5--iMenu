@@ -63,7 +63,7 @@
 		<div class="line3"></div>
 	</div>
 
-	<a href="/index"> <i class="fas fa-arrows-alt-v"></i>Table</a> <input 
+	<a class="tablenumber"> <i class="fas fa-arrows-alt-v"></i>Table</a> <input 
 		type="number" id="currentTableNumber" readonly />
 </nav>
 

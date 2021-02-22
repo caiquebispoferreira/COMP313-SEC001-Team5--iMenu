@@ -5,7 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 
-<!-- <a class="btn btn-light" href="/">Add more products</a>-->
+<!-- <a class="btn btn-light" href="/index">Add more products</a>-->
 <div class="center">
 	<c:if test="${object.id > 0 && object.status == 'OPEN' }">
 		<a style="float: center;" class="btn btn-light"
@@ -105,7 +105,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<a class="btn btn-light" href="/">Add more products</a>
+		<a class="btn btn-light" href="/index">Add more products</a>
 		<c:if test="${object.id > 0 && object.status == 'OPEN' }">
 			<a class="btn btn-light"
 				href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}">Confirm</a>
