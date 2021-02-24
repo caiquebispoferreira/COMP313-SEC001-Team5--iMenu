@@ -18,6 +18,22 @@
 		<br>For more details refer to <strong>iMenu</strong> Technical
 		Document.
 	</p>
+
+	<div class="row sparkboxes mt-4 mb-4">
+		<div class="col-md-4">
+			<div class="box box1">
+				<div id="sparkline1"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
+			<div id="topProfitableProducts"></div>
+		</div>
+		<div class="col-6">
+			<div id="topNonProfitableProducts"></div>
+		</div>
+	</div>
 </div>
 
 
