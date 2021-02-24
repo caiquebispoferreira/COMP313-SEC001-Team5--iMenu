@@ -44,7 +44,21 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
 <script>
+	Apex.grid = {
+		padding: {
+			right: 0,
+			left: 0
+		}
+	}
+
+	Apex.dataLabels = {
+		enabled: false
+	}
+
+	var colorPalette = ['#00D8B6','#008FFB',  '#FEB019', '#FF4560', '#775DD0']
+
 	function getCurrentTableNumber() {
 		var tmp = localStorage.getItem("tableNumber")
 		var tableNumber = 0;
@@ -62,9 +76,76 @@
 
 	}
 
+	var randomizeArray = function (arg) {
+		var array = arg.slice();
+		var currentIndex = array.length, temporaryValue, randomIndex;
+
+		while (0 !== currentIndex) {
+
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+	}
+
 	window.onload = function() {
 		console.log("here")
 		document.getElementById("currentTableNumber").value = getCurrentTableNumber();
+
+		plotChart('#topProfitableProducts','Top 5 Profitable Products',
+				['Rodolatina', 'WestUnion', 'WorkComp', 'Telefonica', 'Oi'],
+				[21, 23, 19, 14, 6]
+		)
+		plotChart('#topNonProfitableProducts','Top 5 Non-Profitable Products',
+				['Rodolatina', 'WestUnion', 'WorkComp', 'Telefonica', 'Oi'],
+				[21, 23, 19, 14, 6]
+		)
+
+	}
+	
+	function plotChart(id,chartName, productsLabel,productsSeries){
+		var topProfitableProducts = {
+			chart: {
+				type: 'donut',
+				width: '100%'
+			},
+			dataLabels: {
+				enabled: false,
+			},
+			plotOptions: {
+				pie: {
+					donut: {
+						size: '75%',
+					},
+					offsetY: 20,
+				},
+				stroke: {
+					colors: undefined
+				}
+			},
+			colors: colorPalette,
+			title: {
+				text: chartName,
+				style: {
+					fontSize: '18px'
+				}
+			},
+			series: productsSeries,
+			labels: productsLabel,
+			legend: {
+				position: 'left',
+				offsetY: 80
+			}
+		}
+
+		var donut = new ApexCharts(document.querySelector(id), topProfitableProducts)
+		donut.render();
+
 	}
 </script>
 </html>
