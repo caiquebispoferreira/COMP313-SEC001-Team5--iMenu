@@ -29,4 +29,11 @@ public interface IOrderRepository
             "FROM Order o " +
             "WHERE o.tableNumber = :tableNumber" )
     Order findByTableNumber(int tableNumber);
+    
+    @Query( nativeQuery = true,value="select day(o.date) as day , sum(total_price) as total "
+    		+ "from orders o "
+    		+ "where Month(getdate()) = Month(o.date) "
+    		+ "group by day(o.date) "
+    		+ "order by 1")
+    List<Object[]> getMonthProfitByDay(); 
 }

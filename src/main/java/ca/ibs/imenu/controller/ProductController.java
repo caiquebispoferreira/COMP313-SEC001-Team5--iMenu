@@ -8,6 +8,7 @@ import ca.ibs.imenu.service.ProductService;
 import ca.ibs.imenu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -161,14 +162,5 @@ public class ProductController {
     }
     
     
-    @RequestMapping (value = "/findTopSoldProducts",method = RequestMethod.GET)
-    public List<SoldProduct> findTopSoldProducts(){
-    	return productService.findTopSoldProducts();
-    }
-    
-    @RequestMapping (value = "/findLessSoldProducts",method = RequestMethod.GET)
-    public List<SoldProduct> findLessSoldProducts(){
-    	return productService.findLessSoldProducts();
-    }
 
 }

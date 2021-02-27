@@ -17,7 +17,7 @@ public interface IProductRepository
 
     List<Product> findByCategory(Category category);
     @Query( nativeQuery = true,  value = "SELECT TOP 5 P.NAME, "
-    		+ "Sum(QUANTITY) AS total) "
+    		+ "Sum(QUANTITY) AS total "
     		+ "FROM   orderitems O "
     		+ "INNER JOIN products P "
     		+ "ON O.PRODUCT_ID = P.ID GROUP  BY P.NAME")

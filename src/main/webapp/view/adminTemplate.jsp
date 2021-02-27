@@ -101,26 +101,41 @@
 		var xmlHttp = new XMLHttpRequest();
 	    xmlHttp.onreadystatechange = function() { 
 	        if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+	        	var result = JSON.parse(xmlHttp.response)
 	        	var names = []
         		var quantities = []
-	        	for (var i = 0; i < list.lenght; i++){
-        			names.push(list[i].name)
-        			quantities.push(list[i].quantity)
-        		}
+	        	
 	        	
 	        	if (url=="findTopSoldProducts"){
+	        		for (var i = 0; i < result.length; i++){
+	        			names.push(result[i].name)
+	        			quantities.push(result[i].quantity)
+	        		}
+	        		
 	        		plotChart('#topProfitableProducts','Top 5 Profitable Products',
 	        				JSON.parse(JSON.stringify(names)),
 	        				JSON.parse(JSON.stringify(quantities))
 	        		)
 	        		
 	        		
-	        	} else {
-	        			
+	        	} else if (url =="findLessSoldProducts") {
+	        		for (var i = 0; i < result.length; i++){
+	        			names.push(result[i].name)
+	        			quantities.push(result[i].quantity)
+	        		}
 	        		plotChart('#topNonProfitableProducts','Top 5 Less Profitable Products',
 	        				JSON.parse(JSON.stringify(names)),
 	        				JSON.parse(JSON.stringify(quantities))
 	        		)
+	        	} else {	
+	        		for (var i = 0; i < result.length; i++){
+	        			var date = new Date();
+	        			var day = new Date(date. getFullYear(), date. getMonth(), result[i].day);
+	        			
+	        			names.push(day.toLocaleDateString())
+	        			quantities.push(result[i].total)
+	        		}
+	        		loadMonthlyProfit(names, quantities)
 	        		
 	        		
 	        	}
@@ -142,6 +157,7 @@
 		
 		callGetRouter("findTopSoldProducts")
 		callGetRouter("findLessSoldProducts")
+		callGetRouter("getMonthProfitByDay")
 		
 
 	}
@@ -185,5 +201,92 @@
 		donut.render();
 
 	}
+	
+	
+	function loadMonthlyProfit(labels, values){
+		var optionsArea = {
+				  chart: {
+				    height: 421,
+				    type: 'area',
+				    background: '#fff',
+				    stacked: true,
+				    offsetY: 39,
+				    zoom: {
+				      enabled: false
+				    }
+				  },
+				  plotOptions: {
+				    line: {
+				      dataLabels: {
+				        enabled: false
+				      }
+				    }
+				  },
+				  stroke: {
+				    curve: 'straight'
+				  },
+				  colors: ["#3F51B5", '#2196F3'],
+				  series: [{
+				      name: "Daily profit",
+				      data: values
+				    }
+				  ],
+				  fill: {
+				    type: 'gradient',
+				    gradient: {
+				      inverseColors: false,
+				      shade: 'light',
+				      type: "vertical",
+				      opacityFrom: 0.9,
+				      opacityTo: 0.6,
+				      stops: [0, 100, 100, 100]
+				    }
+				  },
+				  title: {
+				    text: 'Current Month Profit by Day',
+				    align: 'center',
+				    fontSize: '14px',
+				    offsetY: -5,
+				    offsetX: 20
+				  },
+				  subtitle: {
+				    text: 'Profit X Day',
+				    align: 'center',
+				    offsetY: 30,
+				    offsetX: 20
+				  },
+				  markers: {
+				    size: 0,
+				    style: 'hollow',
+				    strokeWidth: 8,
+				    strokeColor: "#fff",
+				    strokeOpacity: 0.25,
+				  },
+				  grid: {
+				    show: false,
+				    padding: {
+				      left: 0,
+				      right: 0
+				    }
+				  },
+				  labels: labels,
+				  xaxis: {
+				    type: 'datetime',
+				    tooltip: {
+				      enabled: false
+				    }
+				  },
+				  legend: {
+					  show: true,
+				    offsetY: -50,
+				    position: 'top',
+				    horizontalAlign: 'right'
+				  }
+				}
+
+				var chartArea = new ApexCharts(document.querySelector('#monthLyProfit'), optionsArea);
+				chartArea.render();
+	}
+	
 </script>
 </html>
