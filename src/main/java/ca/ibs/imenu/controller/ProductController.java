@@ -1,6 +1,7 @@
 package ca.ibs.imenu.controller;
 
 import ca.ibs.imenu.dto.ProductDTO;
+import ca.ibs.imenu.dto.SoldProduct;
 import ca.ibs.imenu.entity.Category;
 import ca.ibs.imenu.entity.Product;
 import ca.ibs.imenu.service.ProductService;
@@ -157,6 +158,17 @@ public class ProductController {
         p.setHasImage(true);
         productService.save(p);
         return "redirect:listProduct";
+    }
+    
+    
+    @RequestMapping (value = "/findTopSoldProducts",method = RequestMethod.GET)
+    public List<SoldProduct> findTopSoldProducts(){
+    	return productService.findTopSoldProducts();
+    }
+    
+    @RequestMapping (value = "/findLessSoldProducts",method = RequestMethod.GET)
+    public List<SoldProduct> findLessSoldProducts(){
+    	return productService.findLessSoldProducts();
     }
 
 }

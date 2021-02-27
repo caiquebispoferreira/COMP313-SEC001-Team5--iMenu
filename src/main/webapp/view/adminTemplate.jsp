@@ -18,6 +18,7 @@
 <meta name="theme-color" content="#563d7c">
 <link rel="icon" href="${contextPath}/resources/img/faviconmenu.png"
 	type="image/png" sizes="16x16 32x32">
+	
 </head>
 <body class="bg-light">
 	<div class="header"><jsp:include page="header.jsp">
@@ -37,9 +38,10 @@
 		</jsp:include>
 	</div>
 </body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
@@ -92,19 +94,55 @@
 
 		return array;
 	}
+	
+	function callGetRouter(url){
+		var list = []
+	
+		var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.onreadystatechange = function() { 
+	        if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+	        	var names = []
+        		var quantities = []
+	        	for (var i = 0; i < list.lenght; i++){
+        			names.push(list[i].name)
+        			quantities.push(list[i].quantity)
+        		}
+	        	
+	        	if (url=="findTopSoldProducts"){
+	        		plotChart('#topProfitableProducts','Top 5 Profitable Products',
+	        				JSON.parse(JSON.stringify(names)),
+	        				JSON.parse(JSON.stringify(quantities))
+	        		)
+	        		
+	        		
+	        	} else {
+	        			
+	        		plotChart('#topNonProfitableProducts','Top 5 Less Profitable Products',
+	        				JSON.parse(JSON.stringify(names)),
+	        				JSON.parse(JSON.stringify(quantities))
+	        		)
+	        		
+	        		
+	        	}
+	        	
+	        	
+	        }
+	        	
+	            
+	    }
+	    xmlHttp.open("GET", url, true); // true for asynchronous 
+	    xmlHttp.send(null);
+		
+		return list;
+	}
 
 	window.onload = function() {
 		console.log("here")
 		document.getElementById("currentTableNumber").value = getCurrentTableNumber();
-
-		plotChart('#topProfitableProducts','Top 5 Profitable Products',
-				['Rodolatina', 'WestUnion', 'WorkComp', 'Telefonica', 'Oi'],
-				[21, 23, 19, 14, 6]
-		)
-		plotChart('#topNonProfitableProducts','Top 5 Non-Profitable Products',
-				['Rodolatina', 'WestUnion', 'WorkComp', 'Telefonica', 'Oi'],
-				[21, 23, 19, 14, 6]
-		)
+		
+		callGetRouter("findTopSoldProducts")
+		callGetRouter("findLessSoldProducts")
+		
 
 	}
 	
