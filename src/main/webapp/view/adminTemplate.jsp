@@ -18,6 +18,7 @@
 <meta name="theme-color" content="#563d7c">
 <link rel="icon" href="${contextPath}/resources/img/faviconmenu.png"
 	type="image/png" sizes="16x16 32x32">
+	
 </head>
 <body class="bg-light">
 	<div class="header"><jsp:include page="header.jsp">
@@ -37,9 +38,10 @@
 		</jsp:include>
 	</div>
 </body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
@@ -92,19 +94,71 @@
 
 		return array;
 	}
+	
+	function callGetRouter(url){
+		var list = []
+	
+		var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.onreadystatechange = function() { 
+	        if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+	        	var result = JSON.parse(xmlHttp.response)
+	        	var names = []
+        		var quantities = []
+	        	
+	        	
+	        	if (url=="findTopSoldProducts"){
+	        		for (var i = 0; i < result.length; i++){
+	        			names.push(result[i].name)
+	        			quantities.push(result[i].quantity)
+	        		}
+	        		
+	        		plotChart('#topProfitableProducts','Top 5 Profitable Products',
+	        				JSON.parse(JSON.stringify(names)),
+	        				JSON.parse(JSON.stringify(quantities))
+	        		)
+	        		
+	        		
+	        	} else if (url =="findLessSoldProducts") {
+	        		for (var i = 0; i < result.length; i++){
+	        			names.push(result[i].name)
+	        			quantities.push(result[i].quantity)
+	        		}
+	        		plotChart('#topNonProfitableProducts','Top 5 Less Profitable Products',
+	        				JSON.parse(JSON.stringify(names)),
+	        				JSON.parse(JSON.stringify(quantities))
+	        		)
+	        	} else {	
+	        		for (var i = 0; i < result.length; i++){
+	        			var date = new Date();
+	        			var day = new Date(date. getFullYear(), date. getMonth(), result[i].day);
+	        			
+	        			names.push(day.toLocaleDateString())
+	        			quantities.push(result[i].total)
+	        		}
+	        		loadMonthlyProfit(names, quantities)
+	        		
+	        		
+	        	}
+	        	
+	        	
+	        }
+	        	
+	            
+	    }
+	    xmlHttp.open("GET", url, true); // true for asynchronous 
+	    xmlHttp.send(null);
+		
+		return list;
+	}
 
 	window.onload = function() {
 		console.log("here")
 		document.getElementById("currentTableNumber").value = getCurrentTableNumber();
-
-		plotChart('#topProfitableProducts','Top 5 Profitable Products',
-				['Rodolatina', 'WestUnion', 'WorkComp', 'Telefonica', 'Oi'],
-				[21, 23, 19, 14, 6]
-		)
-		plotChart('#topNonProfitableProducts','Top 5 Non-Profitable Products',
-				['Rodolatina', 'WestUnion', 'WorkComp', 'Telefonica', 'Oi'],
-				[21, 23, 19, 14, 6]
-		)
+		
+		callGetRouter("findTopSoldProducts")
+		callGetRouter("findLessSoldProducts")
+		callGetRouter("getMonthProfitByDay")
+		
 
 	}
 	
@@ -147,5 +201,92 @@
 		donut.render();
 
 	}
+	
+	
+	function loadMonthlyProfit(labels, values){
+		var optionsArea = {
+				  chart: {
+				    height: 421,
+				    type: 'area',
+				    background: '#fff',
+				    stacked: true,
+				    offsetY: 39,
+				    zoom: {
+				      enabled: false
+				    }
+				  },
+				  plotOptions: {
+				    line: {
+				      dataLabels: {
+				        enabled: false
+				      }
+				    }
+				  },
+				  stroke: {
+				    curve: 'straight'
+				  },
+				  colors: ["#3F51B5", '#2196F3'],
+				  series: [{
+				      name: "Daily profit",
+				      data: values
+				    }
+				  ],
+				  fill: {
+				    type: 'gradient',
+				    gradient: {
+				      inverseColors: false,
+				      shade: 'light',
+				      type: "vertical",
+				      opacityFrom: 0.9,
+				      opacityTo: 0.6,
+				      stops: [0, 100, 100, 100]
+				    }
+				  },
+				  title: {
+				    text: 'Current Month Profit by Day',
+				    align: 'center',
+				    fontSize: '14px',
+				    offsetY: -5,
+				    offsetX: 20
+				  },
+				  subtitle: {
+				    text: 'Profit X Day',
+				    align: 'center',
+				    offsetY: 30,
+				    offsetX: 20
+				  },
+				  markers: {
+				    size: 0,
+				    style: 'hollow',
+				    strokeWidth: 8,
+				    strokeColor: "#fff",
+				    strokeOpacity: 0.25,
+				  },
+				  grid: {
+				    show: false,
+				    padding: {
+				      left: 0,
+				      right: 0
+				    }
+				  },
+				  labels: labels,
+				  xaxis: {
+				    type: 'datetime',
+				    tooltip: {
+				      enabled: false
+				    }
+				  },
+				  legend: {
+					  show: true,
+				    offsetY: -50,
+				    position: 'top',
+				    horizontalAlign: 'right'
+				  }
+				}
+
+				var chartArea = new ApexCharts(document.querySelector('#monthLyProfit'), optionsArea);
+				chartArea.render();
+	}
+	
 </script>
 </html>

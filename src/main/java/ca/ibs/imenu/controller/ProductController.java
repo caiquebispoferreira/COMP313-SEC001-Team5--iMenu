@@ -1,12 +1,14 @@
 package ca.ibs.imenu.controller;
 
 import ca.ibs.imenu.dto.ProductDTO;
+import ca.ibs.imenu.dto.SoldProduct;
 import ca.ibs.imenu.entity.Category;
 import ca.ibs.imenu.entity.Product;
 import ca.ibs.imenu.service.ProductService;
 import ca.ibs.imenu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -158,5 +160,7 @@ public class ProductController {
         productService.save(p);
         return "redirect:listProduct";
     }
+    
+    
 
 }

@@ -1,6 +1,8 @@
 package ca.ibs.imenu.service;
 
 import ca.ibs.imenu.dto.OrderDTO;
+import ca.ibs.imenu.dto.ProfitByDay;
+import ca.ibs.imenu.dto.SoldProduct;
 import ca.ibs.imenu.entity.Order;
 import ca.ibs.imenu.entity.OrderItem;
 import ca.ibs.imenu.entity.Status;
@@ -8,6 +10,7 @@ import ca.ibs.imenu.repository.IOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -63,5 +66,18 @@ public class OrderService {
         }
         return null;
     }
+    
+public List<ProfitByDay> getMonthProfitByDay() {
+  		
+  		List<Object[]> list = repository.getMonthProfitByDay();
+    	List<ProfitByDay> p = new ArrayList();
+    	for (int i = 0;i <list.size() ;i++) {
+    		Object[] daily = list.get(i);
+    		int day = (int) daily[0];
+    		BigDecimal total= (BigDecimal) daily[1];
+    		p.add(new ProfitByDay(day,total));
+    	}
+    	return p;
+  	}    
 
 }
