@@ -23,8 +23,8 @@ public interface IProductRepository
     		+ "ON O.PRODUCT_ID = P.ID GROUP  BY P.NAME")
     List<Object[]> findTopSoldProducts();
     
-    @Query(nativeQuery = true, value = "select name,total "
-    		+ "from ( SELECT TOP 5 P.NAME, Sum(QUANTITY) AS total "
+    @Query(nativeQuery = true, value = "select TOP 5 name,total "
+    		+ "from ( SELECT P.NAME, Sum(QUANTITY) AS total "
     		+ "FROM   orderitems O "
     		+ "INNER JOIN products P ON O.PRODUCT_ID = P.ID GROUP  BY P.NAME ) as temp "
     		+ "order by total desc"    		)
