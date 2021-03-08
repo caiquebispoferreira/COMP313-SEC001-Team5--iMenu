@@ -39,3 +39,6 @@
     </div>
 </div>
 
+<div>
+	<a class="btn btn-light" href="/index" style=margin-left:80%;padding:0px>Back to Home Page?</a>
+</div>

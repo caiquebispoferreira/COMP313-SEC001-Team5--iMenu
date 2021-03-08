@@ -29,6 +29,10 @@
 			</div>
 		</div>
 	</c:forEach>
+
+</div>
+<div>
+	<a class="btn btn-light" href="/index" style=margin-top:50px>Back to Home Page?</a>
 </div>
 
 
