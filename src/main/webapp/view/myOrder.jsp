@@ -106,10 +106,13 @@
 			</tbody>
 		</table>
 		<a class="btn btn-light" href="/index">Add more products</a>
+			<a class="btn btn-light" href="/index" style=margin-left:220px>Back to Home Page ?</a>
 		<c:if test="${object.id > 0 && object.status == 'OPEN' }">
 			<a class="btn btn-light"
 				href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}">Confirm</a>
 		</c:if>
 	</div>
+
 </div>
+
 
