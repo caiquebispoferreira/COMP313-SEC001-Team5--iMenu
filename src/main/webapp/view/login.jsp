@@ -38,7 +38,14 @@
 				<a href="#" class="social"><i class="icon ion-social-googleplus"></i></a>
 				<a href="#" class="social"><i class="icon ion-social-linkedin"></i></a>
 			</div>
-			<span>or use your account</span> <input type="text" id="username"
+			<span>or use your account</span> 
+			<c:if test="${error !=null}">
+                <div style="color:red">
+                    User/Password is invalid
+                </div>
+            </c:if>
+			
+			<input type="text" id="username"
 				name="username" class="form-control" placeholder="Username" required
 				autofocus /> <input type="password" id="password" name="password"
 				class="form-control" placeholder="Password" required /> <a href="#">Forgot
