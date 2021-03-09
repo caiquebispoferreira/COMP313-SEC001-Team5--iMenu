@@ -284,7 +284,7 @@
 				  }
 				}
 
-				var chartArea = new ApexCharts(document.querySelector('#monthLyProfit'), optionsArea);
+				var chartArea = new ApexCharts(document.querySelector('#monthlyProfit'), optionsArea);
 				chartArea.render();
 	}
 	

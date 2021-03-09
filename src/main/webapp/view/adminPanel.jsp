@@ -21,17 +21,17 @@
 
 	<div class="row">
 		<div class="col-12">
-			<div id="monthLyProfit"></div>
+			<div id="monthlyProfit"></div>
 		</div>
 	</div>
 	<br />
 	<br />
 	<br />
 	<div class="row">
-		<div class="col-6">
+		<div class="col-12 col-sm-12 col-md-6">
 			<div id="topProfitableProducts"></div>
 		</div>
-		<div class="col-6">
+		<div class="col-12 col-sm-12 col-md-6">
 			<div id="topNonProfitableProducts"></div>
 		</div>
 	</div>
