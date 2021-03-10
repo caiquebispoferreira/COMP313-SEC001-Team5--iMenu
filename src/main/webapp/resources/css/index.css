@@ -18,10 +18,13 @@ h6 {
 
 .article1 {
 	width: 315px;
-	height: 315px;
+	height: 200px;
 	font-family: 'Poppins', sans-serif;
 	display: flex;
 	font-size: 13px;
+	text-align:center;
+    margin-left: auto;
+    margin-right: auto
 }
 
 * {

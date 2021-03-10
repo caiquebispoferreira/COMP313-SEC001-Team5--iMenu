@@ -35,21 +35,21 @@
 
 			<div class="slideshow-container">
 
-				<div class="mySlides fade">
+				<div class="mySlides fade" style="text-align:center;">
 					<a href="/listProductByCategory?category=APPETIZER"> <img
 						src="${contextPath}/resources/img/appetizer.jpg" width="315"
 						height="315" />
 					</a>
 				</div>
 
-				<div class="mySlides fade">
+				<div class="mySlides fade" style="text-align:center;">
 					<a href="/listProductByCategory?category=APPETIZER"> <img
 						src="${contextPath}/resources/img/appetizer1.jpeg" width="315"
 						height="315" />
 					</a>
 				</div>
 
-				<div class="mySlides fade">
+				<div class="mySlides fade" style="text-align:center;">
 					<a href="/listProductByCategory?category=APPETIZER"> <img
 						src="${contextPath}/resources/img/appetizer2.jpeg" width="315"
 						height="315" />
@@ -63,7 +63,7 @@
 
 			</div>
 			<br>
-			<article class="article1">
+			<article class="article1" style="text-align:center;">
 				<p>An appetizer is a small dish of food meant to be eaten before
 					a meal to stimulate your guests’ taste buds; It may be served hot
 					or cold with a variety of colors and textures; it is often shared
@@ -76,21 +76,21 @@
 			<h6>Main Course</h6>
 			<div class="slideshow-container1">
 
-				<div class="mySlides1 fade">
+				<div class="mySlides1 fade" style="text-align:center;">
 					<a href="/listProductByCategory?category=MAIN_COURSE"> <img
 						src="${contextPath}/resources/img/MainCourse.jpg" width="315"
 						height="315" />
 					</a>
 				</div>
 
-				<div class="mySlides1 fade">
+				<div class="mySlides1 fade" style="text-align:center;">
 					<a href="/listProductByCategory?category=MAIN_COURSE"> <img
 						src="${contextPath}/resources/img/MainCourse1.JPG" width="315"
 						height="315" />
 					</a>
 				</div>
 
-				<div class="mySlides1 fade">
+				<div class="mySlides1 fade" style="text-align:center;">
 					<a href="/listProductByCategory?category=MAIN_COURSE"> <img
 						src="${contextPath}/resources/img/MainCourse2.JPG" width="315"
 						height="315" />
@@ -117,21 +117,21 @@
 			<h6>Beverages</h6>
 			<div class="slideshow-container2">
 
-				<div class="mySlides2 fade">
+				<div class="mySlides2 fade" style="text-align:center;">
 					<a href="/listProductByCategory?category=BEVERAGE"> <img
 						src="${contextPath}/resources/img/beverage.jpg" width="315"
 						height="315" />
 					</a>
 				</div>
 
-				<div class="mySlides2 fade">
+				<div class="mySlides2 fade" style="text-align:center;">
 					<a href="/listProductByCategory?category=BEVERAGE"> <img
 						src="${contextPath}/resources/img/beverage1.jpg" width="315"
 						height="315" />
 					</a>
 				</div>
 
-				<div class="mySlides2 fade">
+				<div class="mySlides2 fade" style="text-align:center;">
 					<a href="/listProductByCategory?category=BEVERAGE"> <img
 						src="${contextPath}/resources/img/beverage2.jpg" width="315"
 						height="315" />
@@ -145,7 +145,7 @@
 
 			</div>
 			<br>
-			<article class="article1">
+			<article class="article1" style="text-align:center;">
 				<p>A drink (or beverage) is a liquid intended for human
 					consumption. In addition to their basic function of satisfying
 					thirst, drinks play important roles in human culture. Common types
