@@ -2,8 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet" href="${contextPath}/resources/css/users.css" />
+
 <link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap"
 	rel="stylesheet">
@@ -11,50 +12,49 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap"
 	rel="stylesheet">
 
-<div class="formbox">
-	<h2>Products</h2>
+
+<body>
 	<div class="row">
 		<div class="col-12">
 			<a class="btn btn-light" href="/addProduct">Add a new product</a>
 		</div>
 	</div>
-	<div class="col-13" style="overflow-x:auto;">
-	<table class="container">
-		<thead>
-			<tr>
-				<th><h1>Id</h1></th>
-				<th><h1>Name</h1></th>
-				<th><h1>Description</h1></th>
-				<th><h1>Unit Price</h1></th>
-				<th><h1>Enabled</h1></th>
-				<th><h1>Category</h1></th>
-				<th><h1>Has image?</h1></th>
-				<th><h1>Action</h1></th>
-				<th><h1>Action</h1></th>
-				<th><h1>Action</h1></th>
-
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${object}" var="item">
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead class="thead-dark">
 				<tr>
-					<td>${item.id}</td>
-					<td>${item.name}</td>
-					<td>${item.description}</td>
-					<td>${item.unitPrice}</td>
-					<td>${item.enabled}</td>
-					<td>${item.category}</td>
-					<td>${item.hasImage}</td>
-					<td><a href="/uploadImage?id=${item.id}"><i
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Description</th>
+					<th scope="col">Unit Price</th>
+					<th scope="col">Enabled</th>
+					<th scope="col">Category</th>
+					<th scope="col">Has image?</th>
+					<th scope="col">Action</th>
+					<th scope="col">Action</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<c:forEach items="${object}" var="item">
+
+				<tr>
+					<td class="table-light" scope="row">${item.id}</td>
+					<td class="table-light">${item.name}</td>
+					<th class="table-light">${item.role}</th>
+					<td class="table-light">${item.description}</td>
+					<td class="table-light">${item.unitPrice}</td>
+					<td class="table-light">${item.enabled}</td>
+					<td class="table-light">${item.category}</td>
+					<td class="table-light">${item.hasImage}</td>
+					<td class="table-light"><a href="/uploadImage?id=${item.id}"><i
 							class="fas fa-upload"></i> Upload</a></td>
-					<td><a href="/editProduct?id=${item.id}"><i
+					<td class="table-light"><a href="/editProduct?id=${item.id}"><i
 							class="fas fa-edit"></i> Edit</a></td>
-					<td><a href="/deleteProduct?id=${item.id}"> <i
-							class="fas fa-trash"></i> Delete
+					<td class="table-light"><a href="/deleteProduct?id=${item.id}">
+							<i class="fas fa-trash"></i> Delete
 					</a></td>
 				</tr>
 			</c:forEach>
-		</tbody>
-	</table>
+		</table>
 	</div>
-</div>
+</body>

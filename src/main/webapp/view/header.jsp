@@ -1,9 +1,14 @@
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
-<link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
+<meta charset="utf-8">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
 	rel="stylesheet">
@@ -13,82 +18,55 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
 	rel="stylesheet" type="text/css" />
 
+
 <form id="logoutForm" method="post" action="/logout">
 	<input type="hidden" name="${_csrf.parameterName}"
 		value="${_csrf.token}">
 </form>
 
-<nav>
-	<div class="logo">
-		<a href="/index"> <img class="logo"
-			src="${contextPath}/resources/img/imenu.png" width="100%" height="auto">
-		</a>
-	</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid">
+	<a class="navbar-brand" href="/index"> <img id="logo"
+		src="${contextPath}/resources/img/imenu.png" height="80" width="230">
+	</a>
 
-	<ul class="nav-links">
-		<c:if test="${currentUser != null}">
-			<c:if test="${currentUser.role == 'ADMINISTRATOR'}">
-				<li><a href="/listUser"><i class="fas fa-users"></i> Users</a>
-				</li>
-			</c:if>
-			<li><a href="/listProduct"><i class="fas fa-chart-pie"></i>
-					Products</a></li>
-			<li><a href="/listOrder"><i class="far fa-edit"></i> Orders</a>
-			</li>
-			<li><a href="/listOrderByTableNumber"> <i
-					class="far fa-copy"></i> Orders By Table
-			</a></li>
-			<li><a href="/changeTableNumber"> <i
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+			<c:if test="${currentUser != null}">
+				<c:if test="${currentUser.role == 'ADMINISTRATOR'}">
+					<a class="nav-link active" href="/listUser"><i
+						class="fas fa-users"></i> Users <span class="sr-only">(current)</span></a>
+				</c:if>
+				<a class="nav-link" href="/listProduct"><i
+					class="fas fa-chart-pie"></i> Products</a>
+				<a class="nav-link" href="/listOrder"><i
+					class="far fa-edit"></i> Orders</a>
+				<a class="nav-link" href="/listOrderByTableNumber">
+					<i class="far fa-copy"></i> Orders By Table
+				</a>
+				<a class="nav-link" href="/changeTableNumber"> <i
 					class="fas fa-exchange-alt"></i> Change Table
-			</a></li>
-			<li id="logout"><a
-				onclick="document.forms['logoutForm'].submit()"> <i
+				</a>
+				<a class="nav-link"
+					onclick="document.forms['logoutForm'].submit()"> <i
 					class="fas fa-sign-out-alt"></i> Logout
-			</a></li>
-		</c:if>
-		<c:if test="${currentUser == null}">
-			<li>
-				<button type="button" onclick="myOrder()">My Order</button>
-			</li>
-			<li><a href="/index">Reviews</a></li>
-			<li><a href="/index">Contact</a></li>
-			<li><a href="/login">Login</a></li>
-		</c:if>
+				</a>
+			</c:if>
 
-	</ul>
-
-	<div class="burger">
-		<div class="line1"></div>
-		<div class="line2"></div>
-		<div class="line3"></div>
+			<c:if test="${currentUser == null}">
+				<a class="nav-link active" role="button"
+					onclick="myOrder()">My Order </a>
+				<a class="nav-item nav-link active" href="/login">Login</a>
+			</c:if>
+			<a class="nav-link" class="tablenumber"> <i
+				class="fas fa-arrows-alt-v"></i>Table
+			</a> <input type="number" id="currentTableNumber" readonly />
+		</div>
 	</div>
-
-	<a class="tablenumber"> <i class="fas fa-arrows-alt-v"></i>Table</a> <input 
-		type="number" id="currentTableNumber" readonly />
+</div>
 </nav>
-
-<script>
-const navSlide = () => {
-	const burger = document.querySelector('.burger');
-	const nav = document.querySelector('.nav-links');
-	const navLinks = document.querySelectorAll('.nav-links li');
-	
-	burger.addEventListener('.click',() => {
-		nav.classList.toggle('nav-active');
-		
-		navLinks.forEach((link, index)=>{
-			if(link.style.animation){
-				link.style.animation = ''}
-			else {
-				link.style.animation = `navLinkFade 0.5s ease forwards $(index/7 + 1.5)s`;			
-			}
-		});
-		burger.classList.toggle('toggle');
-	});	
-}
-
-navSlide();
-</script>
-
-
-
