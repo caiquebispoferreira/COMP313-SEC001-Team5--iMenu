@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet" href="${contextPath}/resources/css/users.css" />
+
+<link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap"
 	rel="stylesheet">
@@ -11,38 +12,36 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap"
 	rel="stylesheet">
 
-<div class="formbox">
 
-	<h2>Users</h2>
-	
+<body>
 	<div class="row">
 		<div class="col-12">
 			<a class="btn btn-light" href="/addUser">Add User</a>
 		</div>
 	</div>
-	
-	<table class="container">
-		<thead>
-			<tr>
-				<th><h1>Id</h1></th>
-				<th><h1>Name</h1></th>
-				<th><h1>Role</h1></th>
-				<th><h1>Action</h1></th>
-				<th><h1>Action</h1></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${object}" var="item">
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead class="thead-dark">
 				<tr>
-					<td>${item.id}</td>
-					<td>${item.name}</td>
-					<td>${item.role}</td>
-					<td><a href="/editUser?id=${item.id}"><i
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Role</th>
+					<th scope="col">Action</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<c:forEach items="${object}" var="item">
+
+				<tr>
+					<td class="table-light" scope="row">${item.id}</td>
+					<td class="table-light">${item.name}</td>
+					<th class="table-light">${item.role}</th>
+					<td class="table-light"><a href="/editUser?id=${item.id}"><i
 							class="fas fa-edit"></i> Edit</a></td>
-					<td><a href="/deleteUser?id=${item.id}"><i
+					<td class="table-light"><a href="/deleteUser?id=${item.id}"><i
 							class="fas fa-trash"></i> Delete</a></td>
 				</tr>
 			</c:forEach>
-		</tbody>
-	</table>
-</div>
+		</table>
+	</div>
+</body>

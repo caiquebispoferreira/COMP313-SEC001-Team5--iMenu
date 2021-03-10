@@ -12,6 +12,7 @@
 <link rel="icon" href="${contextPath}/resources/img/faviconmenu.png"
 	type="image/png" sizes="16x16 32x32">
 <link rel="stylesheet" href="${contextPath}/resources/css/index.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
 </head>
 
 <div align="center">

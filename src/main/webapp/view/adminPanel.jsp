@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/customertemplate.css"/>
-
+<link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
 
 <div class="container">
 
