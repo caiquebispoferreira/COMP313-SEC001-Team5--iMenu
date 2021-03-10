@@ -65,7 +65,6 @@ html, body {
 	min-height: 100%;
 	/* Equal to height of footer */
 	/* But also accounting for potential margin-bottom of last child */
-	margin-top: 18vh;
 }
 
 .footer, .push {
