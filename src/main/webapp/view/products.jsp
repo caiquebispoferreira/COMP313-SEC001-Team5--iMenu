@@ -40,7 +40,7 @@
 				<tr>
 					<td class="table-light" scope="row">${item.id}</td>
 					<td class="table-light">${item.name}</td>
-					<th class="table-light">${item.role}</th>
+					
 					<td class="table-light">${item.description}</td>
 					<td class="table-light">${item.unitPrice}</td>
 					<td class="table-light">${item.enabled}</td>
