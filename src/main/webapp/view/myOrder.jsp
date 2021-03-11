@@ -4,12 +4,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
+<style>
+.row1 {
+    flex: 0 0 33.333333%;
+    max-width: 80%;
+    margin-left: 22%;
+}
+.btnnew{
+padding-right: 5%;
+}
+</style>
 
 <!-- <a class="btn btn-light" href="/index">Add more products</a>-->
 <div class="center">
 	<c:if test="${object.id > 0 && object.status == 'OPEN' }">
-		<a style="float: center;" class="btn btn-light"
-			href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}">Confirm</a>
+		<!-- <a style="float: center;" class="btn btn-light"
+			href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}">Confirm</a>-->
 	</c:if>
 	<div class="col-md-12 order-md-2">
 		<div class="mb-3">
@@ -59,7 +69,7 @@
 
 
 		</div>
-
+<div class="table-responsive">
 		<table class="table">
 			<thead>
 				<tr>
@@ -105,14 +115,21 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<a class="btn btn-light" href="/index">Add more products</a>
-			<a class="btn btn-light" href="/index" style=margin-left:220px>Back to Home Page ?</a>
-		<c:if test="${object.id > 0 && object.status == 'OPEN' }">
-			<a class="btn btn-light"
-				href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}">Confirm</a>
-		</c:if>
+		</div>
+		
 	</div>
 
 </div>
+<div class="row1" >
+		<a class="btn btn-light btnnew" href="/index">Add Product</a>
+		
+		<c:if test="${object.id > 0 && object.status == 'OPEN' }">
+			<a class="btn btn-light"
+				href="/changeStatusToConfirmed?tableNumber=${object.tableNumber}&orderId=${object.id}" style=margin-left:20%px>Confirm</a>
+		</c:if>
+		
+			<a class="btn btn-light btnnew" href="/index" style=margin-left:20%px>Back to Mainpage</a>
+		
+		</div>
 
 
