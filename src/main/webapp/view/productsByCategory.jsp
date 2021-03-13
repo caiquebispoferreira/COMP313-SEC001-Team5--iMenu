@@ -8,7 +8,7 @@
 <div class="row">
 	<c:forEach items="${object}" var="item">
 		<div class="col-md-4">
-			<div class="card" style="width: 18rem;">
+			<div class="card" style="width: 18rem; margin:auto; margin-bottom:40px;">
 				<c:if test="${item.hasImage}">
 					<img src="${contextPath}/resources/img/${item.name}.png"
 						class="card-img-top" alt="...">

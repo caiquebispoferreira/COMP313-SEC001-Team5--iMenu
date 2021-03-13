@@ -7,8 +7,7 @@
 <title>iMenu - Menu</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"
-	, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
@@ -31,7 +30,7 @@
 	</div>
 
 	<div class="container">
-		<h1 class="h1 text-center">${title}</h1>
+		<h1 style="font-size:4vw;" class="h1 text-center">${title}</h1>
 		<jsp:include page="${body}">
 			<jsp:param name="contextPath" value="${contextPath}" />
 			<jsp:param name="object" value="${object}" />

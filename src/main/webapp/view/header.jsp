@@ -11,27 +11,15 @@
 
 <!--import bootstrap -->
 
-  
-  <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="navbar.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     
     <script src="https://getbootstrap.com/docs/3.4/assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://getbootstrap.com/docs/3.4/dist/js/bootstrap.min.js"></script>
-  
-  
-  
-  
-
-
+  <link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+	rel="stylesheet" type="text/css" />
 <!-- 
 
 <link rel="stylesheet"
@@ -112,7 +100,7 @@
 					<a class="nav-link active" role="button" onclick="myOrder()">My
 						Order </a>
 					<a class="nav-item nav-link active" href="/login">Login</a>
-				</c:if>>
+				</c:if>
 					<label style="color: white; align-items: center;"> <i
 						class="fas fa-arrows-alt-v"></i>Table
 					</label> <input type="number" id="currentTableNumber" readonly />
