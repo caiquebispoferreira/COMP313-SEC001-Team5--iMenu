@@ -16,17 +16,17 @@ public interface IProductRepository
         extends JpaRepository<Product, Long>, PagingAndSortingRepository<Product, Long>, JpaSpecificationExecutor<IProductRepository> {
 
     List<Product> findByCategory(Category category);
-    @Query( nativeQuery = true,  value = "SELECT TOP 5 P.NAME, "
-    		+ "Sum(QUANTITY) AS total "
-    		+ "FROM   orderitems O "
-    		+ "INNER JOIN products P "
-    		+ "ON O.PRODUCT_ID = P.ID GROUP  BY P.NAME")
+    @Query( nativeQuery = true,  value = "SELECT TOP 5 P.NAME, Sum(ISNULL(QUANTITY,0)) AS total "
+    		+ "FROM products P "
+    		+ "LEFT JOIN orderitems O "
+    		+ "ON O.PRODUCT_ID = P.ID "
+    		+ "GROUP  BY P.NAME" )
     List<Object[]> findTopSoldProducts();
     
     @Query(nativeQuery = true, value = "select TOP 5 name,total "
-    		+ "from ( SELECT P.NAME, Sum(QUANTITY) AS total "
+    		+ "from ( SELECT P.NAME, Sum(isnull(QUANTITY,0)) AS total "
     		+ "FROM   orderitems O "
-    		+ "INNER JOIN products P ON O.PRODUCT_ID = P.ID GROUP  BY P.NAME ) as temp "
+    		+ "right JOIN products P ON O.PRODUCT_ID = P.ID GROUP  BY P.NAME ) as temp "
     		+ "order by total desc"    		)
     List<Object[]> findLessSoldProducts();
     
