@@ -7,7 +7,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(Suite.class)
-@SuiteClasses({UserTest.class, ProductTest.class, OrderTest.class})
+@SuiteClasses({UserTest.class, ProductTest.class, OrderTest.class,ProductRestTest.class,OrderRestTest.class})
 public class TestSuite {
 
 }

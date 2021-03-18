@@ -29,8 +29,8 @@ public class Product implements Serializable {
     private Category category;
     private boolean hasImage;
 
-    @OneToMany(mappedBy ="product",cascade = CascadeType.REFRESH)
-    private List<ProductReview> reviews;
+    @OneToMany(mappedBy ="product",cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private List<ProductReview> reviews = new ArrayList<ProductReview>();
 
     public void addReview(ProductReview review){
         this.reviews = this.reviews==null? new ArrayList():reviews;
