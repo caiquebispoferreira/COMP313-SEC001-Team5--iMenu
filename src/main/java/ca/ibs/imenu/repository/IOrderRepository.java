@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,19 +17,19 @@ public interface IOrderRepository
 
     @Query(value = "Select o " +
             "FROM Order o " +
-            "WHERE o.status <> :status" +
-            "   AND o.tableNumber = :tableNumber  ")
-    Order findByStatusAndTableNumber(Status status, int tableNumber);
+            "WHERE o.status <> :#{#status}" +
+            "   AND o.tableNumber = :#{#tableNumber}  ")
+    Order findByStatusAndTableNumber(@Param("status") Status status,@Param("tableNumber") int tableNumber);
 
     @Query(value = "Select o " +
             "FROM Order o " +
-            "WHERE o.status <> :status")
-    List<Order> myFindAll(Status status);
+            "WHERE o.status <> :#{#status}")
+    List<Order> myFindAll(@Param("status") Status status);
 
     @Query(value = "Select o " +
             "FROM Order o " +
-            "WHERE o.tableNumber = :tableNumber" )
-    Order findByTableNumber(int tableNumber);
+            "WHERE o.tableNumber = :#{#tableNumber} " )
+    Order findByTableNumber(@Param("tableNumber") int tableNumber);
     
     @Query( nativeQuery = true,value="select day(o.date) as day , sum(total_price) as total "
     		+ "from orders o "
