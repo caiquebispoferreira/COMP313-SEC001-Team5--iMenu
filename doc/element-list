@@ -1,0 +1,6 @@
+ca.ibs.imenu
+ca.ibs.imenu.controller
+ca.ibs.imenu.dto
+ca.ibs.imenu.entity
+ca.ibs.imenu.repository
+ca.ibs.imenu.service
