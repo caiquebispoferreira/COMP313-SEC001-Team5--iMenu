@@ -24,7 +24,7 @@
 						onclick="addItemToMyOrder(${item.id},1)">&nbsp;Add to
 						Order&nbsp;</button>
 					<a style="padding-left: 35px;"
-						href="/listReviewByProduct?id=${item.id}">Reviews</a>
+						href="/listReviewByProduct?id=${item.id}">${item.rating}/5</a>
 				</div>
 			</div>
 		</div>

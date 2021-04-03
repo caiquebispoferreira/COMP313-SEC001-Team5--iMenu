@@ -28,6 +28,7 @@ public class ProductDTO {
     private String description;
     private BigDecimal unitPrice;
     private Boolean enabled;
+    private double rating;
     @Enumerated(EnumType.STRING)
     private Category category;
     private boolean hasImage;
@@ -50,6 +51,17 @@ public class ProductDTO {
     
         
     }
+    
+    
+    public double getRating() {
+    	double rating = 0;
+   
+    	for (int i = 0; i < reviews.size();i++) 
+    		rating += reviews.get(i).getRating();
+    	
+    	return reviews.size()>0?((double)rating/reviews.size()):rating;
+    }
+    
     
     public void addItem(ProductReviewDTO item) {
     	reviews.add(item);

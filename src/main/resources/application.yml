@@ -1,36 +1,36 @@
 logging:
-  level:
-    com: trace
-    org:
-      springframework: trace
-spring:
-  datasource:
-    url: jdbc:sqlserver://161.97.75.101:1433;databaseName=iMenu
-    username: iMenu
-    password: Pa$$w0rd
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    tomcat:
-      test-while-idle: true
-      validation-query: SELECT getDate()
-    initialization-mode: never
-    platform: mssql
-  jackson:
-    serialization:
-      fail-on-empty-beans: false
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.SQLServer2012Dialect
-        format_sql: false
-        use_sql_comments : false
-    hibernate:
-      naming:
-        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-      ddl-auto: update
-    show-sql : false
-  mvc:
-    view:
-      prefix: /view/
-      suffix: .jsp
+    level:
+        com: trace
+        org:
+            springframework: trace
 server:
-  port: 8080
+    port: 8080
+spring:
+    datasource:
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        initialization-mode: never
+        password: Pa$$w0rd
+        platform: mssql
+        tomcat:
+            test-while-idle: true
+            validation-query: SELECT getDate()
+        url: jdbc:sqlserver://161.97.75.101:1433;databaseName=iMenu
+        username: iMenu
+    jackson:
+        serialization:
+            fail-on-empty-beans: false
+    jpa:
+        hibernate:
+            ddl-auto: update
+            naming:
+                physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.SQLServer2012Dialect
+                format_sql: false
+                use_sql_comments: false
+        show-sql: false
+    mvc:
+        view:
+            prefix: /view/
+            suffix: .jsp

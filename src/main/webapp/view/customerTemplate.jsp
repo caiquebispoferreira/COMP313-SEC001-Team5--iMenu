@@ -17,8 +17,10 @@
 	href="${contextPath}/resources/css/customertemplate.css" />
 <link rel="icon" href="${contextPath}/resources/img/faviconmenu.png"
 	type="image/png" sizes="16x16 32x32">
+<!--
 <link rel="stylesheet"
-	href="https://drive.google.com/file/d/1VU63U_KJ8H078dU7fui3DoJ8mgSGTJQm/view?usp=sharing">
+	href="https://drive.google.com/file/d/1VU63U_KJ8H078dU7fui3DoJ8mgSGTJQm/view?usp=sharing"> 
+ -->
 </head>
 
 

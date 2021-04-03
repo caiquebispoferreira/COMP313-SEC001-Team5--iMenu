@@ -4,6 +4,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+<style>
+.row1 {
+    flex: 0 0 33.333333%;
+    max-width: 80%;
+    margin-left: 22%;
+}
+.btnnew{
+	background: linear-gradient(to right, #ff8a00 0%, #da1b60 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    border-color: #ff8a0059;
+}
+</style>
+
 <br />
 <br />
 <br />
@@ -13,48 +33,49 @@
 <br />
 
 <form method="POST" action="/reviewProduct">
-    <div class="row">
-        <div class="col-12">
-            <label for="productName">Product Name</label>
-            <input id="productName" type="text" name="productName" readonly
-                   value="${object.product.name}" class="form-control">
-        </div>
-
-        <div class="col-12">
-            <label for="orderItemId">Order Item Id</label>
-            <input id="orderItemId" type="text" name="orderItemId" readonly
-                   value="${object.id}" class="form-control">
-        </div>
-
-
-        <div class="col-12">
-            <label for="tableNumber">Table Number</label>
-            <input id="tableNumber" type="text" name="tableNumber" readonly
-                   value="${tableNumber}" class="form-control">
-        </div>
-
-
-        <div class="col-12">
-            <label for="rating">Rating</label>
-            <input id="rating" type="number" name="rating" 
-                    class="form-control">
-        </div>
-
-
-        <div class="col-12">
-            <label for="username">Username</label>
-            <input id="username" type="text" name="username"
-                    class="form-control">
-        </div>
-
-        <div class="col-12">
-            <label for="notes">Notes</label>
-            <input id="notes" type="text" name="notes" 
-                   class="form-control">
-        </div>
-
-        <button type="submit">Review now!</button>
-    </div>
-
-
+	<div class="center">
+	    <div class="row">
+	        <div class="col-12">
+	            <label for="productName">Product Name</label>
+	            <input id="productName" type="text" name="productName" readonly
+	                   value="${object.product.name}" class="form-control">
+	        </div>
+	
+	        <div class="col-12">
+	            <label for="orderItemId">Order Item Id</label>
+	            <input id="orderItemId" type="text" name="orderItemId" readonly
+	                   value="${object.id}" class="form-control">
+	        </div>
+	
+	
+	        <div class="col-12">
+	            <label for="tableNumber">Table Number</label>
+	            <input id="tableNumber" type="text" name="tableNumber" readonly
+	                   value="${tableNumber}" class="form-control">
+	        </div>
+	
+	
+	        <div class="col-12">
+	            <label for="rating">Rating</label>
+	            <input id="rating" type="number" name="rating" 
+	                    class="form-control">
+	        </div>
+	
+	
+	        <div class="col-12">
+	            <label for="username">Username</label>
+	            <input id="username" type="text" name="username"
+	                    class="form-control">
+	        </div>
+	
+	        <div class="col-12">
+	            <label for="notes">Notes</label>
+	            <input id="notes" type="text" name="notes" 
+	                   class="form-control">
+	        </div>
+	    </div>		
+	</div>
+	<div class="row1" >
+		<button type="submit" class="btn btn-light btnnew">Review now!</button>
+	</div>
 </form>
