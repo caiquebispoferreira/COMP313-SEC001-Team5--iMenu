@@ -2,6 +2,7 @@ package ca.ibs.imenu;
 
 import ca.ibs.imenu.entity.Category;
 import ca.ibs.imenu.entity.Product;
+import ca.ibs.imenu.entity.ProductReview;
 import ca.ibs.imenu.entity.Role;
 import ca.ibs.imenu.entity.User;
 import ca.ibs.imenu.service.ProductService;
@@ -109,6 +110,60 @@ public class ProductTest {
 		assertNull(productService.findById(product.getId()));
 	}
 
+	
+	@Test
+	public void case006_addReview() throws Exception {
+		//first product
+		Product product = new Product();
+		product.setName("Pastel");
+		product.setDescription("Appetizer from Brazil");
+		product.setUnitPrice(BigDecimal.valueOf(5.99));
+		product.setEnabled(true);
+		product.setCategory(Category.APPETIZER);
+		product.setHasImage(true);
+		
+		
+		ProductReview review = new ProductReview();
+		review.setUserName("Caique");
+		review.setNotes("Excellent");
+		review.setRating(4);		
+		
+		product.addReview(review);
+		
+		
+		product = productService.save(product);
+
+		List<Product> productsDB = productService.findAll();
+
+		//Expected - Actual
+		assertEquals(product.getName(), productsDB.get(0).getName());
+	}
+	
+	@Test
+	public void case007_listReview() throws Exception {
+		//first product
+		Product product = new Product();
+		product.setName("Pastel");
+		product.setDescription("Appetizer from Brazil");
+		product.setUnitPrice(BigDecimal.valueOf(5.99));
+		product.setEnabled(true);
+		product.setCategory(Category.APPETIZER);
+		product.setHasImage(true);
+		
+		
+		ProductReview review = new ProductReview();
+		review.setUserName("Caique");
+		review.setNotes("Excellent! ");
+		review.setRating(5);		
+		
+		product.addReview(review);
+		product = productService.save(product);
+
+		List<Product> productsDB = productService.findAll();
+
+		//Expected - Actual
+		assertEquals(product.getName(), productsDB.get(0).getName());
+	}
 
 
 	@Autowired

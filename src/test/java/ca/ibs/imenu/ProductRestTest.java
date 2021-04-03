@@ -28,3 +28,5 @@ public class ProductRestTest {
         assertNotEquals(0, productService.findLessSoldProducts().size());
     }
 }
+
+
