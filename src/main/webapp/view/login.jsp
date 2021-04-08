@@ -5,7 +5,8 @@
 
 <title>iMenu - Login</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/login.css" />
-<link rel="icon" href="${contextPath}/resources/img/faviconmenu.png" type="image/png" sizes="16x16 32x32">
+<link rel="icon" href="${contextPath}/resources/img/faviconmenu.png"
+	type="image/png" sizes="16x16 32x32">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 <script
@@ -38,18 +39,16 @@
 				<a href="#" class="social"><i class="icon ion-social-googleplus"></i></a>
 				<a href="#" class="social"><i class="icon ion-social-linkedin"></i></a>
 			</div>
-			<span>or use your account</span> 
+			<span>or use your account</span>
 			<c:if test="${error !=null}">
-                <div style="color:red">
-                    User/Password is invalid
-                </div>
-            </c:if>
-			
-			<input type="text" id="username"
-				name="username" class="form-control" placeholder="Username" required
-				autofocus /> <input type="password" id="password" name="password"
-				class="form-control" placeholder="Password" required /> <a href="#">Forgot
-				your password?</a>
+				<div style="color: red">User/Password is invalid</div>
+			</c:if>
+
+			<input type="text" id="username" name="username" class="form-control"
+				placeholder="Username" required autofocus /> <input type="password"
+				id="password" name="password" class="form-control"
+				placeholder="Password" required /> <a href="#">Forgot your
+				password?</a>
 			<button>Sign In</button>
 			<a class="back" href="/index">Back</a>
 		</form>
