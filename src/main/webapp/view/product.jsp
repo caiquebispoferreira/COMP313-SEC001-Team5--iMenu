@@ -71,7 +71,6 @@
 			</div>
 
 			<hr class="mb-4">
-			<!--  <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button> -->
 			<button class="btn btn-light addUserBtn" type="submit">Submit</button>
 
 		</form>

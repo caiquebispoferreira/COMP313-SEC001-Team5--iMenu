@@ -15,15 +15,10 @@
 <meta name="theme-color" content="#563d7c">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/customertemplate.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
 <link rel="icon" href="${contextPath}/resources/img/faviconmenu.png"
 	type="image/png" sizes="16x16 32x32">
-<!--
-<link rel="stylesheet"
-	href="https://drive.google.com/file/d/1VU63U_KJ8H078dU7fui3DoJ8mgSGTJQm/view?usp=sharing"> 
- -->
 </head>
-
-
 
 <body class="bg-light">
 	<div class="header"><jsp:include page="header.jsp">
@@ -32,7 +27,7 @@
 	</div>
 
 	<div class="container">
-		<h1 style="font-size:4vw;" class="h1 text-center">${title}</h1>
+		<h1 style="font-size: 4vw;" class="h1 text-center">${title}</h1>
 		<jsp:include page="${body}">
 			<jsp:param name="contextPath" value="${contextPath}" />
 			<jsp:param name="object" value="${object}" />
@@ -47,14 +42,7 @@
 		</jsp:include>
 	</div>
 </body>
-<!-- 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-	crossorigin="anonymous"></script> -->
+
 <script>
 	function getCurrentTableNumber() {
 		var tmp = localStorage.getItem("tableNumber")

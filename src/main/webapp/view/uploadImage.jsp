@@ -16,12 +16,10 @@
 		<form enctype="multipart/form-data" action="/uploadImage"
 			method="post">
 			<div class="mb-3">
-				<input type="hidden" name="productId" value="${object.id}" />
-				<!-- <label for="image">Image</label> -->
-				<input id="image" type="file" accept=".png" name="image"
+				<input type="hidden" name="productId" value="${object.id}" /> <input
+					id="image" type="file" accept=".png" name="image"
 					class="form-control">
 			</div>
-			<!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>-->
 			<button class="btn btn-light addUserBtn" type="submit">Submit</button>
 		</form>
 	</div>
