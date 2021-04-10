@@ -74,7 +74,7 @@ Parameters:
 
 			<div class="col-12">
 				<label for="rating">Rating</label> <input id="rating" type="number"
-					name="rating" class="form-control">
+					name="rating" min="1" max="5" class="form-control">
 			</div>
 
 
