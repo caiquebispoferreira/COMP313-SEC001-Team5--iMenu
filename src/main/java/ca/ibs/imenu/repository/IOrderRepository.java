@@ -11,10 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
-
 /**
- * IOrderRepository - repository used to persist, merge, delete and search orders
+ * IOrderRepository - repository used to persist, merge, delete, and search order
  * Date 2020-12-04
  *
  * @author Caique
@@ -25,11 +23,11 @@ public interface IOrderRepository
         extends JpaRepository<Order, Long>, PagingAndSortingRepository<Order, Long>, JpaSpecificationExecutor<IOrderRepository> {
 
 	/**
-	 * findByStatusAndTableNumber - find order which have the filtered status and table number
-	  * Date 2020-12-04
+	 * findByStatusAndTableNumber - find order which has the filtered status and table number
+	 * Date 2020-12-04
 	 *
-	 * @param status  - table number which will be considered in the query
-	 * @param tableNumber - table number which will be considered in the query
+	 * @param status - order status which will be used as a filter in the query
+	 * @param tableNumber - table number which will be used as a filter in the query
 	 * @return Order 
 	 */
     @Query(value = "Select o " +
@@ -42,19 +40,32 @@ public interface IOrderRepository
 	 * myFindAll - list of orders which have the filtered status
 	 * Date 2020-12-04
 	 *
-	 * @param status  - table number which will be considered in the query
-	 * @return Order 
+	 * @param status - order status which will be used as a filter in the query
+	 * @return list of orders  
 	 */
     @Query(value = "Select o " +
             "FROM Order o " +
             "WHERE o.status <> :#{#status}")
     List<Order> myFindAll(@Param("status") Status status);
-
+    
+    /**
+	 * findByTableNumber - list the order which has the filtered table number
+	 * Date 2020-12-04
+	 *
+	 * @param tableNumber - table number which will be used as a filter in the query
+	 * @return order  
+	 */
     @Query(value = "Select o " +
             "FROM Order o " +
             "WHERE o.tableNumber = :#{#tableNumber} " )
     Order findByTableNumber(@Param("tableNumber") int tableNumber);
     
+    /**
+   	 * getMonthProfitByDay - shows the profit by day for the current month 
+   	 * Date 2020-12-04
+   	 *
+   	 * @return list of objects  
+   	 */  
     @Query( nativeQuery = true,value="select day(o.date) as day , sum(total_price) as total "
     		+ "from orders o "
     		+ "where Month(getdate()) = Month(o.date) "

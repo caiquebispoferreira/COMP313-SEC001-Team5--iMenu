@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ca.ibs.imenu"},{"l":"ca.ibs.imenu.controller"},{"l":"ca.ibs.imenu.dto"},{"l":"ca.ibs.imenu.entity"},{"l":"ca.ibs.imenu.repository"},{"l":"ca.ibs.imenu.service"}]

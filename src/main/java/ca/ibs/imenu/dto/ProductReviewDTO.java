@@ -18,7 +18,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+/**
+ * ProductReviewDTO - this is a DTO representing PRODUCTREVIEWS table in iMenu database
+ * Date 2021-02-28
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

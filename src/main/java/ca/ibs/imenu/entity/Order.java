@@ -14,6 +14,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * Order - this is an entity representing ORDERS table in iMenu database
+ * Date 2020-12-04
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,12 +41,22 @@ public class Order implements Serializable {
 
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
     private List<OrderItem> items = new ArrayList<>();
-
+    
+    /**
+	 * addItem - add the item to the order
+	 * Date 2020-12-04
+	 *
+	 * @param item - representing the item that is added to the order
+	 */
     public void addItem(OrderItem item) {
         item.setOrder(this);
         items.add(item);
     }
 
+    /**
+	 * calcTotal - calculate total amount of the order
+	 * Date 2020-12-04
+	 */
     public void calcTotal(){
         totalPrice = new BigDecimal(0);
         for (OrderItem item: items){

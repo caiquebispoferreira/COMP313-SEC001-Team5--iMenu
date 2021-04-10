@@ -9,6 +9,13 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+/**
+ * ProductReview - this is an entity representing PRODUCTREVIEWS table in iMenu database
+ * Date 2021-02-28
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

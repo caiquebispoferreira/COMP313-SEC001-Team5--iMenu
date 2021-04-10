@@ -26,6 +26,13 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * ProductController - this class handles product routes
+ * Date 2021-02-04
+ *
+ * @author Irisi
+ * @version 0.0.1
+ */
 @Controller
 public class ProductController {
     @Autowired

@@ -13,11 +13,26 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * UserDetailsServiceImpl - this service implements spring framework to inject the user in the session
+ * 
+ * Date 2021-04-04
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	private IUserRepository userRepository;
 
+   /**
+  	 * loadUserByUsername - load user by username 
+  	 * Date 2020-12-04
+  	 *
+  	 * @param username - username to be loaded
+  	 * @return user details 
+  	*/
 	@Override
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

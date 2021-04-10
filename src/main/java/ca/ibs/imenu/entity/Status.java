@@ -1,5 +1,12 @@
 package ca.ibs.imenu.entity;
 
+/**
+ * Status - This is an ENUM limiting the statuses that are used for orders in the application
+ * Date 2020-12-04
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 public enum Status {
     OPEN("Open"),CONFIRMED("Confirmed"), IN_PROGRESS("In progress"),DELIVERED("Delivered"),PAID("Paid");
 

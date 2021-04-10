@@ -11,6 +11,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * OrderItemDTO - this is DTO representing ORDERITEMS table in iMenu database
+ * Date 2020-12-04
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
