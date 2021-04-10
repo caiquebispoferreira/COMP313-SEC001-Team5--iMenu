@@ -1,3 +1,11 @@
+<!-- 
+Purpose: 
+Author: Ashik Lochna, Nazif Sahim, Wahida Hossain, Caique Ferreira, Irisi Meko
+Date: April 09, 2021
+Version: iMenu v6.0
+Parameters: 
+-->
+
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <meta charset="utf-8">
 <link rel="stylesheet"

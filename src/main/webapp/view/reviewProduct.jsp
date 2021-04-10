@@ -1,8 +1,24 @@
+<!-- 
+Purpose: 
+Author: Ashik Lochna, Nazif Sahim, Wahida Hossain, Caique Ferreira, Irisi Meko
+Date: April 09, 2021
+Version: iMenu v6.0
+Parameters: 
+-->
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
+<link rel="stylesheet" href="${contextPath}/resources/css/style.css" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap"
+	rel="stylesheet">
 
 <style>
 .row1 {

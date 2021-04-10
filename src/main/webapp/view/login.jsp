@@ -1,3 +1,11 @@
+<!-- 
+Purpose: 
+Author: Ashik Lochna, Nazif Sahim, Wahida Hossain, Caique Ferreira, Irisi Meko
+Date: April 09, 2021
+Version: iMenu v6.0
+Parameters: 
+-->
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
