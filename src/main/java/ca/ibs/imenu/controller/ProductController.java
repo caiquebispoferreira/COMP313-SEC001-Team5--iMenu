@@ -81,7 +81,7 @@ public class ProductController {
         
     	model.addAttribute("body","productsByCategory.jsp");
         model.addAttribute("object",products);
-        model.addAttribute("title", "List of "+category);
+        model.addAttribute("title", "List of "+category.replace("_", " "));
         return "customerTemplate";
     }
 
