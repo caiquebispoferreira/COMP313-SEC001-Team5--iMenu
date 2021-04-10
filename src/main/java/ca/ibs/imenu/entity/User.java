@@ -7,6 +7,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * User - this is an entity representing USERS table in iMenu database
+ * Date 2020-12-04
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

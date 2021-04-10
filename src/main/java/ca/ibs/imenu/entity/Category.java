@@ -1,5 +1,11 @@
 package ca.ibs.imenu.entity;
-
+/**
+ * Category - This is an ENUM limiting the categories that can be used for a product
+ * Date 2020-12-04
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 public enum Category {
     APPETIZER("Appetizer"),
     BEVERAGE("Beverage"),

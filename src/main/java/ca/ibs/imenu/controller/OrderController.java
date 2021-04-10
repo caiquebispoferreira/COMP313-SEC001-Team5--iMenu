@@ -23,6 +23,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * OrderController - this class handles order routes
+ * Date 2021-02-04
+ *
+ * @author Irisi
+ * @version 0.0.1
+ */
 @Controller
 public class OrderController {
     @Autowired

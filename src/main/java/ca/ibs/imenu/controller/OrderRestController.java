@@ -13,6 +13,13 @@ import ca.ibs.imenu.dto.SoldProduct;
 import ca.ibs.imenu.service.OrderService;
 import ca.ibs.imenu.service.ProductService;
 
+/**
+ * OrderRestController - this class handles order dashboard's routes
+ * Date 2021-02-04
+ *
+ * @author Irisi
+ * @version 0.0.1
+ */
 @RestController
 public class OrderRestController {
 	

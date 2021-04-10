@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import ca.ibs.imenu.dto.SoldProduct;
 import ca.ibs.imenu.service.ProductService;
 
+/**
+ * ProductRestController - this class handles product dashboard's routes
+ * Date 2021-02-04
+ *
+ * @author Irisi
+ * @version 0.0.1
+ */
 @RestController
 public class ProductRestController {
 	

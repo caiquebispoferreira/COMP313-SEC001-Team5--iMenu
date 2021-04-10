@@ -12,6 +12,13 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Product - this is an entity representing PRODUCTS table in iMenu database
+ * Date 2020-12-04
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,6 +39,12 @@ public class Product implements Serializable {
     @OneToMany(mappedBy ="product",cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private List<ProductReview> reviews = new ArrayList<ProductReview>();
 
+    /**
+ 	 * addReview - add the review to the product
+ 	 * Date 2021-04-04
+ 	 *
+ 	 * @param review - representing review that is added to the product
+ 	 */
     public void addReview(ProductReview review){
         this.reviews = this.reviews==null? new ArrayList():reviews;
         review.setProduct(this);

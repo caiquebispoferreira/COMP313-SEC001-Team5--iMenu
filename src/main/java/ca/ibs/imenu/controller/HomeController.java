@@ -17,6 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * HomeController - this class handles the home routes
+ * Date 2021-02-04
+ *
+ * @author Irisi
+ * @version 0.0.1
+ */
 @Controller
 public class HomeController {
 	@Autowired
@@ -95,23 +102,5 @@ public class HomeController {
 			user.setUsername("admin");
 			userService.save(user);
 		}
-
-		/*
-		 * OrderItem item = new OrderItem(); item.setTotalPrice(new BigDecimal(1000));
-		 * item.setUnitPrice(new BigDecimal(1000)); item.setQuantity(1);
-		 * item.setProduct(productService.findAll().get(0));
-		 * 
-		 * OrderItem itema = new OrderItem(); itema.setTotalPrice(new BigDecimal(1000));
-		 * itema.setUnitPrice(new BigDecimal(1000)); itema.setQuantity(1);
-		 * itema.setProduct(productService.findAll().get(1));
-		 * 
-		 * Order order = new Order(); order.setStatus(Status.OPEN);
-		 * order.setTableNumber(1); order.setTotalPrice(new BigDecimal(2000));
-		 * order.setNote("Special Notes added"); order.setDate(LocalDate.now());
-		 * order.addItem(item); order.addItem(itema);
-		 * 
-		 * orderService.save(order);
-		 */
 	}
-
 }

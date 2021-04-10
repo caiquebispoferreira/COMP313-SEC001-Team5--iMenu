@@ -11,9 +11,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * IProductReviewRepository - repository used to persist, merge, delete, and search review
+ * Date 2021-04-05
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 @Repository
 public interface IProductReviewRepository
-        extends JpaRepository<ProductReview, Long>, PagingAndSortingRepository<ProductReview, Long>, JpaSpecificationExecutor<IProductReviewRepository> {
-
-    
+        extends JpaRepository<ProductReview, Long>, PagingAndSortingRepository<ProductReview, Long>, JpaSpecificationExecutor<IProductReviewRepository> {    
 }

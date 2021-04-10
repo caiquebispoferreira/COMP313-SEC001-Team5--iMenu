@@ -18,6 +18,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * OrderDTO - this is DTO representing ORDERS table in iMenu database
+ * Date 2020-12-04
+ *
+ * @author Caique
+ * @version 0.0.1
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
