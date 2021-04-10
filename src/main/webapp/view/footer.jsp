@@ -34,9 +34,9 @@ Parameters:
 				</div>
 				<div class="col-md-6 item text">
 					<h3>iMenu</h3>
-					<p>Software Development Project 2 - Done by Ashik Lochna,
-						Caique Ferreira, Nazif Sahim, Wahida Hossain, Cristian Zuluaga,
-						Irisi Meko and Arthur Batista</p>
+					<p>Software Development Project 2 <br />Developed by Ashik Lochna,
+					    Arthur Batista,	Caique Ferreira, Cristian Zuluaga, Irisi Meko, Nazif Sahim 
+					    and Wahida Hossain</p>
 				</div>
 				<div class="col item social">
 					<a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
