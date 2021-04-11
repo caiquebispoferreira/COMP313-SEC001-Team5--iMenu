@@ -36,11 +36,11 @@ public interface IProductRepository
 	 *
 	 * @return list of objects 
 	 */
-	@Query( nativeQuery = true,  value = "SELECT TOP 5 P.NAME, Sum(ISNULL(QUANTITY,0)) AS total "
-    		+ "FROM products P "
-    		+ "LEFT JOIN orderitems O "
-    		+ "ON O.PRODUCT_ID = P.ID "
-    		+ "GROUP  BY P.NAME" )
+	@Query( nativeQuery = true,  value =  "select TOP 5 name,total "
+    		+ "from ( SELECT P.NAME, Sum(isnull(QUANTITY,0)) AS total "
+    		+ "FROM   orderitems O "
+    		+ "right JOIN products P ON O.PRODUCT_ID = P.ID GROUP  BY P.NAME ) as temp "
+    		+ "order by total desc" )
     List<Object[]> findTopSoldProducts();
     
     /**
@@ -49,10 +49,10 @@ public interface IProductRepository
 	 *
 	 * @return list of objects 
 	 */  
-    @Query(nativeQuery = true, value = "select TOP 5 name,total "
-    		+ "from ( SELECT P.NAME, Sum(isnull(QUANTITY,0)) AS total "
-    		+ "FROM   orderitems O "
-    		+ "right JOIN products P ON O.PRODUCT_ID = P.ID GROUP  BY P.NAME ) as temp "
-    		+ "order by total desc"    		)
+    @Query(nativeQuery = true, value = "SELECT TOP 5 P.NAME, Sum(ISNULL(QUANTITY,0)) AS total "
+    		+ "FROM products P "
+    		+ "LEFT JOIN orderitems O "
+    		+ "ON O.PRODUCT_ID = P.ID "
+    		+ "GROUP  BY P.NAME ORDER BY 2"   		)
     List<Object[]> findLessSoldProducts();    
 }
